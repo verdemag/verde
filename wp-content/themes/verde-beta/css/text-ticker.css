@@ -1,0 +1,16 @@
+.ticker {
+    background-color:#EEEEEE;
+    color:#CDCBC9;
+    font-weight:bold;
+    font-size:15px;
+    text-align:left;
+    padding:5px;
+}
+
+.tickerText {
+    display:inline;
+}
+
+.tickerContent:before {
+    content: '\00a0 \00a0 TICKER \00a0 \00a0'
+}

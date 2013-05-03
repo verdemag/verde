@@ -1,0 +1,419 @@
+html {
+    text-align:center;
+    overflow-y:scroll;
+} /* Mainly to make text-align:center an inherited trait for other stuff. */
+
+body {
+    width:100%;
+    margin:0;padding:0;
+    background-color:rgb(251,251,251);
+}
+
+#footer {
+    position:fixed;
+    bottom:0;
+    left:50%;
+    margin-left:-480px;
+    padding:5px 0px;
+    background-color: rgb(251, 251, 251);
+    /*-webkit-box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);*/
+    text-align:center;
+    color:gray;
+    z-index:100;
+}
+
+#footer a {
+    color:gray;
+    height:auto;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+#logo {
+    height:120px;
+    margin-top:10px;
+    margin-left:10px;
+    float:left;
+    display:inline;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor:pointer;
+    text-align:left;
+}
+
+#logo .title {
+    height:110px;
+    margin-top:-20px;
+    padding-top:10px;
+    font-family: "Adobe-Caslon-Pro";
+    text-rendering:OptimizeLegibility;
+    color:green;
+    font-size:120px;
+    line-height:120px;
+    overflow:hidden;
+}
+
+#logo .sub {
+    font-family: "Minion-Pro";
+    font-variant:small-caps;
+    font-style:normal;
+    color:black;
+    font-size:24px;
+    line-height:24px;
+    position: relative;
+    bottom: 3px;
+}
+
+#mask {
+    position:absolute;
+    top:237px;
+    left:calc(50% - 480px);
+    left:-webkit-calc(50% - 480px);
+    width:960px;
+    height:1000px;
+    overflow:hidden;
+}
+
+#wrapper {
+    position:absolute;
+    width:5760px;
+    overflow:auto;
+}
+
+.noSpace{
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    clear: both;
+}
+
+.page {
+    float:left;
+    /* text-align:left; */
+    white-space:normal;
+    vertical-align:top;
+    margin-bottom:100px;
+}
+
+ul, li {
+    /*list-style:none;*/
+    list-style-type:dash;
+    display:inline;
+    padding:0px;
+    margin:0px;
+}
+
+.grid_16.navBar {
+    padding-top:5px;
+    margin-left:0;
+    margin-right:0;
+    width:960px;
+    background-color:rgba(0,0,0,0.6);
+    color:white;
+    font-size:20px;
+    height:35px;
+    z-index:100;
+}
+
+.navBar.fixed {
+    position:fixed;
+    top:5px;
+    left:calc(50% - 480px);
+}
+
+.navLink {
+    display:inline;
+    cursor:pointer;
+    color:white;
+    height:30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+}
+
+.navLink:hover {
+    color:rgba(0,200,0,0.8);
+}
+
+.navLink:active {
+    color: rgba(255,255,255,0.5);
+}
+
+.navLink.selected {
+    cursor:default;
+    color: rgba(100,255,100,1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+}
+
+.tickerWrapper {
+    position:absolute;
+    top:186px;
+    left:calc(50% - 480px);
+    left:-webkit-calc(50% - 480px);
+}
+
+.content {
+    text-align:left;
+    transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+    color:rgba(0,0,0,0.7);
+    text-decoration:none;
+    color:black;
+}
+
+.content:hover {
+    color:rgba(0,0,0,1);
+}
+
+.content p {
+    text-align:justify;
+}
+
+.lineBreak {
+    display:inline;
+    height:17px;
+    width:100%;
+}
+
+.contentPane {
+    overflow:scroll;
+}
+
+input.wepay-widget-input {
+    width:100%;
+    margin:0;
+}
+
+#editorPicks {
+    height:30px;
+    background-color:lightgrey;
+    color:white;
+    font-size:18px;
+    font-family:'Times New Roman';
+}
+
+.navGrid {
+    height:480px;
+    width:940px;
+    overflow:hidden;
+    -moz-border-radius:15px;
+    border-radius:15px;
+}
+
+.navGridCol {
+    float:left;
+    width:313px;
+    height:100%;
+}
+
+.navGridCol.middle {
+    width:314px;
+}
+
+.navGridCell {
+    overflow:hidden;
+    box-sizing:border-box;
+    background-color:rgba(255,255,255,1);
+    width:100%;
+    height:160px;
+    color:white;
+    font-size:20px;
+    font-family:'Times New Roman';
+    opacity: 0.5;
+    transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+}
+
+.navGridCell.double {
+    height:320px;
+}
+
+img:hover.navGridCell {
+    opacity: 1;
+    transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+}    
+
+.gridCellText {
+    margin-top:50%;
+}
+
+.archiveTitle {
+    font-size:24px;
+    font-weight:bold;
+    text-align:left;
+    padding:7px;
+}
+
+.newsContent {
+    font-size:24px;
+    max-height: 70px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom:40px;
+}
+
+.newsContent .fadeOutGradient {
+    position: absolute;
+    bottom: 0; left: 0;
+    width:100%;
+    height:70px;
+    margin-bottom:0px;
+    text-align:center;
+
+    transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -webkit-transition: height 0.5s ease-in-out;
+
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
+    background-image: -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
+    background-image: -ms-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
+    background-image: -o-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+
+.fadeOutGradient:hover {
+}
+
+/*The news button. */
+.newsButton {
+    cursor:pointer;
+    position:relative;
+    bottom:-30px;
+    border-top: 1px solid #2b872a;
+    background: #278722;
+    background: -webkit-gradient(linear, left top, left bottom, from(#37a639), to(#278722));
+    background: -webkit-linear-gradient(top, #37a639, #278722);
+    background: -moz-linear-gradient(top, #37a639, #278722);
+    background: -ms-linear-gradient(top, #37a639, #278722);
+    background: -o-linear-gradient(top, #37a639, #278722);
+    padding: 3.5px 7px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 13px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.newsButton:hover {
+    border-top-color: #398a1e;
+    background: #398a1e;
+    color: #fffaff;
+}
+.newsButton:active {
+    border-top-color: #33750d;
+    background: #33750d;
+}
+
+/*The other button that's the same as news, but a different name so that we can just use the button without having the javascript function attached to it. */
+.greenButton {
+    cursor:pointer;
+    position:relative;
+    bottom:-30px;
+    border-top: 1px solid #2b872a;
+    background: #515151;
+    background: -webkit-gradient(linear, left top, left bottom, from(#37a639), to(#278722));
+    background: -webkit-linear-gradient(top, #37a639, #278722);
+    background: -moz-linear-gradient(top, #37a639, #278722);
+    background: -ms-linear-gradient(top, #37a639, #278722);
+    background: -o-linear-gradient(top, #37a639, #278722);
+    padding: 5px 10px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 22px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+    /*Making sure that the user doesn't highlight the button and then makes it look weird. */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.greenButton:hover {
+    border-top-color: #398a1e;
+    background: #398a1e;
+    color: #fffaff;
+}
+.greenButton:active {
+    border-top-color: #33750d;
+    background: #33750d;
+}
+
+.wepay-widget-input {
+    width:184px !important;
+}
+
+/* Past here is classes for individual sections. No, it's not organised yet
+   i.e some of the stuff above is for individual sections and needs to be put here
+   */
+
+#aboutTitle {
+    color: rgb(200,200,200);
+    font-size:32px;
+    font-family:"Times New Roman";
+    text-decoration:underline;
+}
+
+#aboutContent {
+    color: rgb(220,220,220);
+    font-size:14px;
+    font-family:"Times New Roman";
+    transition: color .5s ease-in-out;
+    -moz-transition: color .5s ease-in-out;
+    -webkit-transition: color .5s ease-in-out;
+}
+
+#aboutContent:hover {
+    color: rgb(100,100,100);
+}
+
+#link
+{
+    text-decoration:none;
+    transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -webkit-transition: color .2s ease-in-out;
+}
+
+#link:visited
+{
+    color: black;
+}
+#link:hover
+{
+    color:rgb(100,200,100);
+}
+
+#issuu
+{
+}

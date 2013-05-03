@@ -1,0 +1,15 @@
+#logo .title .char1 {
+		letter-spacing:-13px;
+}
+
+#logo .title .char2 {
+		letter-spacing:-11px;
+}
+
+#logo .title .char3 {
+		letter-spacing:-5px;
+}
+
+#logo .title .char4 {
+		letter-spacing:-10px;
+}
