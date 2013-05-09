@@ -1,4 +1,3 @@
-<div class="grid_3">
   <div style="float:left">
   <a class="wepay-widget-button wepay-green" id="wepay_widget_anchor_50f8893bb9c9c" href="https://www.wepay.com/donations/11912">Help keep Verde running!</a>
   </div>
@@ -18,4 +17,3 @@
     <div class="fb-like" data-href="http://www.facebook.com/verdemagazine" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
     <a href="https://twitter.com/verdemagazine" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true">Follow @verdemagazine</a>
   </div>
-</div>
