@@ -1,7 +1,0 @@
-@font-face {
-    font-family: 'Caslon';
-    src: url('CaslonRoman.ttf');
-
-@font-face {
-    font-family: 'Minion-Pro';
-    src: url('MinionPro.otf');
