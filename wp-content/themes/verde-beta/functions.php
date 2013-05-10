@@ -118,25 +118,33 @@ function ticker_options() {
   echo '</div>';
 }
 
-function getPage($page) {
-  if($page->post_type == 'post') {
+function getPage($obj) {
+  if($obj->post_type == 'post') {
     $class = 'post';
-  } else if($page->post_type == 'page') {
-    $template = $page->page_template;
+    $c = $obj->post_content;
+  } else if($obj->post_type == 'page') {
+    $template = $obj->page_template;
     if($template == 'default') {
       $class='page';
     } else {
       $class = substr($template, 15, strlen($template) - 19);
     }
+    $c = $obj->post_content;
+  } else if($obj->cat_name != '') {
+    $class = 'category';
+    $c = $obj->cat_ID;
   } else {
-    $class = $page->post_type;
+    $class = $obj->post_type;
+    $c = $obj->post_content;
   }
 
   if(!class_exists($class)) {
     if($class == 'page') {
       $file = 'templates/page.php';
+    } else if($class == 'category') {
+      $file = 'templates/category.php';
     } else {
-      $file = $page->page_template;
+      $file = $obj->page_template;
     }
     require_once $file;
     if(!class_exists($class)) {
@@ -144,7 +152,7 @@ function getPage($page) {
     }
   }
 
-  $loader = new $class($page->post_content);
+  $loader = new $class($c);
 
   return $loader->getPageContents();
 }

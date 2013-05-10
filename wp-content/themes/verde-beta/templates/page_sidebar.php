@@ -4,7 +4,7 @@ Template Name: Page with a sidebar
 */
 
 class sidebar {
-  private $content = 'fien';
+  private $content;
 
   function __construct($c) {
     $this->content = $c;
