@@ -1,11 +1,11 @@
 <?php
-	/**
-	 * The footer!
-	 */
+/**
+ * The footer!
+ */
 ?>
 </div><!-- Closes wrapper -->
 </div><!-- Closes mask -->
-<div class="container_12" id="footer"> 
+<div class="container_12" id="footer">
 	<div class="grid_6" style="text-align:right">
 		<div class="row">&#169; Verde Magazine</div>
     <div class="row">
@@ -14,8 +14,12 @@
       <a id="zoombutton">Zoom</a>
     </div>
     <div class="row">
+      <?php if (is_user_logged_in()) : ?>
       <a href="wp-admin">Dashboard</a> -
       <a href="wp-admin/post-new.php">Write</a>
+      <?php else : ?>
+      <a href="wp-login.php">Login</a>
+      <?php endif; ?>
     </div>
 	</div>
 	<div class="grid_6" style="text-align:left">
@@ -27,4 +31,4 @@
 <?php wp_footer(); ?>
 </body>
 </html>
-	
+
