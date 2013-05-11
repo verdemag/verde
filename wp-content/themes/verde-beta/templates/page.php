@@ -2,7 +2,7 @@
 class page {
   private $content;
 
-  function __construct($c) {
+  function __construct($c, $t) {
     $this->content = $c;
   }
 

@@ -107,6 +107,12 @@ ul, li {
   margin: 0px;
 }
 
+a {
+	cursor:pointer;
+	color: rgba(0,150,0,1);
+	text-decoration: none;
+}
+
 .grid_16.navBar {
 	display: block;
 	padding: 3px 35px;

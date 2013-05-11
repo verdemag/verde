@@ -2,7 +2,7 @@
 class category {
   private $posts;
 
-  function __construct($c) {
+  function __construct($c, $t) {
     $this->posts = get_posts(array('numberposts' => 4,
                                    'category' => $c));
   }
@@ -21,7 +21,7 @@ class category {
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
               . '<h1>' . $post->post_title . '</h1>'
               . $content
-              . '<a>Read more</a>'
+              . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
               . '</div>');
     }
     $ret .= ('</div>'

@@ -23,8 +23,7 @@ jQuery(document).ready(function() {
 
 	jQuery('.navLink').click(function(event) {
 		var id = event.target.id;
-		var targetID = '#' + id.substring(0, id.length - 4);
-		console.debug(targetID);
+		var targetID = id.substring(0, id.length - 4);
 
 		switchToItem(targetID);
 	});
@@ -63,19 +62,54 @@ function highlightItem(item) {
 	item.addClass('selected');
 }
 
-function switchToItem(ID) {
-	var linkID = ID + 'link';
-	window.selected = jQuery(ID);
-
-	highlightItem(jQuery(linkID));
-	window.wrapper.stop().animate({top:-selected.position().top, left:-selected.position().left}, 500);
-	resizeMask();
-}
-
 function resizeMask() {
 	window.mask.animate({ height:window.selected.height() + 50 }, 50);
 }
 
-function genLinks() {
+function switchToItem(name) {
+	var linkID = name + 'link';
+	highlightItem(jQuery('#' + linkID));
 
+	if(jQuery('#' + name).length == 0) {
+		getItem(name);
+	}
+	window.selected = jQuery('#' + name);
+
+	window.wrapper.stop().animate({top:-selected.position().top, left:-selected.position().left}, 500);
+	resizeMask();
+}
+
+function getItem(name) {
+	window.wrapper.append('<div class="container_12 page" id="' + name + '"></div>');
+
+	var ajax = getRequest();
+	ajax.onreadystatechange = function(){
+		if(ajax.readyState == 4){
+			jQuery('#' + name).html(ajax.responseText);
+			resizeMask();
+		}
+	};
+	ajax.open("GET", template_dir + "/load-post.php?post=" + name, true);
+	ajax.send(null);
+}
+
+function getRequest() {
+    var req = false;
+    try{
+        // most browsers
+        req = new XMLHttpRequest();
+    } catch (e){
+        // IE
+        try{
+            req = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            // try an older version
+            try{
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e){
+                return false;
+            }
+        }
+    }
+    return req;
 }
