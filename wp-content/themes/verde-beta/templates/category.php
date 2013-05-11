@@ -8,7 +8,7 @@ class category {
   }
 
   public function getPageContents() {
-    $ret = ('<div class="grid_8 alpha">');
+    $ret = ('<div class="grid_12 alpha">');
     foreach ($this->posts as $post) {
       $tagless = strip_tags($post->post_content);
       $content = implode(' ', array_slice(explode(' ', $tagless), 0, 50));
