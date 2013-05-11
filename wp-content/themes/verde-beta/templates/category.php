@@ -11,11 +11,12 @@ class category {
     $ret = ('<div class="grid_12 alpha">');
     foreach ($this->posts as $post) {
       $tagless = strip_tags($post->post_content);
-      $content = implode(' ', array_slice(explode(' ', $tagless), 0, 50));
+      $excerpt = implode(' ', array_slice(explode(' ', $tagless), 0, 200));
       $ret .= ('<div class="grid_6 content">'
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
               . '<h1>' . $post->post_title . '</h1>'
-              . '<p>' . $content . '</p>'
+              . '<p>' . $excerpt . '...</p>'
+              . '<a>Read more</a>'
               . '</div>');
     }
     $ret .= ('</div>'
