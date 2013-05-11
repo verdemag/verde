@@ -49,7 +49,7 @@ body {
   height: 110px;
   margin-top: -20px;
   padding-top: 10px;
-  color: green;
+  color: rgba(0,100,0,1);
   font-size: 120px;
   line-height: 120px;
   overflow: hidden;
@@ -140,16 +140,12 @@ ul, li {
 }
 
 .navBar a:hover {
-  color: rgba(0,200,0,0.8);
-}
-
-.navBar a:active {
-  color: rgba(255,255,255,0.5);
+  color: rgba(0,255,0,1);
 }
 
 .navBar a.selected {
   cursor: default;
-  color: rgba(100,255,100,1);
+  color: rgba(0,220,0,1);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -351,90 +347,12 @@ img:hover.navGridCell {
   background: #33750d;
 }
 
-/*The other button that's the same as news, but a different name so that we can just use the button without having the javascript function attached to it. */
-.greenButton {
-  cursor: pointer;
-  position: relative;
-  bottom: -30px;
-  border-top: 1px solid #2b872a;
-  background: #515151;
-  background: -webkit-gradient(linear, left top, left bottom, from(#37a639), to(#278722));
-  background: -webkit-linear-gradient(top, #37a639, #278722);
-  background: -moz-linear-gradient(top, #37a639, #278722);
-  background: -ms-linear-gradient(top, #37a639, #278722);
-  background: -o-linear-gradient(top, #37a639, #278722);
-  padding: 5px 10px;
-  -webkit-border-radius: 14px;
-  -moz-border-radius: 14px;
-  border-radius: 14px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  box-shadow: rgba(0,0,0,1) 0 1px 0;
-  text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  color: white;
-  font-size: 22px;
-  font-family: Georgia, Serif;
-  text-decoration: none;
-  vertical-align: middle;
-  /*Making sure that the user doesn't highlight the button and then makes it look weird. */
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.greenButton:hover {
-  border-top-color: #398a1e;
-  background: #398a1e;
-  color: #fffaff;
-}
-
-.greenButton:active {
-  border-top-color: #33750d;
-  background: #33750d;
-}
-
-.wepay-widget-input {
-  width: 184px !important;
-}
-
-/* Past here is classes for individual sections. No, it's not organised yet
-   i.e some of the stuff above is for individual sections and needs to be put here
-   */
-
-#aboutTitle {
-  color: rgb(200,200,200);
-  font-size: 32px;
-  font-family: "Times New Roman";
-  text-decoration: underline;
-}
-
-#aboutContent {
-  color: rgb(220,220,220);
-  font-size: 14px;
-  font-family: "Times New Roman";
-  transition: color .5s ease-in-out;
-  -moz-transition: color .5s ease-in-out;
-  -webkit-transition: color .5s ease-in-out;
-}
-
-#aboutContent:hover {
-  color: rgb(100,100,100);
-}
-
 #link
 {
   text-decoration: none;
   transition: color .2s ease-in-out;
   -moz-transition: color .2s ease-in-out;
   -webkit-transition: color .2s ease-in-out;
-}
-
-#link:visited
-{
-  color: black;
 }
 
 #link:hover

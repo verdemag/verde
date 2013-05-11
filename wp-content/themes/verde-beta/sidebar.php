@@ -1,4 +1,4 @@
-<div class="grid_4">
+<div>
   <a class="wepay-widget-button wepay-green" id="wepay_widget_anchor_50f8893bb9c9c" href="https://www.wepay.com/donations/11912">Help keep Verde running!</a>
 </div>
 <div>
