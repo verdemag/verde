@@ -46,6 +46,7 @@ body {
 }
 
 #logo .title {
+	letter-spacing:-.06em;
   height: 110px;
   margin-top: -20px;
   padding-top: 10px;
