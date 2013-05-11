@@ -9,12 +9,12 @@
 ----------------------------------------------------------------------------------------------------*/
 
 body {
-  font: 13px/1.5 "Open Sans", sans-serif;
+  font: 13px/1.5 "Roboto", sans-serif;
 }
 
 pre,
 code {
-  font-family: 'DejaVu Sans Mono', Menlo, Consolas, monospace;
+  font-family: 'Droid Sans Mono', sans-serif;
 }
 
 hr {
@@ -28,7 +28,8 @@ hr {
 ----------------------------------------------------------------------------------------------------*/
 
 a {
-	color: 
+	color: rgba(0,150,0,1);
+	text-decoration: none;
 }
 
 /* `Headings
@@ -40,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Merriweather", serif;
+	font-family: "Droid Serif", serif;
 }
 
 h1 {

@@ -42,7 +42,7 @@ body {
   -ms-user-select: none;
   cursor: pointer;
   text-align: left;
-	font-family: "Libre Baskerville", serif;
+	font-family: "Droid Serif", serif;
 }
 
 #logo .title {
@@ -206,7 +206,6 @@ input.wepay-widget-input {
   background-color: lightgrey;
   color: white;
   font-size: 18px;
-  font-family: 'Times New Roman';
 }
 
 .navGrid {
@@ -230,17 +229,17 @@ input.wepay-widget-input {
   -moz-border-top-left-radius: 15px;
 }
 
-.navGridCol.left > .navGridCell:last-child {
+.navGridCol.left .navGridCell:last-child {
   border-bottom-left-radius: 15px;
   -moz-border-bottom-left-radius: 15px;
 }
 
-.navGridCol.right > .navGridCell:first-child {
+.navGridCol.right .navGridCell:first-child {
   border-top-right-radius: 15px;
   -moz-border-top-right-radius: 15px;
 }
 
-.navGridCol.right > .navGridCell:last-child {
+.navGridCol.right .navGridCell:last-child {
   border-bottom-right-radius: 15px;
   -moz-border-top-right-radiur: 15px;
 }
@@ -253,7 +252,6 @@ input.wepay-widget-input {
   height: 160px;
   color: white;
   font-size: 20px;
-  font-family: 'Times New Roman';
   opacity: 0.5;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
@@ -269,44 +267,4 @@ img:hover.navGridCell {
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
-}
-
-.gridCellText {
-  margin-top: 50%;
-}
-
-.archiveTitle {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: left;
-  padding: 7px;
-}
-
-.newsContent {
-  font-size: 24px;
-  max-height: 70px;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 40px;
-}
-
-.newsContent .fadeOutGradient {
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 100%;
-  height: 70px;
-  margin-bottom: 0px;
-  text-align: center;
-
-  transition: height 0.5s ease-in-out;
-  -moz-transition: height 0.5s ease-in-out;
-  -webkit-transition: height 0.5s ease-in-out;
-
-  background-image: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
-  background-image: -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
-  background-image: -ms-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
-  background-image: -o-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
-}
-
-.fadeOutGradient:hover {
 }

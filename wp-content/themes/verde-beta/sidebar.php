@@ -4,9 +4,9 @@
 <div>
   <span class="sideTitle">MOST READ</span>
   <div>
-    <a id="link" href="http://verdemagazine.com/2013/02/21/mates-in-chess/">Mates in Chess</a></br>
-    <a id="link" href="http://verdemagazine.com/2013/02/21/palys-budget/">Paly's Budget</a></br>
-    <a id="link" href="http://verdemagazine.com/2013/02/19/spring-is-in-the-air/">Spring is in the Air</a></br>
+    <a href="http://verdemagazine.com/2013/02/21/mates-in-chess/">Mates in Chess</a></br>
+    <a href="http://verdemagazine.com/2013/02/21/palys-budget/">Paly's Budget</a></br>
+    <a href="http://verdemagazine.com/2013/02/19/spring-is-in-the-air/">Spring is in the Air</a></br>
   </div>
 </div>
 <div>
