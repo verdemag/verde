@@ -19,21 +19,21 @@
 
     <?php wp_head(); ?>
   </head>
-  
+
   <body>
     <div id="fb-root"></div>
     <div class="container_16">
       <div id="logo">
-	<div class="title"><?php bloginfo('name'); ?></div>
-	<div class="sub"><?php bloginfo('description'); ?></div>
+	      <div class="title"><?php bloginfo('name'); ?></div>
+	      <div class="sub"><?php bloginfo('description'); ?></div>
       </div>
       <div class="grid_16 navBar">
-        <div class="grid_2 navLink" id="homelink">Home</div>
+        <div class="grid_2 navLink selected" id="homelink">Home</div>
         <?php $categories = get_categories(array('sort_column' => 'menu_order',
                                                  'hide_empty' => 0,
                                                  'number' => 6)); ?>
         <?php foreach ($categories as $category) : ?>
-	<div class="grid_2 navLink"
+	      <div class="grid_2 navLink"
              id="<?php echo $category->slug ?>link"><?php echo $category->name ?></div>
         <?php endforeach; ?>
         <div class="grid_2 navLink" id="aboutlink">About</div>
