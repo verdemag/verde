@@ -55,9 +55,7 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	//jQuery('#logo .title').lettering();
 	resizeMask();
-	genLinks();
 });
 
 function highlightItem(item) {
@@ -70,7 +68,7 @@ function switchToItem(ID) {
 	window.selected = jQuery(ID);
 
 	highlightItem(jQuery(linkID));
-	window.wrapper.animate({top:-selected.position().top, left:-selected.position().left}, 500);
+	window.wrapper.stop().animate({top:-selected.position().top, left:-selected.position().left}, 500);
 	resizeMask();
 }
 

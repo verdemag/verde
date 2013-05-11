@@ -10,11 +10,9 @@
     <link href=<?php bloginfo('stylesheet_url'); ?> rel="stylesheet" type="text/css" />
     <?php
     wp_enqueue_script('jquery');
-    wp_enqueue_script('scroll-to', get_template_directory_uri() . '/js/jquery.scrollTo-min.js', array('jquery'));
-    wp_enqueue_script('lettering', get_template_directory_uri() . '/js/jquery.lettering-0.6.1.min.js', array('jquery'));
     wp_enqueue_script('other', get_template_directory_uri() . '/js/other.js');
     wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js',
-                      array('jquery', 'scroll-to', 'lettering'));
+                      array('jquery'));
     ?>
 
     <?php wp_head(); ?>
