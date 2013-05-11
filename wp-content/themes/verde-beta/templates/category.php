@@ -10,12 +10,17 @@ class category {
   public function getPageContents() {
     $ret = ('<div class="grid_12 alpha">');
     foreach ($this->posts as $post) {
-      $tagless = strip_tags($post->post_content);
-      $excerpt = implode(' ', array_slice(explode(' ', $tagless), 0, 200));
+      $excerpt = implode(' ', array_slice(explode(' ', $post->post_content), 0, 150));
+
+      $doc = new DOMDocument();
+      $doc->loadHTML(wpautop($excerpt));
+
+      $content = $doc->saveHTML();
+
       $ret .= ('<div class="grid_6 content">'
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
               . '<h1>' . $post->post_title . '</h1>'
-              . '<p>' . $excerpt . '...</p>'
+              . '<p>' . $content . '...</p>'
               . '<a>Read more</a>'
               . '</div>');
     }
