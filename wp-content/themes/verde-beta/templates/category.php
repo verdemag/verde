@@ -13,14 +13,14 @@ class category {
       $excerpt = implode(' ', array_slice(explode(' ', $post->post_content), 0, 150));
 
       $doc = new DOMDocument();
-      $doc->loadHTML(wpautop($excerpt));
+      $doc->loadHTML(wpautop($excerpt . '&hellip;'));
 
       $content = $doc->saveHTML();
 
       $ret .= ('<div class="grid_6 content">'
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
               . '<h1>' . $post->post_title . '</h1>'
-              . '<p>' . $content . '...</p>'
+              . $content
               . '<a>Read more</a>'
               . '</div>');
     }
