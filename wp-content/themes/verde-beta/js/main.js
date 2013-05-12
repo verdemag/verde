@@ -80,6 +80,7 @@ function switchToItem(name) {
 }
 
 function getItem(name) {
+	window.wrapper.width(window.wrapper.width() + 960);
 	window.wrapper.append('<div class="container_12 page" id="' + name + '"></div>');
 
 	var ajax = getRequest();
