@@ -78,7 +78,7 @@ body {
 
 #wrapper {
   position: absolute;
-  width: 5760px;
+	white-space: nowrap;
   overflow: auto;
 }
 
@@ -92,7 +92,7 @@ body {
 }
 
 .page {
-  float: left;
+	display: inline-block;
   /* text-align: left; */
   white-space: normal;
   vertical-align: top;
