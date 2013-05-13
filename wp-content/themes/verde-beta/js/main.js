@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-	window.footer = jQuery('#footer');
+	window.footer = jQuery('footer');
 	footer.collapseHeight = footer.find('.row').first().height();
 	footer.css('height','auto');
 	footer.totalHeight = footer.height();
@@ -55,6 +55,15 @@ jQuery(document).ready(function() {
 	});
 
 	resizeMask();
+	var toSelect = jQuery('.select');
+	if(toSelect.length != 0) {
+		console.log(toSelect.attr('ID'));
+		jQuery('.navLink.selected').removeClass('selected');
+		selected = toSelect;
+		selected.removeClass('select');
+		wrapper.css({top:-toSelect.position().top, left:-toSelect.position().left+10});
+		setTimeout(function(){mask.height(toSelect.height() + 50);}, 200);
+	}
 });
 
 function highlightItem(item) {

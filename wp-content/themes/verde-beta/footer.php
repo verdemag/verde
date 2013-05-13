@@ -5,7 +5,7 @@
 ?>
 </div><!-- Closes wrapper -->
 </div><!-- Closes mask -->
-<div class="container_12" id="footer">
+<footer class="container_12">
 	<div class="grid_6" style="text-align:right">
 		<div class="row">&#169; Verde Magazine</div>
     <div class="row">
@@ -27,7 +27,7 @@
 		50 Embarcadero Rd</br>
 		Palo Alto, California 94301</br>
 	</div>
-</div><!--Closes footer div-->
+</footer><!--Closes footer div-->
 <?php wp_footer(); ?>
 </body>
 </html>

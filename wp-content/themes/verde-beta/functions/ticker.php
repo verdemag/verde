@@ -1,7 +1,5 @@
 <?php
 function ticker() {
-  echo ( '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/css/text-ticker.css">' );
-  echo ( '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/text-ticker.js"></script>' );
   echo ( "<div class=\"ticker\"><div class=\"tickerText\" style=\"opacity: 1;\">That, or the scrolling effect could be removed entirely, but it's nice (esp. how the entire verde is one page now)</div></div>" );
 }
 

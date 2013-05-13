@@ -20,14 +20,14 @@
   </head>
 
   <body>
-    <div id="fb-root"></div>
-    <div class="container_16">
-      <div id="logo">
-	      <div class="title"><?php bloginfo('name'); ?></div>
-	      <div class="sub"><?php bloginfo('description'); ?></div>
-      </div>
-      <div class="grid_16 navBar">
-        <a class="navLink selected" id="homelink">Home</a>
+    <header>
+      <div class="container_16">
+        <div id="logo">
+	        <div class="title"><?php bloginfo('name'); ?></div>
+	        <div class="sub"><?php bloginfo('description'); ?></div>
+        </div>
+        <div class="grid_16 navBar">
+          <a class="navLink selected" id="homelink">Home</a>
           <?php $categories = get_categories(array('sort_column' => 'menu_order',
                                                    'hide_empty' => 0,
                                                    'number' => 6)); ?>
@@ -37,14 +37,13 @@
           <?php endforeach; ?>
           <a class="navLink" id="aboutlink">About</a>
           <span></span>
+        </div>
+        <?php if(function_exists('ticker')) : ?>
+        <div class="lineBreak"></div>
+        <div class="grid_16"><?php ticker(); ?></div>
+        <?php endif; ?>
       </div>
-    </div>
-    <?php if(function_exists('ticker')) : ?>
-    <div class="container_12 tickerWrapper">
-      <div class="lineBreak"></div>
-      <div class="grid_12"><?php ticker(); ?></div>
-    </div>
-    <?php endif; ?>
+    </header>
 
     <div id="mask">
       <div id="wrapper">

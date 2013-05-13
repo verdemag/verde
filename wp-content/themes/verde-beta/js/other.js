@@ -26,22 +26,3 @@ if (!WePay.script) {
 /* function showGrid() {
  javascript:(function(){document.body.appendChild(document.createElement('script')).src='http://gridder.andreehansson.se/releases/latest/960.gridder.js';})();
  }*/
-
-function genWidgets() {
-	var tjs, fjs;
-	var ffjs = document.getElementsByTagName('script')[0];
-	var p=/^http:/.test(document.location)?'http':'https';
-	if (document.getElementById('twitter-wjs'))
-		tjs = document.createElement('script');
-	if (document.getElementById('facebook-jssdk'))
-		fjs = document.createElement('script');
-	tjs.id = 'twitter-wjs';
-	fjs.id = 'facebook-jssdk';
-	tjs.src = p+"://platform.twitter.com/widgets.js";
-	fjs.src = p+"://connect.facebook.net/en_US/all.js#xfbml=1";
-
-	ffjs.parentNode.insertBefore(tjs, ffjs);
-	ffjs.parentNode.insertBefore(fjs, ffjs);
-}
-
-genWidgets();

@@ -14,7 +14,7 @@ if(!$_GET['post']) {
   );
   $posts = get_posts($args);
   if(!$posts) {
-    echo 'post not found :/';
+    echo "post $name not found :/";
   } else {
     echo getPage($posts[0]);
   }

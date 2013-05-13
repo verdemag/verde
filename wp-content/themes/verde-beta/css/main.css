@@ -1,3 +1,5 @@
+@import url('text-ticker.css');
+
 html {
   text-align: center;
   overflow-y: scroll;
@@ -9,11 +11,24 @@ body {
   background-color: rgb(251,251,251);
 }
 
-#footer {
+section {
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	border-bottom: solid rgba(200, 200, 200, 1);
+	border-bottom-width: 2px;
+}
+
+section:last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	border-bottom: none;
+}
+
+footer {
   position: fixed;
   bottom: 0;
-  left: 50%;
-  margin-left: -480px;
+  left: calc(50% - 480px);
+	left: -webkit-calc(50% - 480px);
   padding: 5px 0px;
   background-color: rgb(251, 251, 251);
   /*-webkit-box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -24,7 +39,7 @@ body {
   z-index: 100;
 }
 
-#footer a {
+footer a {
   color: gray;
   height: auto;
   text-decoration: underline;
@@ -195,6 +210,7 @@ a {
 
 .lineBreak {
   display: inline;
+	float: left;
   height: 17px;
   width: 100%;
 }
