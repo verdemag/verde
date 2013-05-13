@@ -14,8 +14,9 @@ class post {
   }
 
   public function getPageContents() {
-    $ret = '<div class="grid_12 content">';
+    $ret = '<article class="grid_12">';
     $ret .= "<h1>{$this->post[title]}</h1>";
+    $ret .= "<time>{$this->post[post_date]}</time>";
     $ret .= $this->post['content'];
     $ret .= "<a href={$this->link}>Permalink</a><br /><br />";
     $ret .= "<iframe allowtransparency=\"true\" frameborder=\"0\" scrolling=\"no\"
@@ -26,7 +27,7 @@ class post {
 				src=\"{$this->likelink}\"
 				style=\"width:100px; height:20px;\"></iframe>";
     //$ret .= "<iframe src=\"https://www.facebook.com/plugins/like.php?href={$this->link}&layout=button_count&action=recommend\"></iframe>";
-    $ret .= '</div>';
+    $ret .= '</article>';
 
     return $ret;
   }

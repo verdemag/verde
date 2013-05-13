@@ -26,7 +26,7 @@
 	        <div class="title"><?php bloginfo('name'); ?></div>
 	        <div class="sub"><?php bloginfo('description'); ?></div>
         </div>
-        <div class="grid_16 navBar">
+        <nav class="grid_16 navBar">
           <a class="navLink selected" id="homelink">Home</a>
           <?php $categories = get_categories(array('sort_column' => 'menu_order',
                                                    'hide_empty' => 0,
@@ -37,7 +37,7 @@
           <?php endforeach; ?>
           <a class="navLink" id="aboutlink">About</a>
           <span></span>
-        </div>
+        </nav>
         <?php if(function_exists('ticker')) : ?>
         <div class="lineBreak"></div>
         <div class="grid_16"><?php ticker(); ?></div>

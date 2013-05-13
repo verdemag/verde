@@ -128,7 +128,7 @@ a {
 	text-decoration: none;
 }
 
-.grid_16.navBar {
+header nav {
 	display: block;
 	padding: 3px 35px;
 	margin-left: 0;
@@ -142,13 +142,13 @@ a {
   z-index: 100;
 }
 
-.navBar.fixed {
+nav.fixed {
   position: fixed;
   top: 5px;
   left: calc(50% - 480px);
 }
 
-.navBar a {
+nav a {
 	display: inline;
 	width: 100%;
   cursor: pointer;
@@ -190,7 +190,7 @@ a {
   left: -webkit-calc(50% - 480px);
 }
 
-.content {
+article {
   text-align: left;
   transition: color 0.5s;
   -moz-transition: color 0.5s;
@@ -204,7 +204,7 @@ a {
   color: rgba(0,0,0,1);
 }
 
-.content p {
+article p {
   text-align: justify;
 }
 
@@ -213,10 +213,6 @@ a {
 	float: left;
   height: 17px;
   width: 100%;
-}
-
-.contentPane {
-  overflow: scroll;
 }
 
 input.wepay-widget-input {
