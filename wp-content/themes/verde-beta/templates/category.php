@@ -2,7 +2,7 @@
 class category {
   private $posts;
 
-  function __construct($c, $t) {
+  function __construct($c) {
     $this->posts = get_posts(array('numberposts' => 4,
                                    'category' => $c));
   }
