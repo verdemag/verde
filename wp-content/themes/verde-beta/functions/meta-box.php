@@ -61,12 +61,11 @@ function verde_box_cb($post) {
 
 function image_box_cb($post) {
   if ( 'post' == $post->post_type ) {
+    echo $post->cover_image;
     echo '<p><strong>Cover Image</p></strong>';
     echo '<label class="screen-reader-text" for="cover_image">Cover Image</label>';
     echo '<select name="cover_image" id="cover_image">';
-    echo '<option value="http://placehold.it/320x200"'
-               . selected( get_post_meta ($post->ID, 'cover_image', true ), 'http://placehold.it/320x200' )
-                                         . '>-----</option>';
+    echo '<option value="http://placehold.it/340x255">-----</option>';
     $images = glob(wp_upload_dir()['basedir'] . '/*/*/*.{png, jpg, jpeg, gif}', GLOB_BRACE);
     foreach ($images as $img) {
       echo '<option value="' . $img . '"'
@@ -79,8 +78,13 @@ function image_box_cb($post) {
 
 function save_image_for_post($post_id) {
   if ( 'post' == $_POST['post_type'] ) {
-    if(!add_post_meta( $post_id, 'cover_image', $_POST["cover_image"], true )) {
-      update_post_meta( $post->ID, 'cover_image', $_POST["cover_image"] );
+    if(!isset($_POST['cover_image'])) {
+      $coverimg = 'http://placehold.it/340x255';
+    } else {
+      $coverimg = $_POST['cover_image'];
+    }
+    if(!add_post_meta( $post_id, 'cover_image', $coverimg, true )) {
+      update_post_meta( $post_id, 'cover_image', $coverimg );
     }
   }
 }
