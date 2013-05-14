@@ -111,7 +111,6 @@ footer a {
 .page {
 	display: inline-block;
 	width: 960px;
-  /* text-align: left; */
   white-space: normal;
   vertical-align: top;
   margin-bottom: 100px;
@@ -195,15 +194,15 @@ nav a {
 }
 
 .category article {
+	display: inline-block;
 	width: 340px;
+  vertical-align: top;
+  margin-bottom: 100px;
+	float: right;
 }
 
 .category article:first-child {
 	float: left;
-}
-
-.category article:last-child {
-	float: right;
 }
 
 article {
