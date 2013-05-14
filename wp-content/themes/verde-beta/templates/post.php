@@ -9,8 +9,7 @@ class post {
     $this->post = $c;
     $this->link = "http://$_SERVER[HTTP_HOST]/verde?post={$this->post[name]}";
 
-    $this->tweetlink = "https://platform.twitter.com/widgets/tweet_button.html?url={$this->link}&via=verdemagazine&text={SHARE_MSG}&related=verdemagazine";
-    $this->likelink = "https://www.facebook.com/plugins/like.php?href={$this->link}&layout=button_count&width=100";
+    require_once();
   }
 
   public function getPageContents() {
@@ -19,15 +18,11 @@ class post {
     $ret .= "<time>{$this->post[post_date]}</time>";
     $ret .= $this->post['content'];
     $ret .= "<a href={$this->link}>Permalink</a><br /><br />";
-    $ret .= "<iframe allowtransparency=\"true\" frameborder=\"0\" scrolling=\"no\"
-        src=\"{$this->tweetlink}\"
-        style=\"width:90px; height:20px;\"></iframe>";
-    //$ret .= "<a rel=\"nofollow\" href=\"http://twitter.com/share?url={$this->link}&text=7%20Reasons%20Not%20To%20Use%20The%20New%20Tweet%20Buttons&via=verdemagazine\">Tweet</a>";
-    $ret .= "<iframe allowTransparency=\"true\" frameborder=\"0\" scrolling=\"no\"
-				src=\"{$this->likelink}\"
-				style=\"width:100px; height:20px;\"></iframe>";
-    //$ret .= "<iframe src=\"https://www.facebook.com/plugins/like.php?href={$this->link}&layout=button_count&action=recommend\"></iframe>";
-    $ret .= '</article>';
+    $ret .= "<ul class="socialcount socialcount-small" data-url="http://www.google.com/" data-counts="true" data-share-text="Check out this article!">
+	<li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={$this->link}" title="Share on Facebook"><span class="count">Like</span></a></li>
+	<li class="twitter"><a href="https://twitter.com/intent/tweet?text={$this->link}" title="Share on Twitter"><span class="count">Tweet</span></a></li>
+	<li class="googleplus"><a href="https://plus.google.com/share?url={$this->link}" title="Share on Google Plus"><span class="count">+1</span></a></li>
+</ul>"
 
     return $ret;
   }

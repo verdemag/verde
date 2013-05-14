@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
 	window.pages = jQuery('.page');
 	window.selected = pages.first();
 	window.mask = jQuery('#mask');
-	window.wrapper = jQuery('#wrapper');
+	window.wrapper = jQuery('main');
 	window.zoomed= true;
 
 	jQuery('#logo').click(function(event) {

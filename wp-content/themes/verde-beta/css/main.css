@@ -11,14 +11,14 @@ body {
   background-color: white;
 }
 
-section {
+sidebar section {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
-	border-bottom: solid silver;
+	border-bottom: solid grey;
 	border-bottom-width: 2px;
 }
 
-section:last-child {
+sidebar section:last-child {
 	padding-bottom: 0;
 	margin-bottom: 0;
 	border-bottom: none;
@@ -91,7 +91,7 @@ footer a {
   overflow: hidden;
 }
 
-#wrapper {
+main {
   position: absolute;
 	white-space: nowrap;
   overflow: auto;
@@ -106,9 +106,7 @@ footer a {
   clear: both;
 }
 
-.category,
-.post,
-.page {
+main > section {
 	display: inline-block;
 	width: 960px;
   white-space: normal;
@@ -137,7 +135,7 @@ header nav {
 	margin-left: 0;
 	margin-right: 0;
 	width: 890px;
-	opacity: 0.6;
+	opacity: 0.5;
   background-color: black;
 	text-align: justify;
   font-size: 20px;
@@ -193,6 +191,19 @@ nav a {
   left: -webkit-calc(50% - 480px);
 }
 
+.category section.articles {
+	display: inline;
+	width: 720px;
+	margin-left:10px;
+	float: left;
+}
+
+.category sidebar {
+	display: inline;
+	float: left;
+	width: 220px;
+}
+
 .category article {
 	display: inline-block;
 	width: 340px;
@@ -233,13 +244,6 @@ article p {
 input.wepay-widget-input {
   width: 100% !important;
   margin: 0;
-}
-
-#editorPicks {
-  height: 30px;
-  background-color: silver;
-  color: white;
-  font-size: 18px;
 }
 
 .navGrid {

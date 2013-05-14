@@ -46,4 +46,4 @@
     </header>
 
     <div id="mask">
-      <div id="wrapper">
+      <main>

@@ -8,7 +8,7 @@ class category {
   }
 
   public function getPageContents() {
-    $ret = ('<div class="grid_12 alpha">');
+    $ret = ('<section class="articles">');
     foreach ($this->posts as $post) {
       $excerpt = implode(' ', array_slice(explode(' ', $post->post_content), 0, 150));
 
@@ -24,10 +24,10 @@ class category {
               . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
               . '</article>');
     }
-    $ret .= ('</div>'
-            . '<div class="grid_4 omega">'
+    $ret .= ('</section>'
+            . '<sidebar>'
             . file_get_contents(get_template_directory_uri() . '/sidebar.php')
-            . '</div>');
+            . '</sidebar>');
 
     return $ret;
   }

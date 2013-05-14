@@ -3,8 +3,8 @@
  * The footer!
  */
 ?>
-</div><!-- Closes wrapper -->
-</div><!-- Closes mask -->
+</main>
+</div>
 <footer class="container_12">
 	<div class="grid_6" style="text-align:right">
 		<div class="row">&#169; Verde Magazine</div>

@@ -1,24 +1,24 @@
 <?php get_header(); ?>
-<div class="container_12 page" id="home">
+<section class="container_12 page" id="home">
   <?php echo getPage(get_page_by_title("Home")); ?>
-</div>
+</section>
 <?php
 $categories = get_categories(array('sort_column' => 'menu_order',
                                    'hide_empty' => 0,
                                    'number' => 6));
 foreach ($categories as $category) : ?>
-<div class="container_16 category" id="<?php echo $category->slug ?>">
+<section class="container_16 category" id="<?php echo $category->slug ?>">
   <?php echo getPage($category) ?>
-</div>
+</section>
 <?php endforeach; ?>
 
-<div class="container_12 page" id="about">
+<section class="container_12 page" id="about">
   <?php echo getPage(get_page_by_title("About")); ?>
-</div>
+</section>
 
 <?php if($_GET['post']) : ?>
-<div class="container_12 post select" id="<?php echo $_GET['post']; ?>">
+<section class="container_12 post select" id="<?php echo $_GET['post']; ?>">
   <?php echo getPage(get_posts(array( 'name' => $_GET['post']))[0]); ?>
-</div>
+</section>
 <?php endif; ?>
 <?php get_footer(); ?>
