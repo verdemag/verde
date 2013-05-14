@@ -17,7 +17,7 @@ class category {
 
       $content = $doc->saveHTML();
 
-      $ret .= ('<article class="grid_6 omega">'
+      $ret .= ('<article class="grid_6">'
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
               . '<h1>' . $post->post_title . '</h1>'
               . $content

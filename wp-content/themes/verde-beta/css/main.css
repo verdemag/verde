@@ -106,8 +106,11 @@ footer a {
   clear: both;
 }
 
+.category,
+.post,
 .page {
 	display: inline-block;
+	width: 960px;
   /* text-align: left; */
   white-space: normal;
   vertical-align: top;
@@ -189,6 +192,18 @@ nav a {
   top: 186px;
   left: calc(50% - 480px);
   left: -webkit-calc(50% - 480px);
+}
+
+.category article {
+	width: 340px;
+}
+
+.category article:first-child {
+	float: left;
+}
+
+.category article:last-child {
+	float: right;
 }
 
 article {

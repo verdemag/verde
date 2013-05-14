@@ -7,7 +7,7 @@ $categories = get_categories(array('sort_column' => 'menu_order',
                                    'hide_empty' => 0,
                                    'number' => 6));
 foreach ($categories as $category) : ?>
-<div class="container_16 page" id="<?php echo $category->slug ?>">
+<div class="container_16 category" id="<?php echo $category->slug ?>">
   <?php echo getPage($category) ?>
 </div>
 <?php endforeach; ?>
@@ -17,7 +17,7 @@ foreach ($categories as $category) : ?>
 </div>
 
 <?php if($_GET['post']) : ?>
-<div class="container_12 page select" id="<?php echo $_GET['post']; ?>">
+<div class="container_12 post select" id="<?php echo $_GET['post']; ?>">
   <?php echo getPage(get_posts(array( 'name' => $_GET['post']))[0]); ?>
 </div>
 <?php endif; ?>
