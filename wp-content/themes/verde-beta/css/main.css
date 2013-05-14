@@ -7,8 +7,8 @@ html {
 
 body {
   width: 100%;
-  margin: 0;padding: 0;
-  background-color: white;
+  margin: 0;
+	padding: 0;
 }
 
 sidebar section {
@@ -162,11 +162,11 @@ nav a {
   -webkit-transition: color 0.5s;
 }
 
-.navBar a:hover {
+nav a:hover {
   color: lime;
 }
 
-.navBar a.selected {
+nav a.selected {
   cursor: default;
   color: #009000;
   -webkit-user-select: none;
@@ -177,18 +177,23 @@ nav a {
   -webkit-transition: color 0.5s;
 }
 
-.navBar span {
+nav span {
 	display: inline-block;
   position: relative;
   width: 100%;
   height: 0;
 }
 
-.tickerWrapper {
-  position: absolute;
-  top: 186px;
-  left: calc(50% - 480px);
-  left: -webkit-calc(50% - 480px);
+.ticker {
+	width: 930px;
+	height: 22px;
+	float: left;
+	margin: 0 10px;
+  background-color: lightgrey;
+  color: grey;
+  font-size: 15px;
+  text-align: left;
+  padding: 5px;
 }
 
 .category section.articles {

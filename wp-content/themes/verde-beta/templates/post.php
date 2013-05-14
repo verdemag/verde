@@ -1,13 +1,14 @@
 <?php
 
 define('SHARE_MSG', 'Check out this article!');
+define('__ROOT__', dirname(dirname(dirname(dirname(dirname(__FILE))))));
 
 class post {
   private $post, $link;
 
   function __construct($c) {
     $this->post = $c;
-    $this->link = "http://$_SERVER[HTTP_HOST]/verde?post={$this->post[name]}";
+    $this->link = "__ROOT__?post={$this->post[name]}";
 
     require_once();
   }

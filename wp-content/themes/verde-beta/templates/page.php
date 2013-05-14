@@ -7,9 +7,7 @@ class page {
   }
 
   public function getPageContents() {
-    $ret = '<div class="grid_12">';
     $ret .= $this->content;
-    $ret .= '</div>';
 
     return $ret;
   }

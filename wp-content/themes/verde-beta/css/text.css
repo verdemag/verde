@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif|Droid+Sans+Mono|Roboto);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif|Droid+Sans+Mono|Open+Sans);
 
 /*
   960 Grid System ~ Text CSS.
@@ -11,7 +11,7 @@
 ----------------------------------------------------------------------------------------------------*/
 
 body {
-  font: 13px/1.5 "Roboto", sans-serif;
+  font: 13px/1.5 "Open Sans", sans-serif;
 }
 
 pre,

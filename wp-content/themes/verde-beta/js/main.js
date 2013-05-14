@@ -15,13 +15,8 @@ jQuery(document).ready(function() {
 		switchToItem('#home');
 	});
 
-	jQuery('.newsButton').click(function(event) {
-		jQuery(event.target).parent().parent().animate({maxHeight: 300}, 1000);
-		jQuery(event.target).parent().animate({height: 0}, 300);
-		jQuery(event.target).fadeOut(700);
-	});
-
 	jQuery('.navLink').click(function(event) {
+		event.preventDefault();
 		var id = event.target.id;
 		var targetID = id.substring(0, id.length - 4);
 
@@ -55,6 +50,7 @@ jQuery(document).ready(function() {
 	});
 
 	resizeMask();
+
 	var toSelect = jQuery('.select');
 	if(toSelect.length != 0) {
 		console.log(toSelect.attr('ID'));

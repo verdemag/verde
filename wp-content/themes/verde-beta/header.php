@@ -2,6 +2,13 @@
 /**
  * The header!
  */
+
+function pageClasses($type, $name) {
+  echo $type;
+  if($_GET['page'] == $name) {
+    echo ' select';
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,15 +40,17 @@
                                                    'number' => 6)); ?>
           <?php foreach ($categories as $category) : ?>
 	        <a class="navLink"
-             id="<?php echo $category->slug ?>link"><?php echo $category->name ?></a>
+             id="<?php echo $category->slug ?>link"
+             rel="nofollow"
+             href="?page=<?php echo $category->slug ?>">
+            <?php echo $category->name ?></a>
           <?php endforeach; ?>
           <a class="navLink" id="aboutlink">About</a>
           <span></span>
         </nav>
-        <?php if(function_exists('ticker')) : ?>
         <div class="lineBreak"></div>
-        <div class="grid_16"><?php ticker(); ?></div>
-        <?php endif; ?>
+        <div class="ticker">
+That, or the scrolling effect could be removed entirely, but it's nice (esp. how the entire verde is one page now)</div>
       </div>
     </header>
 
