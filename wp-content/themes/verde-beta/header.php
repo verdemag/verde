@@ -50,7 +50,8 @@ function pageClasses($type, $name) {
         </nav>
         <div class="lineBreak"></div>
         <div class="ticker">
-That, or the scrolling effect could be removed entirely, but it's nice (esp. how the entire verde is one page now)</div>
+          <span>That, or the scrolling effect could be removed entirely, but it's nice (esp. how the entire verde is one page now)</span>
+        </div>
       </div>
     </header>
 
