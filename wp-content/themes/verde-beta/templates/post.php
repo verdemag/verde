@@ -1,31 +1,32 @@
 <?php
 define('SHARE_MSG', 'Check out this article!');
+define(FB_URL, 'https://www.facebook.com/share.php?u=');
+define(TWITTER_URL, 'https://www.twitter.com/share?via=verdemagazine&url=');
+define(GPLUS_URL, 'https://plus.google.com/share?url=');
 
 class post {
   private $post, $link;
 
   function __construct($c) {
     $this->post = $c;
-    $this->url = "$_SERVER[HTTP_HOST]/verde?post={$this->post[name]}";
+    $this->url = "http://$_SERVER[HTTP_HOST]/verde?post={$this->post[name]}";
 
-    require_once(dirname(dirname(__FILE__)).'/functions/social-count.php');
+    $this->fb = FB_URL.$this->url;
+    $this->twit = TWITTER_URL.$this->url;
+    $this->gplus = GPLUS_URL.$this->url;
   }
 
   public function getPageContents() {
-    $ret = '<article class="grid_12">';
-    $ret .= "<h1>{$this->post[title]}</h1>";
+    $ret = '<article>';
+    $ret .= "<a href=\"{$this->url}\"><h1>{$this->post[title]}</h1></a>";
     $ret .= "<time>{$this->post[post_date]}</time>";
     $ret .= $this->post['content'];
-    $ret .= "<a href={$this->link}>Permalink</a><br /><br />";
-    $ret .= '<ul class=\"socialcount socialcount-small" data-url="'.$this->url.'" data-counts=\"true\" data-share-text=\"Check out this article!\">
-	          <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u='.$this->url.'" title="Share on Facebook"><span class="count">Like</span></a>|</li>
-	  <li class="twitter"><a href="https://twitter.com/intent/tweet?text='.$this->link.'" title="Share on Twitter"><span class="count">Tweet</span></a>|</li>
-	  <li class="googleplus"><a href="https://plus.google.com/share?url='.$this->link.'" title="Share on Google Plus"><span class="count">+1</span></a></li>
-    </ul>';
+    $ret .= "<a href=\"{$this->url}\">Permalink</a><br /><br />";
+    $ret .= "<a href=\"{$this->fb}\" class=\"social icon\">f</a>|";
+    $ret .= "<a href=\"{$this->twit}\" class=\"social icon\">t</a>|";
+    $ret .= "<a href=\"{$this->gplus}\" class=\"social icon\">g</a>";
 
     return $ret;
   }
 }
 ?>
-
-

@@ -253,6 +253,18 @@ article p {
   text-align: justify;
 }
 
+article h1:hover:after {
+	vertical-align: middle;
+	font-size: 15px;
+	font-family: 'icomoon';
+	margin-left: 5px;
+	content: 'l';
+}
+
+article a h1 {
+	color: black;
+}
+
 .lineBreak {
   display: inline;
 	float: left;
@@ -324,4 +336,13 @@ img:hover.navGridCell {
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
+}
+
+.social.icon {
+	display: inline-block;
+	font-size: 20px;
+	padding: 5px;
+	margin: 0 5px;
+	vertical-align: middle;
+	background: lightgrey;
 }

@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
 	window.ticker = jQuery('.ticker');
 	ticker.count = -1;
+	window.body = jQuery('body');
 	window.footer = jQuery('footer');
 	window.pages = jQuery('.page');
 	window.selected = pages.first();
@@ -9,7 +10,7 @@ jQuery(document).ready(function() {
 	window.zoomed= true;
 
 	jQuery('#logo').click(function(event) {
-		switchToItem('#home');
+		switchToItem('home');
 	});
 
 	jQuery('.navLink').click(function(event) {
@@ -46,8 +47,6 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	resizeMask();
-
 	tickTicker();
 	setInterval(tickTicker, 5000);
 
@@ -59,14 +58,18 @@ jQuery(document).ready(function() {
 	var toSelect = jQuery('.select');
 	if(toSelect.length != 0) {
 		console.log(toSelect.attr('ID'));
-		jQuery('.navLink.selected').removeClass('selected');
 		selected = toSelect;
 		selected.removeClass('select');
+		highlightItem(jQuery('#' + selected.attr('id') + 'link'));
 		wrapper.css({top:-toSelect.position().top, left:-toSelect.position().left+10});
-		setTimeout(function(){mask.height(toSelect.height() + 50);}, 200);
 	}
+
+	socialLinks();
 });
 
+jQuery(window).load(function() {
+	resizeMask();
+});
 
 function tickTicker() {
 
@@ -126,11 +129,22 @@ function getItem(name) {
 	ajax.onreadystatechange = function(){
 		if(ajax.readyState == 4){
 			jQuery('#' + name).html(ajax.responseText);
+			socialLinks();
 			resizeMask();
 		}
 	};
 	ajax.open("GET", template_dir + "/load-post.php?post=" + name, true);
 	ajax.send(null);
+}
+
+function socialLinks() {
+	jQuery('.fblink').click(function(evt) {
+		evt.preventDefault();
+		popup = window.open(evt.target.href,
+		                    'Share Verde',
+		                    'location=0,toolbar=0,status=0,resizable=1,width=626,height=436');
+		if (window.focus) {popup.focus();}
+	});
 }
 
 function getRequest() {
@@ -153,3 +167,4 @@ function getRequest() {
 	}
 	return req;
 }
+

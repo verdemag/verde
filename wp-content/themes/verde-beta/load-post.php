@@ -1,6 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/verde/wp-blog-header.php');
-require_once('functions/page-loader.php');
+require_once(dirname(dirname(dirname(dirname(__FILE__)))).'/wp-blog-header.php');
 
 if(!$_GET['post']) {
   echo 'you did not specify the post you wanted.';

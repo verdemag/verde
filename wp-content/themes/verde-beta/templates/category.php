@@ -16,10 +16,10 @@ class category {
       $doc->loadHTML(wpautop($excerpt . '&hellip;'));
 
       $content = $doc->saveHTML();
-
+      $url = "http://$_SERVER[HTTP_HOST]/verde?post={$post->post_name}";
       $ret .= ('<article>'
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
-              . '<h1>' . $post->post_title . '</h1>'
+              . "<a href=\"$url\"><h1>{$post->post_title}</h1></a>"
               . $content
               . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
               . '</article>');
@@ -27,7 +27,7 @@ class category {
     $ret .= ('</section>'
             . '<sidebar>'
             . file_get_contents(get_template_directory_uri() . '/sidebar.php')
-            . '</sidebar>');
+                                                          . '</sidebar>');
 
     return $ret;
   }
