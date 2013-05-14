@@ -65,7 +65,7 @@ function image_box_cb($post) {
     echo '<p><strong>Cover Image</p></strong>';
     echo '<label class="screen-reader-text" for="cover_image">Cover Image</label>';
     echo '<select name="cover_image" id="cover_image">';
-    echo '<option value="http://placehold.it/340x255">-----</option>';
+    echo '<option value="http://placehold.it/340x250">-----</option>';
     $images = glob(wp_upload_dir()['basedir'] . '/*/*/*.{png, jpg, jpeg, gif}', GLOB_BRACE);
     foreach ($images as $img) {
       echo '<option value="' . $img . '"'
@@ -79,7 +79,7 @@ function image_box_cb($post) {
 function save_image_for_post($post_id) {
   if ( 'post' == $_POST['post_type'] ) {
     if(!isset($_POST['cover_image'])) {
-      $coverimg = 'http://placehold.it/340x255';
+      $coverimg = 'http://placehold.it/340x250';
     } else {
       $coverimg = $_POST['cover_image'];
     }
