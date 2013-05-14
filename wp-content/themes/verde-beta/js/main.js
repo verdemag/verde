@@ -120,7 +120,7 @@ function switchToItem(name) {
 
 function getItem(name) {
 	window.wrapper.width(window.wrapper.width() + 960);
-	window.wrapper.append('<div class="container_12 page" id="' + name + '"></div>');
+	window.wrapper.append('<section class="post" id="' + name + '"></section>');
 
 	var ajax = getRequest();
 	ajax.onreadystatechange = function(){

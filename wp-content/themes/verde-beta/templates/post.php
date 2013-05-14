@@ -1,16 +1,14 @@
 <?php
-
 define('SHARE_MSG', 'Check out this article!');
-define('__ROOT__', dirname(dirname(dirname(dirname(dirname(__FILE))))));
 
 class post {
   private $post, $link;
 
   function __construct($c) {
     $this->post = $c;
-    $this->link = "__ROOT__?post={$this->post[name]}";
+    $this->url = "$_SERVER[HTTP_HOST]/verde?post={$this->post[name]}";
 
-    require_once();
+    require_once(dirname(dirname(__FILE__)).'/functions/social-count.php');
   }
 
   public function getPageContents() {
@@ -19,11 +17,11 @@ class post {
     $ret .= "<time>{$this->post[post_date]}</time>";
     $ret .= $this->post['content'];
     $ret .= "<a href={$this->link}>Permalink</a><br /><br />";
-    $ret .= "<ul class="socialcount socialcount-small" data-url="http://www.google.com/" data-counts="true" data-share-text="Check out this article!">
-	<li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={$this->link}" title="Share on Facebook"><span class="count">Like</span></a></li>
-	<li class="twitter"><a href="https://twitter.com/intent/tweet?text={$this->link}" title="Share on Twitter"><span class="count">Tweet</span></a></li>
-	<li class="googleplus"><a href="https://plus.google.com/share?url={$this->link}" title="Share on Google Plus"><span class="count">+1</span></a></li>
-</ul>"
+    $ret .= '<ul class=\"socialcount socialcount-small" data-url="'.$this->url.'" data-counts=\"true\" data-share-text=\"Check out this article!\">
+	          <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u='.$this->url.'" title="Share on Facebook"><span class="count">Like</span></a>|</li>
+	  <li class="twitter"><a href="https://twitter.com/intent/tweet?text='.$this->link.'" title="Share on Twitter"><span class="count">Tweet</span></a>|</li>
+	  <li class="googleplus"><a href="https://plus.google.com/share?url='.$this->link.'" title="Share on Google Plus"><span class="count">+1</span></a></li>
+    </ul>';
 
     return $ret;
   }
