@@ -17,12 +17,12 @@ class category {
 
       $content = $doc->saveHTML();
 
-      $ret .= ('<div class="grid_6 content">'
+      $ret .= ('<article class="grid_6">'
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
               . '<h1>' . $post->post_title . '</h1>'
               . $content
               . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
-              . '</div>');
+              . '</article>');
     }
     $ret .= ('</div>'
             . '<div class="grid_4 omega">'

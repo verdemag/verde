@@ -130,6 +130,7 @@ a {
 
 header nav {
 	display: block;
+	float: left;
 	padding: 3px 35px;
 	margin-left: 0;
 	margin-right: 0;
