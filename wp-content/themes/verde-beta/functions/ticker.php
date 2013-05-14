@@ -1,8 +1,4 @@
 <?php
-function ticker() {
-  echo ( "<div class=\"ticker\"><div class=\"tickerText\" style=\"opacity: 1;\">That, or the scrolling effect could be removed entirely, but it's nice (esp. how the entire verde is one page now)</div></div>" );
-}
-
 function install_ticker() {
   add_taxonomy();
 }

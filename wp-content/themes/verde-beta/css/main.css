@@ -39,6 +39,22 @@ footer {
   z-index: 100;
 }
 
+footer > * {
+	width: 480px;
+	float: left;
+	margin-bottom: 0;
+}
+
+footer > *:first-child {
+	text-align: right;
+	margin-right: 10px;
+}
+
+footer > *:last-child {
+	text-align: left;
+	margin-left: 10px;
+}
+
 footer a {
   color: inherit;
   height: auto;

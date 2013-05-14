@@ -5,8 +5,8 @@
 ?>
 </main>
 </div>
-<footer class="container_12">
-	<div class="grid_6" style="text-align:right">
+<footer>
+	<div>
 		<div class="row">&#169; Verde Magazine</div>
     <div class="row">
 		  <a class="navLink" id="aboutlink">About</a> -
@@ -22,11 +22,11 @@
       <?php endif; ?>
     </div>
 	</div>
-	<div class="grid_6" style="text-align:left">
+	<address>
 		Palo Alto High School</br>
 		50 Embarcadero Rd</br>
-		Palo Alto, California 94301</br>
-	</div>
+		Palo Alto, California 94301
+	</address>
 </footer><!--Closes footer div-->
 <?php wp_footer(); ?>
 </body>
