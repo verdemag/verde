@@ -1,15 +1,17 @@
 var LOADER = '<div id="loader"><h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div></div>';
 
+var ticker, body, footer, pages, selected, mask, wrapper, zoomed;
+
 jQuery(document).ready(function() {
-	window.ticker = jQuery('.ticker');
+	ticker = jQuery('.ticker');
 	ticker.count = -1;
-	window.body = jQuery('body');
-	window.footer = jQuery('footer');
-	window.pages = jQuery('.page');
-	window.selected = pages.first();
-	window.mask = jQuery('#mask');
-	window.wrapper = jQuery('main');
-	window.zoomed= true;
+	body = jQuery('body');
+	footer = jQuery('footer');
+	pages = jQuery('.page');
+	selected = pages.first();
+	mask = jQuery('#mask');
+	wrapper = jQuery('main');
+	zoomed = true;
 
 	jQuery('#logo').click(function(event) {
 		switchToItem('home');
@@ -24,7 +26,7 @@ jQuery(document).ready(function() {
 	});
 
 	jQuery(window).scroll(function(event) {
-		if(jQuery(window).scrollTop() - jQuery("body").offset().top >= 130) {
+		if(jQuery(window).scrollTop() - body.offset().top >= 130) {
 			jQuery(".navBar").addClass("fixed");
 		} else {
 			jQuery(".navBar").removeClass("fixed");
@@ -40,7 +42,7 @@ jQuery(document).ready(function() {
 	jQuery('#zoombutton').click(function(event) {
 		if(zoomed) {
 			wrapper.stop().animate({zoom:1/6}, 500);
-			window.mask.stop().animate({height:window.wrapper.height()}, 500);
+			mask.stop().animate({height:wrapper.height()}, 500);
 			zoomed = false;
 		} else {
 			wrapper.stop().animate({zoom:1}, 500);
@@ -49,8 +51,8 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	tickTicker();
-	setInterval(tickTicker, 5000);
+	tickticker();
+	setInterval(tickticker, 5000);
 
 	footer.collapseHeight = footer.find('.row').first().height();
 	footer.css('height','auto');
@@ -73,7 +75,7 @@ jQuery(window).load(function() {
 	resizeMask();
 });
 
-function tickTicker() {
+function tickticker() {
 
 	var duration = 750;
 	var tickerText = new Array();
@@ -81,7 +83,7 @@ function tickTicker() {
 	tickerText[1] = "Another interesting quote";
 	tickerText[2] = "Quotes can be very large in size. You have this entire bar to work with. If need be, it can even be bigger.";
 	tickerText[3] = "The Issuu widget causes some lag in scrolling. So here is the solution";
-	tickerText[4] = "Solution to previous Ticker comment: Hide issuu widget and display only if switched to the news section";
+	tickerText[4] = "Solution to previous ticker comment: Hide issuu widget and display only if switched to the news section";
 	tickerText[5] = "This way when flying by the news section the issuu widget isn't rendered, which means less lag";
 	tickerText[6] = "That, or the scrolling effect could be removed entirely, but it's nice (esp. how the entire verde is one page now)";
 
@@ -107,7 +109,7 @@ function highlightItem(item) {
 }
 
 function resizeMask() {
-	window.mask.animate({ height:window.selected.height() + 50 }, 50);
+	mask.animate({ height:selected.height() + 50 }, 50);
 }
 
 function switchToItem(name) {
@@ -117,26 +119,26 @@ function switchToItem(name) {
 	if(jQuery('#' + name).length == 0) {
 		getItem(name);
 	}
-	window.selected = jQuery('#' + name);
+	selected = jQuery('#' + name);
 
-	window.wrapper.stop().animate({top:-selected.position().top, left:-selected.position().left}, 500);
+	wrapper.stop().animate({top:-selected.position().top, left:-selected.position().left}, 500);
 	resizeMask();
 }
 
 function getItem(name) {
-	window.wrapper.width(window.wrapper.width() + 960);
-	window.wrapper.append('<section class="post" id="' + name + '"></section>');
-	var page = jQuery('#' + name);
-	page.html(LOADER);
+	wrapper.width(wrapper.width() + 960);
+	wrapper.append('<section class="post" id="' + name + '"></section>');
+	var item = jQuery('#' + name);
+	item.html(LOADER);
 
 	var ajax = getRequest();
 	ajax.onreadystatechange = function(){
 		if(ajax.readyState == 4){
 			if(ajax.status == 200) {
-				page.html(ajax.responseText);
+				item.html(ajax.responseText);
 				socialLinks();
 			} else {
-				page.html("error " + req.status + "\n" + ajax.responseText);
+				item.html("error " + ajax.status + "\n" + ajax.responseText);
 			}
 			resizeMask();
 		}
@@ -148,7 +150,7 @@ function getItem(name) {
 function socialLinks() {
 	jQuery('.fblink').click(function(evt) {
 		evt.preventDefault();
-		popup = window.open(evt.target.href,
+		var popup = open(evt.target.href,
 		                    'Share Verde',
 		                    'location=0,toolbar=0,status=0,resizable=1,width=626,height=436');
 		if (window.focus) {popup.focus();}
