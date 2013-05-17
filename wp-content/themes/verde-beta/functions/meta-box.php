@@ -61,7 +61,6 @@ function verde_box_cb($post) {
 
 function image_box_cb($post) {
   if ( 'post' == $post->post_type ) {
-    echo $post->cover_image;
     echo '<p><strong>Cover Image</p></strong>';
     echo '<label class="screen-reader-text" for="cover_image">Cover Image</label>';
     echo '<select name="cover_image" id="cover_image">';
