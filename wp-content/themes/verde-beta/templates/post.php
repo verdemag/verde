@@ -22,9 +22,9 @@ class post {
     $ret .= "<time>{$this->post[post_date]}</time>";
     $ret .= $this->post['content'];
     $ret .= "<a href=\"{$this->url}\">Permalink</a><br /><br />";
-    $ret .= "<a href=\"{$this->fb}\" class=\"icon-fb\"></a>|";
-    $ret .= "<a href=\"{$this->twit}\" class=\"icon-twitter\"></a>|";
-    $ret .= "<a href=\"{$this->gplus}\" class=\"icon-gplus\"></a>";
+    $ret .= "<a href=\"{$this->fb}\" class=\"social icon-fb\"></a>|";
+    $ret .= "<a href=\"{$this->twit}\" class=\"social icon-twitter\"></a>|";
+    $ret .= "<a href=\"{$this->gplus}\" class=\"social icon-gplus\"></a>";
 
     return $ret;
   }

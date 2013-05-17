@@ -342,7 +342,7 @@ img:hover.navGridCell {
   -webkit-transition: opacity 0.5s;
 }
 
-.social.icon {
+[class*='icon'].social {
 	display: inline-block;
 	font-size: 20px;
 	padding: 5px;
