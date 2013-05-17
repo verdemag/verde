@@ -39,7 +39,7 @@ hr {
 /* 'Icons
 ----------------------------------------------------------------------------------------------------*/
 
-.icon {
+[class*="icon"]:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -49,7 +49,21 @@ hr {
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
-
+.icon-search {
+	content: "s";
+}
+.icon-fb {
+	content: "f";
+}
+.icon-twitter {
+	content: "t";
+}
+.icon-gplus {
+	content: "g";
+}
+.icon-rss {
+	content: "r";
+}
 
 /* `Headings
 ----------------------------------------------------------------------------------------------------*/
