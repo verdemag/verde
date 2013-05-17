@@ -1,4 +1,5 @@
 var LOADER = '<div id="loader"><h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div></div>';
+
 jQuery(document).ready(function() {
 	window.ticker = jQuery('.ticker');
 	ticker.count = -1;
@@ -131,7 +132,7 @@ function getItem(name) {
 	var ajax = getRequest();
 	ajax.onreadystatechange = function(){
 		if(ajax.readyState == 4){
-			if(req.status == 200) {
+			if(ajax.status == 200) {
 				page.html(ajax.responseText);
 				socialLinks();
 			} else {
