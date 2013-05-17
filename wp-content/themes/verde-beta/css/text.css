@@ -49,19 +49,19 @@ hr {
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
-.icon-search {
+.icon-search:before {
 	content: "s";
 }
-.icon-fb {
+.icon-fb:before {
 	content: "f";
 }
-.icon-twitter {
+.icon-twitter:before {
 	content: "t";
 }
-.icon-gplus {
+.icon-gplus:before {
 	content: "g";
 }
-.icon-rss {
+.icon-rss:before {
 	content: "r";
 }
 
