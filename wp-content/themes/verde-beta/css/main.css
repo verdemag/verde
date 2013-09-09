@@ -112,7 +112,7 @@ main {
 	top: 0;
 	left: 0;
 	white-space: nowrap;
-  overflow: auto;
+  overflow: visible;
 }
 
 .noSpace{
@@ -221,6 +221,11 @@ nav span {
 	float: left;
 }
 
+.category section.articles img {
+	width: 340px;
+	height: auto;
+}
+
 .category sidebar {
 	display: inline;
 	float: left;
@@ -237,6 +242,16 @@ nav span {
 
 .category article:first-child {
 	float: left;
+}
+
+.category article img {
+	width: 340px;
+	height: auto;
+}
+
+.post article {
+	width: 940px;
+	margin:
 }
 
 article {
@@ -263,6 +278,7 @@ article h1:hover:after {
 	font-family: 'icomoon';
 	margin-left: 5px;
 	content: 'l';
+	position: relative;
 }
 
 article a h1 {
@@ -348,5 +364,4 @@ img:hover.navGridCell {
 	padding: 5px;
 	margin: 0 5px;
 	vertical-align: middle;
-	background: lightgrey;
 }

@@ -61,18 +61,18 @@ jQuery(document).ready(function() {
 
 	var toSelect = jQuery('.select');
 	if(toSelect.length != 0) {
-		console.log(toSelect.attr('ID'));
 		selected = toSelect;
 		selected.removeClass('select');
-		highlightItem(jQuery('#' + selected.attr('id') + 'link'));
-		wrapper.css({top:-toSelect.position().top, left:-toSelect.position().left+10});
 	}
 
-	socialLinks();
 });
 
 jQuery(window).load(function() {
 	resizeMask();
+	highlightItem(jQuery('#' + selected.attr('id') + 'link'));
+	wrapper.css({top:-toSelect.position().top, left:-toSelect.position().left+10});
+
+	socialLinks();
 });
 
 function tickticker() {

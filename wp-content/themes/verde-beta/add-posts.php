@@ -17,7 +17,7 @@ if(!$_GET['cat']) {
     $doc->loadHTML(wpautop($excerpt . '&hellip;'));
 
     $content = $doc->saveHTML();
-    $url = "http://$_SERVER[HTTP_HOST]/verde?post={$post->post_name}";
+    $url = "http://$_SERVER[HTTP_HOST]/?post={$post->post_name}";
     echo ('<article>'
          ."<img src=\"{get_post_meta( $post->ID, 'cover_image', true )}\">"
          ."<a href=\"$url\"><h1>{$post->post_title}</h1></a>"
