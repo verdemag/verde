@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
 	selected = pages.first();
 	mask = jQuery('#mask');
 	nav = jQuery('nav');
-	navTop = nav.top();
+	navTop = nav.offset().top;
 	wrapper = jQuery('main');
 	zoomed = true;
 
