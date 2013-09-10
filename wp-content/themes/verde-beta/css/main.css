@@ -216,6 +216,7 @@ nav span {
 }
 
 .ticker {
+	left: calc(50% - 480px);
 	width: 930px;
 	height: 22px;
 	float: left;

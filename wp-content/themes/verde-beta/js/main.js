@@ -35,6 +35,10 @@ jQuery(document).ready(function() {
 		}
 	});
 
+	tickerTop = ticker.offset().top;
+	ticker.css('top', tickerTop);
+	ticker.css('position', 'absolute');
+
 	footer.hover(function(){
 		footer.stop().animate({height:footer.totalHeight}, 500);
 	},function(){
@@ -66,7 +70,6 @@ jQuery(document).ready(function() {
 		selected = toSelect;
 		selected.removeClass('select');
 	}
-
 });
 
 jQuery(window).load(function() {
