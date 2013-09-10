@@ -68,9 +68,8 @@ jQuery(document).ready(function() {
 });
 
 jQuery(window).load(function() {
-	resizeMask();
 	highlightItem(jQuery('#' + selected.attr('id') + 'link'));
-	wrapper.css({top:-toSelect.position().top, left:-toSelect.position().left+10});
+	switchToItem(selected.attr('id'))
 
 	socialLinks();
 });
