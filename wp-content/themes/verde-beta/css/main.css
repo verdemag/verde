@@ -230,8 +230,9 @@ nav span {
 
 .category section.articles {
 	display: inline;
-	width: 720px;
-	margin: 0 10px;
+	width: 700px;
+	margin-left: 10px;
+	margin-right: 20px;
 	float: left;
 }
 
