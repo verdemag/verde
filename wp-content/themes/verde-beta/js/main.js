@@ -10,6 +10,8 @@ jQuery(document).ready(function() {
 	pages = jQuery('.page');
 	selected = pages.first();
 	mask = jQuery('#mask');
+	nav = jQuery('nav');
+	navTop = nav.top();
 	wrapper = jQuery('main');
 	zoomed = true;
 
@@ -26,7 +28,7 @@ jQuery(document).ready(function() {
 	});
 
 	jQuery(window).scroll(function(event) {
-		if(jQuery(window).scrollTop() - body.offset().top >= 125) {
+		if(jQuery(window).scrollTop() - body.offset().top >= navTop - 5) {
 			jQuery(".navBar").addClass("fixed");
 		} else {
 			jQuery(".navBar").removeClass("fixed");
