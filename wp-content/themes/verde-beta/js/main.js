@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
 	});
 
 	jQuery(window).scroll(function(event) {
-		if(jQuery(window).scrollTop() - body.offset().top >= 130) {
+		if(jQuery(window).scrollTop() - body.offset().top >= 125) {
 			jQuery(".navBar").addClass("fixed");
 		} else {
 			jQuery(".navBar").removeClass("fixed");
