@@ -3,6 +3,7 @@
 html {
   text-align: center;
   overflow-y: scroll;
+	word-wrap: break-word;
 } /* Mainly to make text-align: center an inherited trait for other stuff. */
 
 body {
