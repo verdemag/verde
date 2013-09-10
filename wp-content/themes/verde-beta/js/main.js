@@ -59,7 +59,7 @@ jQuery(document).ready(function() {
 	footer.totalHeight = footer.height();
 	footer.css('height', footer.collapseHeight);
 
-	var toSelect = jQuery('.select');
+	window.toSelect = jQuery('.select');
 	if(toSelect.length != 0) {
 		selected = toSelect;
 		selected.removeClass('select');
