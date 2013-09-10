@@ -74,6 +74,8 @@ jQuery(window).load(function() {
 	switchToItem(selected.attr('id'))
 
 	socialLinks();
+
+	jQuery('#loader').hide();
 });
 
 function tickticker() {

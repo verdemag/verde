@@ -55,5 +55,6 @@ function pageClasses($type, $name) {
       </div>
     </header>
 
+    <div id="loader"></div>
     <div id="mask">
       <main>

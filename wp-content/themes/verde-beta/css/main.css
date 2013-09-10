@@ -98,6 +98,17 @@ footer a {
   bottom: 3px;
 }
 
+#loader {
+	background-image: url('ajax-loader.gif');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-color: white;
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+}
+
 #mask {
   position: absolute;
   top: 237px;
