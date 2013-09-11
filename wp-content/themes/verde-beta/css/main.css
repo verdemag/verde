@@ -31,10 +31,7 @@ footer {
   left: calc(50% - 480px);
 	left: -webkit-calc(50% - 480px);
   padding: 5px 0px;
-  background-color: #FFFFFF;
 	opacity: 1;
-/*  -webkit-box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3); */
   box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: grey;

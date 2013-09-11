@@ -74,7 +74,6 @@ jQuery(document).ready(function() {
 	setInterval(tickticker, 5000);
 
 	footer.collapseHeight = footer.find('.row').first().height();
-	footer.css('height','auto');
 	footer.totalHeight = footer.height();
 	footer.css('height', footer.collapseHeight);
 
