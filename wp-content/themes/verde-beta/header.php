@@ -18,9 +18,11 @@ function pageClasses($type, $name) {
     <script> var template_dir = '<?php bloginfo("template_url"); ?>'; </script>
     <?php
     wp_enqueue_script('jquery');
+    wp_enqueue_script('history.js', get_template_directory_uri() . '/js/jquery.history.js',
+                      array('jquery'));
     wp_enqueue_script('other', get_template_directory_uri() . '/js/other.js');
     wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js',
-                      array('jquery'));
+                      array('jquery', 'history.js'));
     ?>
 
     <?php wp_head(); ?>

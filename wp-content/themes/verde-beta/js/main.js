@@ -81,6 +81,13 @@ jQuery(window).load(function() {
 	jQuery('#loader').hide();
 });
 
+jQuery(window).bind('onstatechange', function(e) {
+	state = History.getState();
+	if (state != null) {
+		switchToItem(state.post);
+	}
+});
+
 function tickticker() {
 
 	var duration = 750;
@@ -121,6 +128,10 @@ function resizeMask() {
 function switchToItem(name) {
 	var linkID = name + 'link';
 	highlightItem(jQuery('#' + linkID));
+
+	var state = { post: name };
+	var url = '?post=' . name;
+	History.pushState(state, name, url);
 
 	if(jQuery('#' + name).length == 0) {
 		getItem(name);
