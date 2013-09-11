@@ -131,6 +131,7 @@ function switchToItem(name) {
 
 	var state = { post: name };
 	var url = '?post=' . name;
+	console.log('pushing state')
 	History.pushState(state, name, url);
 
 	if(jQuery('#' + name).length == 0) {
