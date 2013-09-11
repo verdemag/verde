@@ -26,13 +26,9 @@ sidebar section:last-child {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: calc(50% - 490px);
-	left: -webkit-calc(50% - 490px);
-  padding: 5px 0px;
+	margin: 0 auto;
+  padding: 2px 0px;
 	background-color: #FFF;
-  box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: grey;
   z-index: 100;
