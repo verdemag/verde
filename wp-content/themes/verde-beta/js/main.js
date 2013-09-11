@@ -96,6 +96,7 @@ jQuery(window).load(function() {
 
 jQuery(window).on('statechange', function() {
 	state = History.getState();
+	console.log('loading ' + state.post);
 	if (state != null) {
 		switchToItem(state.post);
 	}
