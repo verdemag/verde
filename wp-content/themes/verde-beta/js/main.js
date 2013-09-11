@@ -18,7 +18,6 @@ jQuery(document).ready(function() {
 	jQuery('#logo').click(function(event) {
 		var state = { post: 'home' };
 		var url = '/';
-		console.log('pushing state name: home')
 		History.pushState(state, null, url);
 
 		switchToItem('home');
@@ -34,7 +33,6 @@ jQuery(document).ready(function() {
 			var url = '?page=' + targetID;
 		else
 			var url = '?post=' + targetID;
-		console.log('pushing state name: ' + targetID)
 		History.pushState(state, null, url);
 
 		switchToItem(targetID);
