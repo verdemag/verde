@@ -95,10 +95,9 @@ jQuery(window).load(function() {
 });
 
 jQuery(window).on('statechange', function() {
-	state = History.getState();
-	console.log('loading ' + state.post);
+	stateData = History.getState().data;
 	if (state != null) {
-		switchToItem(state.post);
+		switchToItem(stateData.post);
 	}
 });
 
