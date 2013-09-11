@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
 	jQuery('#logo').click(function(event) {
 		var state = { post: 'home' };
 		var url = '/';
-		History.pushState(state, null, url);
+		History.pushState(state, 'Verde', url);
 
 		switchToItem('home');
 	});
@@ -35,7 +35,7 @@ jQuery(document).ready(function() {
 			var url = '?page=' + targetID;
 		else
 			var url = '?post=' + targetID;
-		History.pushState(state, null, url);
+		History.pushState(state, 'Verde', url);
 
 		switchToItem(targetID);
 	});
