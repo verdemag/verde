@@ -16,10 +16,10 @@ jQuery(document).ready(function() {
 	zoomed = true;
 
 	jQuery('#logo').click(function(event) {
-		var state = { post: name };
-		var url = '?post=' . name;
-		console.log('pushing state name: ' . name)
-		History.pushState(state, name, url);
+		var state = { post: 'home' };
+		var url = '/';
+		console.log('pushing state name: home')
+		History.pushState(state, 'home', url);
 
 		switchToItem('home');
 	});
@@ -29,10 +29,10 @@ jQuery(document).ready(function() {
 		var id = event.target.id;
 		var targetID = id.substring(0, id.length - 4);
 
-		var state = { post: name };
-		var url = '?post=' . name;
-		console.log('pushing state name: ' . name)
-		History.pushState(state, name, url);
+		var state = { post: targetID };
+		var url = '?post=' . targetID;
+		console.log('pushing state targetID: ' . targetID)
+		History.pushState(state, targetID, url);
 
 		switchToItem(targetID);
 	});
