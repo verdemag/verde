@@ -9,7 +9,7 @@ class post {
 
   function __construct($c) {
     $this->post = $c;
-    $this->url = "http://$_SERVER[HTTP_HOST]/verde?post={$this->post[name]}";
+    $this->url = "http://$_SERVER[HTTP_HOST]/?post={$this->post[name]}";
 
     $this->fb = FB_URL.$this->url;
     $this->twit = TWITTER_URL.$this->url;
