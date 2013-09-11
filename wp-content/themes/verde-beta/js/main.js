@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
 	jQuery('#logo').click(function(event) {
 		var state = { post: name };
 		var url = '?post=' . name;
-		console.log('pushing state')
+		console.log('pushing state name: ' . name)
 		History.pushState(state, name, url);
 
 		switchToItem('home');
