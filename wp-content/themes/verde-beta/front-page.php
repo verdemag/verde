@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<div id="loader"></div>
 
 <section class="<?php pageClasses('page','home'); ?>" id="home">
   <?php echo getPage(get_page_by_title("Home")); ?>
