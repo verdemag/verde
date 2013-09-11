@@ -94,7 +94,7 @@ jQuery(window).load(function() {
 	jQuery('#loader').hide();
 });
 
-jQuery(window).bind('onstatechange', function() {
+jQuery(window).on('statechange', function() {
 	state = History.getState();
 	if (state != null) {
 		switchToItem(state.post);
