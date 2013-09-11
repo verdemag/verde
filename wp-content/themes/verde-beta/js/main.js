@@ -29,7 +29,9 @@ jQuery(document).ready(function() {
 		var targetID = id.substring(0, id.length - 4);
 
 		var state = { post: targetID };
-		if(jQuery('#'+targetID).hasClass('category'))
+		if(targetID == 'home')
+			var url = '/'
+		else if(jQuery('#'+targetID).hasClass('category'))
 			var url = '?page=' + targetID;
 		else
 			var url = '?post=' + targetID;
