@@ -6,7 +6,6 @@ jQuery(document).ready(function() {
 	ticker = jQuery('.ticker');
 	ticker.count = -1;
 	body = jQuery('body');
-	footer = jQuery('footer');
 	pages = jQuery('.page');
 	selected = pages.first();
 	mask = jQuery('#mask');
@@ -52,12 +51,6 @@ jQuery(document).ready(function() {
 	ticker.css('top', tickerTop);
 	ticker.css('position', 'absolute');
 
-	footer.hover(function(){
-		footer.stop().animate({height:footer.totalHeight}, 500);
-	},function(){
-		footer.stop().animate({height:footer.collapseHeight}, 500);
-	});
-
 	jQuery('#zoombutton').click(function(event) {
 		if(zoomed) {
 			wrapper.stop().animate({zoom:1/6}, 500);
@@ -73,20 +66,19 @@ jQuery(document).ready(function() {
 	tickticker();
 	setInterval(tickticker, 5000);
 
-	footer.collapseHeight = footer.find('.row').first().height();
-	footer.totalHeight = footer.height();
-	footer.css('height', footer.collapseHeight);
-
 	window.toSelect = jQuery('.select');
 	if(toSelect.length != 0) {
 		selected = toSelect;
 		selected.removeClass('select');
 	}
+
+	mask.css('min-height', jQuery(window).height() - mask.offset().top);
 });
 
 jQuery(window).load(function() {
 	highlightItem(jQuery('#' + selected.attr('id') + 'link'));
 	wrapper.css({top:-selected.position().top, left:-selected.position().left});
+	resizeMask();
 
 	socialLinks();
 
@@ -134,7 +126,7 @@ function highlightItem(item) {
 }
 
 function resizeMask() {
-	mask.animate({ height:selected.height() + 50 }, 50);
+	mask.animate({ height:selected.height() + 100 }, 50);
 }
 
 function switchToItem(name) {

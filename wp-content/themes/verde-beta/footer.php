@@ -4,7 +4,6 @@
  */
 ?>
 </main>
-</div>
 <footer>
 	<div>
 		<div class="row">&#169; Verde Magazine</div>
@@ -27,7 +26,8 @@
 		50 Embarcadero Rd</br>
 		Palo Alto, California 94301
 	</address>
-</footer><!--Closes footer div-->
+</footer>
+</div><!-- Close mask div -->
 <?php wp_footer(); ?>
 </body>
 </html>
