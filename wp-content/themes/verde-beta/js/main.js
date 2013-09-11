@@ -16,6 +16,11 @@ jQuery(document).ready(function() {
 	zoomed = true;
 
 	jQuery('#logo').click(function(event) {
+		var state = { post: name };
+		var url = '?post=' . name;
+		console.log('pushing state')
+		History.pushState(state, name, url);
+
 		switchToItem('home');
 	});
 
@@ -23,6 +28,11 @@ jQuery(document).ready(function() {
 		event.preventDefault();
 		var id = event.target.id;
 		var targetID = id.substring(0, id.length - 4);
+
+		var state = { post: name };
+		var url = '?post=' . name;
+		console.log('pushing state')
+		History.pushState(state, name, url);
 
 		switchToItem(targetID);
 	});
@@ -81,7 +91,7 @@ jQuery(window).load(function() {
 	jQuery('#loader').hide();
 });
 
-jQuery(window).bind('onstatechange', function(e) {
+jQuery(window).bind('onstatechange', function() {
 	state = History.getState();
 	if (state != null) {
 		switchToItem(state.post);
@@ -128,11 +138,6 @@ function resizeMask() {
 function switchToItem(name) {
 	var linkID = name + 'link';
 	highlightItem(jQuery('#' + linkID));
-
-	var state = { post: name };
-	var url = '?post=' . name;
-	console.log('pushing state')
-	History.pushState(state, name, url);
 
 	if(jQuery('#' + name).length == 0) {
 		getItem(name);
