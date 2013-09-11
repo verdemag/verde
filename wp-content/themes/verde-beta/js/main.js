@@ -94,7 +94,7 @@ jQuery(window).load(function() {
 
 jQuery(window).on('statechange', function() {
 	stateData = History.getState().data;
-	if (state != null) {
+	if (stateData != null) {
 		switchToItem(stateData.post);
 	}
 });
