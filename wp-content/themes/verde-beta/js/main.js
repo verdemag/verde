@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
 		var state = { post: 'home' };
 		var url = '/';
 		console.log('pushing state name: home')
-		History.pushState(state, 'home', url);
+		History.pushState(state, null, url);
 
 		switchToItem('home');
 	});
@@ -30,9 +30,12 @@ jQuery(document).ready(function() {
 		var targetID = id.substring(0, id.length - 4);
 
 		var state = { post: targetID };
-		var url = '?post=' + targetID;
+		if(jQuery(targetID).hasClass('category'))
+			var url = '?page=' + targetID;
+		else
+			var url = '?post=' + targetID;
 		console.log('pushing state name: ' + targetID)
-		History.pushState(state, targetID, url);
+		History.pushState(state, null, url);
 
 		switchToItem(targetID);
 	});
