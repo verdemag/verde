@@ -87,7 +87,7 @@ jQuery(window).load(function() {
 
 jQuery(window).on('statechange', function() {
 	stateData = History.getState().data;
-	if (stateData != null) {
+	if (jQuery.isEmptyObject(stateData)) {
 		switchToItem(stateData.post);
 	}
 });
