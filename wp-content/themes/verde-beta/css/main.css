@@ -28,8 +28,8 @@ sidebar section:last-child {
 footer {
   position: fixed;
   bottom: 0;
-  left: calc(50% - 480px);
-	left: -webkit-calc(50% - 480px);
+  left: calc(50% - 490px);
+	left: -webkit-calc(50% - 490px);
   padding: 5px 0px;
 	background-color: #FFF;
   box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -39,7 +39,7 @@ footer {
 }
 
 footer > * {
-	width: 480px;
+	width: 490px;
 	float: left;
 	margin-bottom: 0;
 }
