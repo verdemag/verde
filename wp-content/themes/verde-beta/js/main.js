@@ -74,7 +74,7 @@ jQuery(document).ready(function() {
 
 jQuery(window).load(function() {
 	highlightItem(jQuery('#' + selected.attr('id') + 'link'));
-	wrapper.css({top:-toSelect.position().top, left:-toSelect.position().left});
+	wrapper.css({top:-selected.position().top, left:-selected.position().left});
 
 	socialLinks();
 
