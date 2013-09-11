@@ -30,8 +30,8 @@ jQuery(document).ready(function() {
 		var targetID = id.substring(0, id.length - 4);
 
 		var state = { post: targetID };
-		var url = '?post=' . targetID;
-		console.log('pushing state targetID: ' . targetID)
+		var url = '?post=' + targetID;
+		console.log('pushing state name: ' + targetID)
 		History.pushState(state, targetID, url);
 
 		switchToItem(targetID);
