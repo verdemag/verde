@@ -259,6 +259,7 @@ nav span {
 .category article {
 	display: inline-block;
 	width: 340px;
+	margin-bottom: 50px;
 }
 
 .category article img {
