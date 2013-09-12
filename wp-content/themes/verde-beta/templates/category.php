@@ -12,7 +12,7 @@ class category {
     $i = 0;
     foreach ($this->posts as $post) {
       if(($i % 2) == 0) {
-        $excerpt = implode(' ', array_slice(explode(' ', $post->post_content), 0, 150));
+        $excerpt = implode(' ', array_slice(explode(' ', $post['content']), 0, 150));
 
         $doc = new DOMDocument();
         $doc->loadHTML(wpautop($excerpt . '&hellip;'));
@@ -22,7 +22,7 @@ class category {
         $ret .= ('<article>'
                 . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
                 . "<a href=\"$url\"><h1>{$post->post_title}</h1></a>"
-                . $content
+                . $excerpt
                 . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
                 . '</article>');
       }
