@@ -8,36 +8,19 @@ class category {
   }
 
   public function getPageContents() {
-    $ret = ('<section class="articles">');
-    $i = 0;
     foreach ($this->posts as $post) {
-      if(($i % 2) == 0) {
-        $excerpt = implode(' ', array_slice(explode(' ', $post['content']), 0, 150));
-
-        $doc = new DOMDocument();
-        $doc->loadHTML(wpautop($excerpt . '&hellip;'));
-
-        $content = $doc->saveHTML();
-        $url = "http://$_SERVER[HTTP_HOST]/?post={$post->post_name}";
-        $ret .= ('<article>'
-                . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
-                . "<a href=\"$url\"><h1>{$post->post_title}</h1></a>"
-                . $excerpt
-                . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
-                . '</article>');
-      }
-      $i++;
-    }
-    $i = 0;
-    foreach ($this->posts as $post) {
-      if(($i % 2) == 1) {
-      }
-      $i++;
+      $url = "http://$_SERVER[HTTP_HOST]/?post={$post->post_name}";
+      $ret .= ('<article>'
+              . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
+              . "<a href=\"$url\"><h1>{$post->post_title}</h1></a>"
+              . $post->post_excerpt
+              . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
+              . '</article>');
     }
     $ret .= ('</section>'
             . '<sidebar>'
             . file_get_contents(get_template_directory_uri() . '/sidebar.php')
-                                                          . '</sidebar>');
+            . '</sidebar>');
 
     return $ret;
   }

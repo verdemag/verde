@@ -234,6 +234,9 @@ nav span {
 	margin-left: 10px;
 	margin-right: 20px;
 	float: left;
+	column-count: 2;
+	column-gap: 20px;
+	column-rule: none;
 }
 
 .category section.articles img {
