@@ -13,7 +13,7 @@ class category {
       setup_postdata($post);
       $name = $post->post_name;
       $ret .= ('<article>'
-              . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
+              . get_the_post_thumbnail()
               . "<a data-target=\"$name\"><h1>{$post->post_title}</h1></a>"
               . get_the_excerpt()
               . '<a data-target="' . $name . '" class="navLink">Read more</a>'
