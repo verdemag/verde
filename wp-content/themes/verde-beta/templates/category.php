@@ -10,11 +10,12 @@ class category {
   public function getPageContents() {
     $ret = '<section class="articles">';
     foreach ($this->posts as $post) {
+      setup_postdata($post);
       $url = "http://$_SERVER[HTTP_HOST]/?post={$post->post_name}";
       $ret .= ('<article>'
               . '<img alt="" src="' . get_post_meta( $post->ID, 'cover_image', true ) . '">'
               . "<a href=\"$url\"><h1>{$post->post_title}</h1></a>"
-              . $post->post_excerpt
+              . get_the_excerpt()
               . '<a id="' . $post->post_name . 'link" class="navLink">Read more</a>'
               . '</article>');
     }
