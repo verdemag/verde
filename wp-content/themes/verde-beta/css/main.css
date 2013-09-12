@@ -254,12 +254,6 @@ nav span {
 	display: inline-block;
 	width: 340px;
   vertical-align: top;
-  margin-bottom: 100px;
-	float: right;
-}
-
-.category article:first-child {
-	float: left;
 }
 
 .category article img {
