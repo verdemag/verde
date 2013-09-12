@@ -36,13 +36,14 @@ function pageClasses($type, $name) {
 	        <div class="sub"><?php bloginfo('description'); ?></div>
         </div>
         <nav class="navBar">
-          <a class="navLink selected" id="homelink">Home</a>
+          <a class="navLink selected" data-target="home">Home</a>
           <?php $categories = get_categories(array('sort_column' => 'menu_order',
                                                    'hide_empty' => 0,
                                                    'number' => 6)); ?>
           <?php foreach ($categories as $category) : ?>
 	        <a class="navLink"
              id="<?php echo $category->slug ?>link"
+             data-target="<?php echo $category->slug ?>"
              rel="nofollow"
              href="?page=<?php echo $category->slug ?>">
             <?php echo $category->name ?></a>

@@ -24,8 +24,8 @@ jQuery(document).ready(function() {
 
 	jQuery('.navLink').click(function(event) {
 		event.preventDefault();
-		var id = event.target.id;
-		var targetID = id.substring(0, id.length - 4);
+		var element = jQuery(event.target);
+		var targetID = element.data('target');
 
 		var state = { post: targetID };
 		if(targetID == 'home')
@@ -76,7 +76,9 @@ jQuery(document).ready(function() {
 });
 
 jQuery(window).load(function() {
-	highlightItem(jQuery('#' + selected.attr('id') + 'link'));
+	var navLink = jQuery('#' + selected.attr('id') + 'link');
+	if(navLink.length > 0)
+		highlightItem(navLink);
 	wrapper.css({top:-selected.position().top, left:-selected.position().left});
 	resizeMask();
 
