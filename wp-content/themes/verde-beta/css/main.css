@@ -257,7 +257,7 @@ nav span {
 }
 
 .category article {
-	display: block;
+	display: inline-block;
 	width: 340px;
 }
 
