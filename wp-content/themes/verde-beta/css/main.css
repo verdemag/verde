@@ -290,13 +290,17 @@ article p {
   text-align: justify;
 }
 
-article h1:hover:after {
+article h1:after {
 	vertical-align: middle;
 	font-size: 15px;
 	font-family: 'icomoon';
 	margin-left: 5px;
 	content: 'l';
-	position: relative;
+	opacity: 0;
+}
+
+article h1:hover:after {
+	opacity: 1;
 }
 
 article a h1 {
