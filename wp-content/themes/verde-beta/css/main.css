@@ -251,9 +251,8 @@ nav span {
 }
 
 .category article {
-	display: inline-block;
+	display: block;
 	width: 340px;
-  vertical-align: top;
 }
 
 .category article img {

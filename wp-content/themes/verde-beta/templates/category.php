@@ -8,6 +8,7 @@ class category {
   }
 
   public function getPageContents() {
+    $ret = '<section class="articles">';
     foreach ($this->posts as $post) {
       $url = "http://$_SERVER[HTTP_HOST]/?post={$post->post_name}";
       $ret .= ('<article>'
