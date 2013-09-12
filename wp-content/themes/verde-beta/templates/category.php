@@ -3,7 +3,7 @@ class category {
   private $posts;
 
   function __construct($c) {
-    $this->posts = get_posts(array('numberposts' => 4,
+    $this->posts = get_posts(array('numberposts' => 8,
                                    'category' => $c));
   }
 
