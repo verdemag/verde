@@ -262,7 +262,7 @@ nav span {
 	margin-bottom: 50px;
 }
 
-.category article img {
+.category article * {
 	width: 340px;
 	height: auto;
 }
