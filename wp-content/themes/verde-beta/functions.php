@@ -1,11 +1,19 @@
 <?php
-wp_enqueue_script('jquery');
 show_admin_bar(false);
 
 define('__ROOT__', dirname(__FILE__));
 
 require('functions/meta-box.php');
 require('functions/ticker.php');
+
+function enqueueScripts() {
+  wp_enqueue_script('jquery');
+  wp_enqueue_script('history.js', get_template_directory_uri() . '/js/jquery.history.js', array('jquery'));
+  wp_enqueue_script('other', get_template_directory_uri() . '/js/other.js');
+  wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('jquery', 'history.js'));
+}
+
+add_action('wp_enqueue_scripts', 'enqueueScripts');
 
 function getPage($obj) {
   if($obj->post_type == 'post') {

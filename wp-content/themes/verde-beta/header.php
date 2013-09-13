@@ -16,14 +16,6 @@ function pageClasses($type, $name) {
     <title><?php wp_title(); ?> <?php bloginfo('name'); ?></title>
     <link href=<?php bloginfo('stylesheet_url'); ?> rel="stylesheet" type="text/css" />
     <script> var template_dir = '<?php bloginfo("template_url"); ?>'; </script>
-    <?php
-    wp_enqueue_script('jquery');
-    wp_enqueue_script('history.js', get_template_directory_uri() . '/js/jquery.history.js',
-                      array('jquery'));
-    wp_enqueue_script('other', get_template_directory_uri() . '/js/other.js');
-    wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js',
-                      array('jquery', 'history.js'));
-    ?>
 
     <?php wp_head(); ?>
   </head>
