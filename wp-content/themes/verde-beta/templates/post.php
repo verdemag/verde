@@ -20,7 +20,7 @@ class post {
     $ret = '<article>';
     $ret .= "<a href=\"{$this->url}\"><h1>{$this->post[title]}</h1></a>";
     $ret .= "<time>{$this->post[post_date]}</time>";
-    $ret .= $this->post['content'];
+    $ret .= do_shortcode($this->post['content']);
     $ret .= "<a href=\"{$this->url}\">Permalink</a><br /><br />";
     $ret .= "<a href=\"{$this->fb}\" class=\"social icon-fb\"></a>|";
     $ret .= "<a href=\"{$this->twit}\" class=\"social icon-twitter\"></a>|";
