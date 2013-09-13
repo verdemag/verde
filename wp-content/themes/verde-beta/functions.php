@@ -16,6 +16,7 @@ function enqueueScripts() {
 add_action('wp_enqueue_scripts', 'enqueueScripts');
 
 function getPage($obj) {
+  if($obj == null) return;
   if($obj->post_type == 'post') {
     $class = 'post';
     $c = array('content' => wpautop($obj->post_content),
