@@ -79,6 +79,7 @@ define('FS_METHOD', 'direct');
  * in their development environments.
  */
 define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
 
 define('WP_MEMORY_LIMIT', '128M');
 
