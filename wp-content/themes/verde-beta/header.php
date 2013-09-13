@@ -28,7 +28,7 @@ function pageClasses($type, $name) {
 	        <div class="sub"><?php bloginfo('description'); ?></div>
         </div>
         <nav class="navBar">
-          <a class="navLink selected" data-target="home">Home</a>
+          <a class="navLink selected" id="homelink" data-target="home">Home</a>
           <?php $categories = get_categories(array('sort_column' => 'menu_order',
                                                    'hide_empty' => 0,
                                                    'number' => 6)); ?>
@@ -40,7 +40,7 @@ function pageClasses($type, $name) {
              href="?page=<?php echo $category->slug ?>">
             <?php echo $category->name ?></a>
           <?php endforeach; ?>
-          <a class="navLink" id="aboutlink">About</a>
+          <a class="navLink" id="aboutlink" data-target="about">About</a>
           <span></span>
         </nav>
         <div class="lineBreak"></div>
