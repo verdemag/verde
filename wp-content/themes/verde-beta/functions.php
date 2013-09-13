@@ -16,13 +16,12 @@ function enqueueScripts() {
 add_action('wp_enqueue_scripts', 'enqueueScripts');
 
 function getPage($obj) {
-  if($obj == null) return;
-  if($obj->post_type == 'post') {
+  if($obj->post_type != null && $obj->post_type == 'post') {
     $class = 'post';
     $c = array('content' => wpautop($obj->post_content),
                'title' => $obj->post_title,
                'name' => $obj->post_name);
-  } else if($obj->post_type == 'page') {
+  } else if($obj->post_type != null && $obj->post_type == 'page') {
     $template = $obj->page_template;
     if($template == 'default') {
       $class='page';
