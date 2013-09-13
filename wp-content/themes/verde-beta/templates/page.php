@@ -7,7 +7,7 @@ class page {
   }
 
   public function getPageContents() {
-    $ret .= $this->content;
+    $ret = $this->content;
 
     return $ret;
   }
