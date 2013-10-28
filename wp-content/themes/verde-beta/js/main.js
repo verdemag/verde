@@ -1,10 +1,8 @@
 var LOADER = '<div id="loader"><h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div></div>';
 
-var ticker, body, footer, pages, selected, mask, wrapper, zoomed;
+var body, footer, pages, selected, mask, wrapper, zoomed;
 
 jQuery(document).ready(function() {
-	ticker = jQuery('.ticker');
-	ticker.count = -1;
 	body = jQuery('body');
 	pages = jQuery('.page');
 	selected = pages.first();
@@ -28,17 +26,21 @@ jQuery(document).ready(function() {
 		var targetID = element.data('target');
 		var url;
 
-		var state = { post: targetID };
-		if(targetID == 'home')
-			url = '/';
-		else if(jQuery('#'+targetID).hasClass('category'))
-			url = '?page=' + targetID;
-		else
-			url = '?post=' + targetID;
+		if(!element.hasClass('disabled')) {
+			jQuery('.navLink.disabled').removeClass('disabled');
+			jQuery('.navLink[data-target="' + targetID + '"]').addClass('disabled');
+			var state = { post: targetID };
+			if(targetID == 'home')
+				url = '/';
+			else if(jQuery('#'+targetID).hasClass('category'))
+				url = '?page=' + targetID;
+			else
+				url = '?post=' + targetID;
 
-		History.pushState(state, 'Verde', url);
+			History.pushState(state, 'Verde', url);
 
-		switchToItem(targetID);
+			switchToItem(targetID);
+		}
 	});
 
 	jQuery(window).scroll(function(event) {
@@ -48,10 +50,6 @@ jQuery(document).ready(function() {
 			jQuery(".navBar").removeClass("fixed");
 		}
 	});
-
-	tickerTop = ticker.offset().top;
-	ticker.css('top', tickerTop);
-	ticker.css('position', 'absolute');
 
 	jQuery('#zoombutton').click(function(event) {
 		if(zoomed) {
@@ -64,9 +62,6 @@ jQuery(document).ready(function() {
 			zoomed = true;
 		}
 	});
-
-	tickticker();
-	setInterval(tickticker, 5000);
 
 	window.toSelect = jQuery('.select');
 	if(toSelect.length != 0) {
@@ -95,34 +90,6 @@ jQuery(window).on('statechange', function() {
 		switchToItem(stateData.post);
 	}
 });
-
-function tickticker() {
-
-	var duration = 750;
-	var tickerText = new Array();
-	tickerText[0] = "Quote from a Paly Student";
-	tickerText[1] = "Another interesting quote";
-	tickerText[2] = "Quotes can be very large in size. You have this entire bar to work with. If need be, it can even be bigger.";
-	tickerText[3] = "The Issuu widget causes some lag in scrolling. So here is the solution";
-	tickerText[4] = "Solution to previous ticker comment: Hide issuu widget and display only if switched to the news section";
-	tickerText[5] = "This way when flying by the news section the issuu widget isn't rendered, which means less lag";
-	tickerText[6] = "That, or the scrolling effect could be removed entirely, but it's nice (esp. how the entire verde is one page now)";
-
-	//    jQuery.getJSON(url, function(data) {
-	// fade out old ticker
-	// fade in new ticker in data.msg
-	//	});
-	ticker.animate({ color: 'lightgrey' });
-	ticker.children().fadeTo(duration / 2, 0, function() {
-		ticker.children().html(tickerText[ticker.count%7]);
-		ticker.children().fadeTo(duration / 2, 1);
-	});
-
-	ticker.count++;
-
-	// Cutting duration in half because it is defined as duration of the animation.
-	// Animation consists of two fadeTos (fade in, fade out) so each needs to be 1/2 length.
-}
 
 function highlightItem(item) {
 	jQuery('.navLink.selected').removeClass('selected');
