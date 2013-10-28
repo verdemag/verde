@@ -24,16 +24,18 @@ jQuery(document).ready(function() {
 
 	jQuery('.navLink').click(function(event) {
 		event.preventDefault();
-		var element = jQuery(event.target);
+		var element = jQuery(event.currentTarget);
 		var targetID = element.data('target');
+		var url;
 
 		var state = { post: targetID };
 		if(targetID == 'home')
-			var url = '/'
+			url = '/';
 		else if(jQuery('#'+targetID).hasClass('category'))
-			var url = '?page=' + targetID;
+			url = '?page=' + targetID;
 		else
-			var url = '?post=' + targetID;
+			url = '?post=' + targetID;
+
 		History.pushState(state, 'Verde', url);
 
 		switchToItem(targetID);
