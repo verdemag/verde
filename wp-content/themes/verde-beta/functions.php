@@ -9,8 +9,10 @@ require('functions/ticker.php');
 function enqueueScripts() {
   wp_enqueue_script('jquery');
   wp_enqueue_script('history.js', get_template_directory_uri() . '/js/jquery.history.js', array('jquery'));
-  wp_enqueue_script('other', get_template_directory_uri() . '/js/other.js');
-  wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('jquery', 'history.js'));
+  wp_enqueue_script('other', get_template_directory_uri().'/js/other.js');
+  wp_enqueue_script('ticker', get_template_directory_uri().'/js/ticker.js');
+  wp_enqueue_script('main', get_template_directory_uri().'/js/main.js', array('jquery', 'history.js'));
+  wp_enqueue_style('style', get_stylesheet_uri());
 }
 
 add_action('wp_enqueue_scripts', 'enqueueScripts');
@@ -66,5 +68,4 @@ function getPage($obj) {
 add_action( 'add_meta_boxes', 'add_sidebar_box' );
 add_action( 'add_meta_boxes', 'add_image_box' );
 add_action( 'save_post', 'save_image_for_post', 99 );
-add_action( 'admin_menu' , 'ticker_menu' );
 ?>

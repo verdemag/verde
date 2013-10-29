@@ -2,7 +2,6 @@
 /**
  * The header!
  */
-
 function pageClasses($type, $name) {
   echo $type;
   if($_GET['page'] == $name) {
@@ -14,7 +13,6 @@ function pageClasses($type, $name) {
 <html>
   <head>
     <title><?php wp_title(); ?> <?php bloginfo('name'); ?></title>
-    <link href=<?php bloginfo('stylesheet_url'); ?> rel="stylesheet" type="text/css" />
     <script> var template_dir = '<?php bloginfo("template_url"); ?>'; </script>
 
     <?php wp_head(); ?>
