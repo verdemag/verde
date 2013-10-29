@@ -39,4 +39,3 @@ if (current_user_can('administrator')){
 <?php wp_footer(); ?>
 </body>
 </html>
-
