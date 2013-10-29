@@ -1,7 +1,18 @@
-#squaresWaveG{
+#squaresWaveG {
 	position:relative;
 	width:240px;
-	height:29px}
+	height:29px;
+	margin: 0 auto;
+}
+
+#loader > #squaresWaveG {
+	top: 50%;
+	margin-top: -14px;
+}
+
+.post.loading > #squaresWaveG {
+	margin-top: 100px;
+}
 
 .squaresWaveG{
 	position:absolute;

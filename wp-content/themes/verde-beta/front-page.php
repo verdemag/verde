@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-<div id="loader"></div>
+<div id="loader">
+  <div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div>
+</div>
 
 <section class="<?php pageClasses('page','home'); ?>" id="home">
   <?php echo getPage(get_page_by_title("Home")); ?>

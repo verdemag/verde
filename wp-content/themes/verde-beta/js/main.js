@@ -1,4 +1,4 @@
-var LOADER = '<div id="loader"><h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div></div>';
+var LOADER = '<h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div>';
 
 var body, footer, pages, selected, mask, wrapper, zoomed;
 
@@ -28,6 +28,7 @@ jQuery(document).ready(function() {
 
 		if(!element.hasClass('disabled')) {
 			jQuery('.navLink.disabled').removeClass('disabled');
+			console.log('.navLink[data-target="' + targetID + '"]');
 			jQuery('.navLink[data-target="' + targetID + '"]').addClass('disabled');
 			var state = { post: targetID };
 			if(targetID == 'home')
@@ -115,13 +116,14 @@ function switchToItem(name) {
 
 function getItem(name) {
 	wrapper.width(wrapper.width() + 960);
-	wrapper.append('<section class="post" id="' + name + '"></section>');
+	wrapper.append('<section class="post loading" id="'+name+'"></section>');
 	var item = jQuery('#' + name);
 	item.html(LOADER);
 
 	var ajax = getRequest();
 	ajax.onreadystatechange = function(){
 		if(ajax.readyState == 4){
+			item.removeClass('loading');
 			if(ajax.status == 200) {
 				item.html(ajax.responseText);
 				socialLinks();
