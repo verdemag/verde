@@ -9,7 +9,6 @@ class post {
 
   function __construct($c) {
     $this->post = $c;
-    $this->url = "http://$_SERVER[HTTP_HOST]/?post={$this->post[name]}";
 
     $this->fb = FB_URL.$this->url;
     $this->twit = TWITTER_URL.$this->url;
@@ -18,7 +17,7 @@ class post {
 
   public function getPageContents() {
     $ret = '<article>';
-    $ret .= "<a href=\"{$this->url}\"><h1>{$this->post[title]}</h1></a>";
+    $ret .= "<h1>{$this->post[title]}</h1>";
     $ret .= "<time>{$this->post[post_date]}</time>";
     $ret .= do_shortcode($this->post['content']);
     $ret .= "<a href=\"{$this->url}\">Permalink</a><br /><br />";

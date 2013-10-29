@@ -12,11 +12,13 @@ class category {
     foreach ($this->posts as $post) {
       setup_postdata($post);
       $name = $post->post_name;
+      $href = post_permalink($post->ID);
+      $thumb = get_the_post_thumbnail($post->ID);
       $ret .= ('<article>'
-              . get_the_post_thumbnail($post->ID)
-              . "<a data-target=\"$name\" class=\"navLink\"><h1>{$post->post_title}</h1></a>"
+              . $thumb
+              . "<a href=\"$href\" data-target=\"$name\" class=\"navLink\"><h1>$post->post_title</h1></a>"
               . get_the_excerpt()
-              . '<a data-target="' . $name . '" class="navLink">Read more</a>'
+              . "<a href=\"$href\" data-target=\"$name\" class=\"navLink\">Read more</a>"
               . '</article>');
     }
     $ret .= ('</section>'
