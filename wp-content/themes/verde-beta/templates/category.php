@@ -4,7 +4,8 @@ class category {
 
   function __construct($c) {
     $this->posts = get_posts(array('numberposts' => 8,
-                                   'category' => $c));
+                                   'category' => $c,
+                                   'sort_column'  => 'menu_order'));
   }
 
   public function getPageContents() {
