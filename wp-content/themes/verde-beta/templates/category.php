@@ -4,8 +4,7 @@ class category {
 
   function __construct($c) {
     $this->posts = get_posts(array('numberposts' => 8,
-                                   'category' => $c,
-                                   'orderby'  => 'rand'));
+                                   'category' => $c));
   }
 
   public function getPageContents() {
