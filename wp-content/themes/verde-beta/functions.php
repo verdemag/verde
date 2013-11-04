@@ -3,7 +3,7 @@ show_admin_bar(false);
 
 define('__ROOT__', dirname(__FILE__));
 
-require('functions/meta-box.php');
+require('functions/post-meta.php');
 require('functions/ticker.php');
 
 function enqueueScripts() {
@@ -65,7 +65,19 @@ function getPage($obj) {
   return $loader->getPageContents();
 }
 
-add_action( 'add_meta_boxes', 'add_sidebar_box' );
-add_action( 'add_meta_boxes', 'add_image_box' );
-add_action( 'save_post', 'save_image_for_post', 99 );
+function getCoverPost($location) {
+  global $wpdb;
+	$querystr = "SELECT post_id, count(post_id)
+		FROM $wpdb->postmeta
+		WHERE
+			(meta_key = 'cover_pos' AND meta_value = '". $location ."')
+		GROUP BY post_id;
+	";
+	$postid = $wpdb->get_var($wpdb->prepare($querystr));
+
+  return $postid;
+}
+
+add_action( 'load-post.php', 'cover_post_setup' );
+add_action( 'load-post-new.php', 'cover_post_setup' );
 ?>
