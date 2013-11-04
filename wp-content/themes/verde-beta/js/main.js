@@ -28,7 +28,6 @@ jQuery(document).ready(function() {
 
 		if(!element.hasClass('disabled')) {
 			jQuery('.navLink.disabled').removeClass('disabled');
-			console.log('.navLink[data-target="' + targetID + '"]');
 			jQuery('.navLink[data-target="' + targetID + '"]').addClass('disabled');
 			var state = { post: targetID };
 			if(targetID == 'home')
