@@ -353,11 +353,10 @@ input.wepay-widget-input {
 }
 
 .navGridCell {
+	height: 160px;
   overflow: hidden;
   box-sizing: border-box;
   background-color: white;
-  width: 100%;
-  height: 160px;
   color: white;
   font-size: 20px;
   opacity: 0.5;
@@ -366,11 +365,15 @@ input.wepay-widget-input {
   -webkit-transition: opacity 0.5s;
 }
 
+.navGridCell > img {
+	width: 100%;
+}
+
 .navGridCell.double {
   height: 320px;
 }
 
-img:hover.navGridCell {
+.navGridCell:hover {
   opacity: 1;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;

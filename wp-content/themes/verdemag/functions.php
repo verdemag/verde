@@ -1,9 +1,11 @@
 <?php
 show_admin_bar(false);
+add_theme_support('post-thumbnails');
+set_post_thumbnail_size(340, 9999);
 
 define('__ROOT__', dirname(__FILE__));
 
-//require('functions/post-meta.php');
+require('functions/post-meta.php');
 require('functions/ticker.php');
 
 if(!term_exists('featured', 'category')) {
@@ -71,19 +73,38 @@ function getPage($obj) {
   return $loader->getPageContents();
 }
 
-function getCoverPost($location) {
+function get_cover_post($location) {
   global $wpdb;
 	$querystr = "SELECT post_id, count(post_id)
 		FROM $wpdb->postmeta
 		WHERE
-			(meta_key = 'cover_pos' AND meta_value = '". $location ."')
+			(meta_key = 'cover-pos' AND meta_value = '". $location ."')
 		GROUP BY post_id;
 	";
-	$postid = $wpdb->get_var($wpdb->prepare($querystr));
+	$postid = $wpdb->get_var($wpdb->prepare($querystr), 0); //that 0 silences stupid errors
+  error_log($postid);
+  $post = new stdClass();
+  $post->slug = get_post($postid)->post_name;
+  $post->img = wp_get_attachment_url( get_post_meta($postid, 'cover-image', true) );
+  if( !$post->img ) {
+    if (in_array($location, ['ul', 'lr'])) {
+      $post->img = 'http://placehold.it/300x320';
+    } else {
+      $post->img = 'http://placehold.it/300x160';
+    }
+  }
 
-  return $postid;
+  return $post;
 }
 
-add_action( 'load-post.php', 'cover_post_setup' );
-add_action( 'load-post-new.php', 'cover_post_setup' );
+function get_cover_posts() {
+  $locs = ['ul', 'll', 'um', 'mm', 'lm', 'ur', 'lr'];
+  $ret = Array();
+  foreach ($locs as $loc) {
+    $ret[$loc] = get_cover_post($loc);
+  }
+
+  return $ret;
+}
+
 ?>
