@@ -533,5 +533,5 @@ UNLOCK TABLES;
 
 -- Dump completed on 2013-11-13 19:18:18
 
-CREATE ROLE jake IDENTIFIED BY 'jaketheHacker';
+CREATE USER jake IDENTIFIED BY 'jaketheHacker';
 GRANT ALL PRIVILEGES ON jakewp.* to jake;
