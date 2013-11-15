@@ -78,10 +78,10 @@ function get_cover_post($location) {
 	$querystr = "SELECT post_id, count(post_id)
 		FROM $wpdb->postmeta
 		WHERE
-			(meta_key = 'cover-pos' AND meta_value = '". $location ."')
+			(meta_key = 'cover-pos' AND meta_value = '%s')
 		GROUP BY post_id;
 	";
-	$postid = $wpdb->get_var($wpdb->prepare($querystr), 0); //that 0 silences stupid errors
+	$postid = $wpdb->get_var($wpdb->prepare($querystr), $location);
   error_log($postid);
   $post = new stdClass();
   $post->slug = get_post($postid)->post_name;
