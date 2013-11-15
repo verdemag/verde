@@ -4,7 +4,7 @@
  */
 function pageClasses($type, $name) {
   echo $type;
-  if($_GET['page'] == $name) {
+  if(isset($_GET['page']) && $_GET['page'] == $name) {
     echo ' select';
   }
 }
@@ -14,6 +14,9 @@ function pageClasses($type, $name) {
   <head>
     <title><?php wp_title(); ?> <?php bloginfo('name'); ?></title>
     <script> var template_dir = '<?php bloginfo("template_url"); ?>'; </script>
+    <script>
+    <?php vticker_js(); ?>
+    </script>
 
     <?php wp_head(); ?>
   </head>

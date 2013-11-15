@@ -1,57 +1,85 @@
 <?php
-function install_ticker() {
-  add_taxonomy();
-}
+global $wpdb;
+define('vticker_table', $wpdb->prefix . 'verde_ticker');
+define('vticker_UNIQUE_NAME', 'verde-ticker');
+define('vticker_TITLE', 'Verde ticker');
 
-function add_taxonomy()  {
-  $labels = array(
-    'name'                       => 'Ticker Blurbs',
-    'singular_name'              => 'Ticker Blurb',
-    'menu_name'                  => 'Ticker Blurbs',
-    'all_items'                  => 'All Tickers Blurbs',
-    'new_item_name'              => 'New Ticker Blurb',
-    'add_new_item'               => 'Add New Ticker Blurb',
-    'edit_item'                  => 'Edit Ticker Blurb',
-    'update_item'                => 'Update Ticker Blurb',
-    'separate_items_with_commas' => 'Separate ticker blurbs with commas',
-    'search_items'               => 'Search ticker blurbs',
-    'add_or_remove_items'        => 'Add or remove ticker blurbs',
-    'choose_from_most_used'      => 'Choose from the most used ticker blurbs',
-  );
+function vticker_js() {
+  global $wpdb;
 
-  $capabilities = array(
-    'manage_terms'               => 'edit_posts',
-    'edit_terms'                 => 'edit_posts',
-    'delete_terms'               => 'edit_posts',
-    'assign_terms'               => 'edit_posts',
-  );
+	$sSql = "select * from ".vticker_table." where vticker_status = 'YES'";
+	$sSql.= " and ( vticker_dateend >= NOW() or vticker_dateend = '0000-00-00 00:00:00' )";
+	$sSql.= " Order by vticker_order";
 
-  $args = array(
-    'labels'                     => $labels,
-    'hierarchical'               => false,
-    'public'                     => true,
-    'show_ui'                    => true,
-    'show_admin_column'          => true,
-    'show_in_nav_menus'          => true,
-    'show_tagcloud'              => true,
-    'capabilities'               => $capabilities,
-    'rewrite'                    => array( 'slug' => 'ticker_blurbs' )
-  );
+	$data = $wpdb->get_results($sSql);
 
-  register_taxonomy( 'ticker_blurbs', 'post', $args );
-}
-
-function ticker_menu() {
-  add_options_page( 'Text Ticker Options', 'Text Ticker', 'edit_posts', 'ticker_menu', 'ticker_options' );
-}
-
-function ticker_options() {
-  if ( !current_user_can( 'edit_posts' ) )  {
-    wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+  $ret = "var tickerText = new Array();\n";
+  if(!$data) {
+    $ret .= "tickerText.push('Add some text to the ticker!');";
   }
-  echo '<div class="wrap">';
-  echo '<p>Here is where the form would go if I actually had options.</p>';
-  echo '</div>';
+
+  foreach($data as $datum) {
+    $link = $data->vticker_link;
+    if($link == '#') {
+      $text = stripslashes($datum->vticker_text);
+    } else {
+      $text = '<a href="'.$link.'">';
+      $text.= stripslashes($datum->vticker_text);
+      $text.= '</a>';
+    }
+    $ret .= "tickerText.push('".$vticker_text."');\n";
+  }
+
+  echo $ret;
 }
 
+function vticker_install() {
+  global $wpdb;
+
+  if($wpdb->get_var("show tables like '" . vticker_table . "'") != vticker_table) {
+    error_log('no table!');
+		$sSql = "CREATE TABLE ". vticker_table . " (
+			 vticker_id mediumint(9) NOT NULL AUTO_INCREMENT,
+			 vticker_text text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+			 vticker_link VARCHAR(1024) DEFAULT '#' NOT NULL,
+			 vticker_order int(11) NOT NULL default '0',
+			 vticker_status char(3) NOT NULL default 'YES',
+			 vticker_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			 vticker_dateend datetime DEFAULT '9999-12-31 00:00:00' NOT NULL,
+			 vticker_extra1 VARCHAR(100) NOT NULL default '' ,
+			 vticker_extra2 VARCHAR(100) NOT NULL default '' ,
+			 vticker_extra3 VARCHAR(100) NOT NULL default '' ,
+			 UNIQUE KEY vticker_id (vticker_id)
+		  );";
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		dbDelta( $sSql );
+  }
+}
+
+function vticker_admin() {
+	global $wpdb;
+	$current_page = isset($_GET['ac']) ? $_GET['ac'] : '';
+	switch($current_page)
+	{
+		case 'edit':
+			require(dirname(__FILE__).'/../pages/content-management-edit.php');
+			break;
+		case 'add':
+			require(dirname(__FILE__).'/../pages/content-management-add.php');
+			break;
+		default:
+			require(dirname(__FILE__).'/../pages/content-management-show.php');
+			break;
+	}
+}
+
+function vticker_add_to_menu() {
+  add_options_page('Verde Ticker', 'Verde Ticker', 'manage_options', 'verde-ticker', 'vticker_admin');
+}
+
+if(is_admin()) {
+  add_action('admin_menu', 'vticker_add_to_menu');
+}
+
+add_action('after_setup_theme', 'vticker_install', 10, 2);
 ?>
