@@ -88,6 +88,8 @@ jQuery(window).on('statechange', function() {
 	stateData = History.getState().data;
 	if (!jQuery.isEmptyObject(stateData)) {
 		switchToItem(stateData.post);
+	} else {
+		switchToItem('home');
 	}
 });
 
