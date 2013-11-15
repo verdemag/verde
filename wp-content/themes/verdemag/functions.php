@@ -8,10 +8,6 @@ define('__ROOT__', dirname(__FILE__));
 require('functions/post-meta.php');
 require('functions/ticker.php');
 
-if(!term_exists('featured', 'category')) {
-  wp_insert_term('featured', 'category');
-}
-
 function enqueueScripts() {
   wp_enqueue_script('jquery');
   wp_enqueue_script('history.js', get_template_directory_uri() . '/js/jquery.history.js', array('jquery'));
