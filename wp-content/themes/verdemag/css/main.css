@@ -142,7 +142,7 @@ main > section {
 }
 
 ul, li {
-  /*list-style: none;*/
+  list-style: none;
   list-style-type: dash;
   display: inline;
   padding: 0px;
@@ -157,13 +157,14 @@ a {
 
 header nav {
 	display: block;
+	position: relative;
 	float: left;
 	padding: 3px 35px;
 	margin-left: 0;
 	margin-right: 0;
 	width: 890px;
-	opacity: 0.5;
-  background-color: black;
+	opacity: 0.9;
+  background-color: grey;
 	text-align: justify;
   font-size: 20px;
 	font-family: Helvetica;
@@ -177,11 +178,47 @@ nav.fixed {
   left: calc(50% - 480px);
 }
 
-nav a {
+nav > ul {
 	display: inline;
-	width: 100%;
+	margin: 0;
+	padding: 0;
+	line-height: 30px;
+	white-space: nowrap;
+}
+
+nav li {
+	list-style-type: none;
+	display: inline;
+	position: relative;
+	z-index: 1
+}
+
+nav li ul {
+	display: none;
+	padding: 0 15px;
+	padding-bottom: 5px;
+	position: absolute;
+	top: 0;
+	border-top: 47px solid transparent;
+  background-color: grey;
+	z-index: -1;
+	clear: both;
+}
+
+nav li:hover ul,
+nav li ul:hover {
+	display: block;
+}
+
+nav li ul li {
+	display: block;
+}
+
+nav a {
+	display: inline-block;
+	color: white;
   cursor: pointer;
-  color: white;
+	z-index: 1;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -191,12 +228,12 @@ nav a {
 }
 
 nav a:hover {
-  color: lime;
+  color: lightgreen;
 }
 
 nav a.selected {
   cursor: default;
-  color: #009000;
+  color: lime;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -359,21 +396,21 @@ input.wepay-widget-input {
   background-color: white;
   color: white;
   font-size: 20px;
+}
+
+.navGridCell img {
+	width: 100%;
   opacity: 0.5;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
 }
 
-.navGridCell > img {
-	width: 100%;
-}
-
 .navGridCell.double {
   height: 320px;
 }
 
-.navGridCell:hover {
+.navGridCell img:hover {
   opacity: 1;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;

@@ -2,12 +2,15 @@
   <a class="wepay-widget-button wepay-green" id="wepay_widget_anchor_50f8893bb9c9c" href="https://www.wepay.com/donations/11912">Help keep Verde running!</a>
 </section>
 <section>
-  <span class="sideTitle">MOST READ</span>
-  <div>
-    <a href="http://verdemagazine.com/2013/02/21/mates-in-chess/">Mates in Chess</a></br>
-    <a href="http://verdemagazine.com/2013/02/21/palys-budget/">Paly's Budget</a></br>
-    <a href="http://verdemagazine.com/2013/02/19/spring-is-in-the-air/">Spring is in the Air</a></br>
-  </div>
+<?php
+require_once("../../../wp-blog-header.php");
+$ad = get_posts(array('numberposts' => 1,
+                      'orderby' => 'rand',
+                      'post_type' => 'ad'))[0];
+?>
+<a href="<?php echo get_post_meta($ad->ID, 'url', true); ?>">
+ <img src="<?php echo wp_get_attachment_url(array_rand(get_post_meta($ad->ID, 'img'))); ?>">
+</a>
 </section>
 <section>
   <h6>Verde on Social Media</h6>

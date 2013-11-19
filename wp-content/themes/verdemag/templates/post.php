@@ -1,8 +1,8 @@
 <?php
 define('SHARE_MSG', 'Check out this article!');
-define(FB_URL, 'https://www.facebook.com/share.php?u=');
-define(TWITTER_URL, 'https://www.twitter.com/share?via=verdemagazine&url=');
-define(GPLUS_URL, 'https://plus.google.com/share?url=');
+define('FB_URL', 'https://www.facebook.com/share.php?u=');
+define('TWITTER_URL', 'https://www.twitter.com/share?via=verdemagazine&url=');
+define('GPLUS_URL', 'https://plus.google.com/share?url=');
 
 class post {
   private $post, $link;
@@ -10,6 +10,7 @@ class post {
   function __construct($c) {
     $this->post = $c;
 
+    $this->url = get_site_url().'?post='.$c['name'];
     $this->fb = FB_URL.$this->url;
     $this->twit = TWITTER_URL.$this->url;
     $this->gplus = GPLUS_URL.$this->url;
@@ -17,8 +18,8 @@ class post {
 
   public function getPageContents() {
     $ret = '<article>';
-    $ret .= "<h1>{$this->post[title]}</h1>";
-    $ret .= "<time>{$this->post[post_date]}</time>";
+    $ret .= "<h1>{$this->post['title']}</h1>";
+    $ret .= "<time>{$this->post['date']}</time>";
     $ret .= do_shortcode($this->post['content']);
     $ret .= "<a href=\"{$this->url}\">Permalink</a><br /><br />";
     $ret .= "<a href=\"{$this->fb}\" class=\"social icon-fb\"></a>|";

@@ -30,12 +30,15 @@ jQuery(document).ready(function() {
 			jQuery('.navLink.disabled').removeClass('disabled');
 			jQuery('.navLink[data-target="' + targetID + '"]').addClass('disabled');
 			var state = { post: targetID };
+			url = ver ? '/?ver='+ver+'&' : '?';
 			if(targetID == 'home')
-				url = '/';
+				url = ver ? '/?ver='+ver : '/';
+			else if(targetID == 'about')
+				url += 'page=about';
 			else if(jQuery('#'+targetID).hasClass('category'))
-				url = '?page=' + targetID;
+				url += 'page=' + targetID;
 			else
-				url = '?post=' + targetID;
+				url += 'post=' + targetID;
 
 			History.pushState(state, 'Verde', url);
 
@@ -67,13 +70,15 @@ jQuery(document).ready(function() {
 	if(toSelect.length != 0) {
 		selected = toSelect;
 		selected.removeClass('select');
+	} else {
+		selected = jQuery('#home');
 	}
 
 	mask.css('min-height', jQuery(window).height() - mask.offset().top);
 });
 
 jQuery(window).load(function() {
-	var navLink = jQuery('#' + selected.attr('id') + 'link');
+	var navLink = jQuery('nav .navLink[data-target="'+selected.attr('id')+'"]');
 	if(navLink.length > 0)
 		highlightItem(navLink);
 	wrapper.css({top:-selected.position().top, left:-selected.position().left});
@@ -103,8 +108,7 @@ function resizeMask() {
 }
 
 function switchToItem(name) {
-	var linkID = name + 'link';
-	highlightItem(jQuery('#' + linkID));
+	highlightItem(jQuery('nav .navLink[data-target="'+name+'"]'));
 
 	if(jQuery('#' + name).length == 0) {
 		getItem(name);

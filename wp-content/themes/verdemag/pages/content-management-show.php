@@ -108,7 +108,6 @@ if (isset($_POST['frm_vticker_display']) && $_POST['frm_vticker_display'] == 'ye
 	  <div class="tablenav">
 	  <h2>
 	  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=verde-ticker&amp;ac=add">Add New</a>
-	  <a class="button add-new-h2" target="_blank" href="<?php echo vticker_FAV; ?>">Help</a>
 	  </h2>
 	  </div>
 	  <div style="height:8px"></div>

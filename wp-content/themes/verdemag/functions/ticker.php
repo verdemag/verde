@@ -19,7 +19,7 @@ function vticker_js() {
   }
 
   foreach($data as $datum) {
-    $link = $data->vticker_link;
+    $link = $datum->vticker_link;
     if($link == '#') {
       $text = stripslashes($datum->vticker_text);
     } else {
@@ -27,7 +27,7 @@ function vticker_js() {
       $text.= stripslashes($datum->vticker_text);
       $text.= '</a>';
     }
-    $ret .= "tickerText.push('".$vticker_text."');\n";
+    $ret .= "tickerText.push('".$text."');\n";
   }
 
   echo $ret;

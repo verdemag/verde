@@ -64,7 +64,7 @@ if (isset($_POST['vticker_form_submit']) && $_POST['vticker_form_submit'] == 'ye
 		$sql = $wpdb->prepare(
 			"INSERT INTO `".vticker_table."`
 			(`vticker_text`, `vticker_link`, `vticker_order`, `vticker_status`, `vticker_date`, `vticker_dateend`)
-			VALUES(%s, %s, %s, %s, %s, %s, %s)",
+			VALUES(%s, %s, %s, %s, %s, %s);",
 			array($form['vticker_text'], $form['vticker_link'], $form['vticker_order'], $form['vticker_status'], $vticker_date, $form['vticker_dateend'])
 		);
 		$wpdb->query($sql);

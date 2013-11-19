@@ -2,9 +2,12 @@
 show_admin_bar(false);
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(340, 9999);
+register_nav_menu( 'primary', 'Primary Menu' );
 
 define('__ROOT__', dirname(__FILE__));
 
+require('functions/ads.php');
+require('functions/navlinks.php');
 require('functions/post-meta.php');
 require('functions/ticker.php');
 
@@ -19,12 +22,22 @@ function enqueueScripts() {
 
 add_action('wp_enqueue_scripts', 'enqueueScripts');
 
+global $archive_ID, $ver;
+$archive_ID = get_category_by_slug('archive')->cat_ID;
+$ver = isset($_GET['ver']) ? (
+  get_category_by_slug($_GET['ver'])
+):(
+  get_categories(array('parent' => $archive_ID,
+                       'order' => 'desc',
+                       'number' => 1))[0]);
+
 function getPage($obj) {
   if(isset($obj->post_type)) {
     if($obj->post_type == 'post') {
       $class = 'post';
       $c = array('content' => wpautop($obj->post_content),
                  'title' => $obj->post_title,
+                 'date' => $obj->post_date,
                  'name' => $obj->post_name);
     } else if($obj->post_type == 'page') {
       $template = $obj->page_template;
@@ -37,7 +50,8 @@ function getPage($obj) {
     }
   } else if($obj->cat_name != '') {
     $class = 'category';
-    $c = $obj->cat_ID;
+    global $ver;
+    $c = array($obj->cat_ID, $ver->cat_ID);
   } else {
     $class = $obj->post_type;
     $c = wpautop($obj->post_content);
@@ -77,8 +91,7 @@ function get_cover_post($location) {
 			(meta_key = 'cover-pos' AND meta_value = '%s')
 		GROUP BY post_id;
 	";
-	$postid = $wpdb->get_var($wpdb->prepare($querystr), $location);
-  error_log($postid);
+	$postid = $wpdb->get_var($wpdb->prepare($querystr, $location));
   $post = new stdClass();
   $post->slug = get_post($postid)->post_name;
   $post->img = wp_get_attachment_url( get_post_meta($postid, 'cover-image', true) );

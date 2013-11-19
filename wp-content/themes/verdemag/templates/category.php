@@ -3,8 +3,8 @@ class category {
   private $posts;
 
   function __construct($c) {
-    $this->posts = get_posts(array('numberposts' => 8,
-                                   'category' => $c));
+    $this->posts = get_posts(array('numberposts' => -1,
+                                   'category__and' => $c));
   }
 
   public function getPageContents() {

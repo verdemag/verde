@@ -57,9 +57,21 @@
   </div>
 </section>
 <?php
-$categories = get_categories(array('sort_column' => 'menu_order',
-                                   'hide_empty' => 0,
-                                   'number' => 6));
+$locations = get_nav_menu_locations();
+
+if (isset($locations['primary'])) {
+  $menu_id = $locations['primary'];
+}
+$navitems = wp_get_nav_menu_items($menu_id);
+$categories = array();
+global $archive_ID;
+foreach ($navitems as $navitem) {
+  if ($navitem->object == "category") {
+    $cat = get_category($navitem->object_id);
+    if($cat->parent != $archive)
+      $categories[] = $cat;
+  }
+}
 foreach ($categories as $category) : ?>
 <section class="<?php pageClasses('category', $category->slug); ?>" id="<?php echo $category->slug ?>">
   <?php echo getPage($category) ?>
@@ -70,7 +82,7 @@ foreach ($categories as $category) : ?>
   <?php echo getPage(get_page_by_title("About")); ?>
 </section>
 
-<?php if(isset($_GET['post'])) : ?>
+<?php if(isset($_GET['post']) && strpos($_GET['post'], 'category/') != 0) : ?>
 <section class="post select" id="<?php echo $_GET['post']; ?>">
   <?php echo getPage(get_posts(array( 'name' => $_GET['post']))[0]); ?>
 </section>
