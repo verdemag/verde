@@ -7,9 +7,12 @@ require_once("../../../wp-blog-header.php");
 $ad = get_posts(array('numberposts' => 1,
                       'orderby' => 'rand',
                       'post_type' => 'ad'))[0];
+
+$imgs = get_post_meta($ad->ID, 'img');
+$img = $imgs[array_rand($imgs)];
 ?>
 <a href="<?php echo get_post_meta($ad->ID, 'url', true); ?>">
- <img src="<?php echo wp_get_attachment_url(array_rand(get_post_meta($ad->ID, 'img'))); ?>">
+ <img src="<?php echo wp_get_attachment_url($img); ?>">
 </a>
 </section>
 <section>
