@@ -1,6 +1,6 @@
-var LOADER = '<h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div>';
+var body, footer, pages, selected, mask, wrapper, zoomed, ver, History;
 
-var body, footer, pages, selected, mask, wrapper, zoomed;
+var LOADER = '<h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div>';
 
 jQuery(document).ready(function() {
 	body = jQuery('body');
@@ -20,31 +20,7 @@ jQuery(document).ready(function() {
 		switchToItem('home');
 	});
 
-	jQuery('.navLink').click(function(event) {
-		event.preventDefault();
-		var element = jQuery(event.currentTarget);
-		var targetID = element.data('target');
-		var url;
-
-		if(!element.hasClass('disabled')) {
-			jQuery('.navLink.disabled').removeClass('disabled');
-			jQuery('.navLink[data-target="' + targetID + '"]').addClass('disabled');
-			var state = { post: targetID };
-			url = ver ? '/?ver='+ver+'&' : '?';
-			if(targetID == 'home')
-				url = ver ? '/?ver='+ver : '/';
-			else if(targetID == 'about')
-				url += 'page=about';
-			else if(jQuery('#'+targetID).hasClass('category'))
-				url += 'page=' + targetID;
-			else
-				url += 'post=' + targetID;
-
-			History.pushState(state, 'Verde', url);
-
-			switchToItem(targetID);
-		}
-	});
+	jQuery('.navLink').click(navLinkClick);
 
 	jQuery(window).scroll(function(event) {
 		if(jQuery(window).scrollTop() - body.offset().top >= navTop - 5) {
@@ -97,6 +73,32 @@ jQuery(window).on('statechange', function() {
 		switchToItem('home');
 	}
 });
+
+function navLinkClick(event) {
+	event.preventDefault();
+	var element = jQuery(event.currentTarget);
+	var targetID = element.data('target');
+	var url;
+
+	if(!element.hasClass('disabled')) {
+		jQuery('.navLink.disabled').removeClass('disabled');
+		jQuery('.navLink[data-target="' + targetID + '"]').addClass('disabled');
+		var state = { post: targetID };
+		url = ver ? '/?ver='+ver+'&' : '?';
+		if(targetID == 'home')
+			url = ver ? '/?ver='+ver : '/';
+		else if(targetID == 'about')
+			url += 'page=about';
+		else if(jQuery('#'+targetID).hasClass('category'))
+			url += 'page=' + targetID;
+		else
+			url += 'post=' + targetID;
+
+		History.pushState(state, 'Verde', url);
+
+		switchToItem(targetID);
+	}
+}
 
 function highlightItem(item) {
 	jQuery('.navLink.selected').removeClass('selected');

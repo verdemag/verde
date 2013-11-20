@@ -18,8 +18,10 @@ class post {
 
   public function getPageContents() {
     $ret = '<article>';
-    $ret .= "<h1>{$this->post['title']}</h1>";
-    $ret .= "<time>{$this->post['date']}</time>";
+    $ret .= "<header><h1>{$this->post['title']}</h1>";
+    $ret .= "<h2>{$this->post['subtitle']}</h2>";
+    if($this->post['author'])
+      $ret .= "<span class=\"author\">By: {$this->post['author']}</span></header>";
     $ret .= do_shortcode($this->post['content']);
     $ret .= "<a href=\"{$this->url}\">Permalink</a><br /><br />";
     $ret .= "<a href=\"{$this->fb}\" class=\"social icon-fb\"></a>|";

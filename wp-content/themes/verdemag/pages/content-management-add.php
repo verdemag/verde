@@ -114,7 +114,7 @@ if ($vticker_error_found == FALSE && strlen($vticker_success) > 0)
 
 		<label for="tag-a">Link</label>
 		<input name="vticker_link" type="text" id="vticker_link" value="#" size="133" maxlength="1024" />
-		<p>Please enter your link.</p>
+		<p>Please enter your link. To use a post, input the post slug (i.e. hello-world).</p>
 
 		<label for="tag-a">Order</label>
 		<input name="vticker_order" type="text" id="vticker_order" value="1" size="20" maxlength="3" />
@@ -129,16 +129,19 @@ if ($vticker_error_found == FALSE && strlen($vticker_success) > 0)
 
 		<label for="tag-title">Expiration date</label>
 		<input name="vticker_dateend" type="text" id="vticker_dateend" value="9999-12-31" maxlength="10" />
-		<p>Please enter the expiration date in this format YYYY-MM-DD <br /> 9999-12-31 : Is equal to no expire.</p>
+		<p>
+			Please enter the expiration date in this format YYYY-MM-DD<br>
+			If the value is 9999-12-31, this text will not expire.
+    </p>
 
-      <input name="vticker_id" id="vticker_id" type="hidden" value="">
-      <input type="hidden" name="vticker_form_submit" value="yes"/>
-      <p class="submit">
-        <input name="publish" lang="publish" class="button" value="Submit" type="submit" />
-        <input name="publish" lang="publish" class="button" onclick="_vticker_redirect()" value="Cancel" type="button" />
-        <input name="Help" lang="publish" class="button" onclick="_vticker_help()" value="Help" type="button" />
-      </p>
+    <input name="vticker_id" id="vticker_id" type="hidden" value="">
+    <input type="hidden" name="vticker_form_submit" value="yes">
+    <p class="submit">
+      <input name="publish" lang="publish" class="button" value="Submit" type="submit" />
+      <input name="publish" lang="publish" class="button" onclick="_vticker_redirect()" value="Cancel" type="button" />
+      <input name="Help" lang="publish" class="button" onclick="_vticker_help()" value="Help" type="button" />
+    </p>
 	  <?php wp_nonce_field('vticker_form_add'); ?>
-    </form>
+  </form>
 </div>
 </div>

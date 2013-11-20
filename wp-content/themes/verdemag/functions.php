@@ -37,15 +37,11 @@ function getPage($obj) {
       $class = 'post';
       $c = array('content' => wpautop($obj->post_content),
                  'title' => $obj->post_title,
-                 'date' => $obj->post_date,
-                 'name' => $obj->post_name);
+                 'name' => $obj->post_name,
+                 'author' => get_post_meta($obj->ID, 'verde_author', true),
+                 'subtitle' => get_post_meta($obj->ID, 'subtitle', true));
     } else if($obj->post_type == 'page') {
-      $template = $obj->page_template;
-      if($template == 'default') {
-        $class='page';
-      } else {
-        $class = substr($template, 15, strlen($template) - 19);
-      }
+      $class='page';
       $c = wpautop($obj->post_content);
     }
   } else if($obj->cat_name != '') {

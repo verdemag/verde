@@ -40,10 +40,10 @@ function ad_meta_box() {
         'type' => 'image_advanced'
       ),
       array(
-        'name' => 'URL',
+        'name' => 'URL (if set, Post is ignored)',
         'id' => 'url',
         'type' => 'text',
-        'std' => '#'
+        'std' => ''
       ),
     )
   );

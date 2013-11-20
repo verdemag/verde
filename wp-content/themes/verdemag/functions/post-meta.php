@@ -36,5 +36,32 @@ function cover_meta_box() {
   new RW_Meta_Box( $meta_box );
 }
 
+function post_info_meta_box() {
+  if ( !class_exists( 'RW_Meta_Box' ) )
+  return;
+
+  $meta_box = array(
+    'id' => 'post_info_meta_box',
+    'title' => 'Post Info',
+    'pages' => array('post'),
+    'context' => 'side',
+    'autosave' => true,
+    'fields' => array(
+      array(
+        'name' => 'Author',
+        'id' => 'verde_author',
+        'type' => 'text'
+      ),
+      array(
+        'name' => 'Subtitle',
+        'id' => 'subtitle',
+        'type' => 'text'
+      )
+    )
+  );
+  new RW_Meta_Box( $meta_box );
+}
+
+add_action('admin_init', 'post_info_meta_box');
 add_action('admin_init', 'cover_meta_box');
 ?>

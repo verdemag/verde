@@ -266,6 +266,10 @@ nav span {
   padding: 5px;
 }
 
+.ticker a {
+	color: grey;
+}
+
 .category section.articles {
 	display: inline;
 	width: 700px;
@@ -320,29 +324,24 @@ article {
   color: black;
 }
 
-article:hover {
-  color: rgba(0,0,0,1);
+article header {
+	margin-bottom: 20px;
+}
+
+article header h1 {
+	color: black;
+	margin-bottom: -4px;
+}
+
+article header h2 {
+	font-size: 17px;
+	font-family: Droid Sans, sans-serif;
+	font-weight: normal;
+	margin-bottom: 5px;
 }
 
 article p {
   text-align: justify;
-}
-
-article h1:after {
-	vertical-align: middle;
-	font-size: 15px;
-	font-family: 'icomoon';
-	margin-left: 5px;
-	content: 'l';
-	opacity: 0;
-}
-
-article h1:hover:after {
-	opacity: 1;
-}
-
-article a h1 {
-	color: black;
 }
 
 .lineBreak {

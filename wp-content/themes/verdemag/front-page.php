@@ -4,7 +4,7 @@
 </div>
 
 <?php $cover = get_cover_posts(); ?>
-<section class="<?php pageClasses('page','home'); ?>" id="home">
+<section class="page" id="home">
   <div class="navGrid">
     <div class="navGridCol left">
       <div class="navGridCell double">
@@ -63,26 +63,28 @@ if (isset($locations['primary'])) {
   $menu_id = $locations['primary'];
 }
 $navitems = wp_get_nav_menu_items($menu_id);
-$categories = array();
+$pages = array();
 global $archive_ID;
 foreach ($navitems as $navitem) {
-  if ($navitem->object == "category") {
+  switch ($navitem->object) {
+    case "category":
     $cat = get_category($navitem->object_id);
-    if($cat->parent != $archive)
-      $categories[] = $cat;
+    if($cat->parent != $archive_ID)
+    $pages[] = $cat;
+    break;
+    case "page":
+    $pages[] = get_post($navitem->object_id);
+    break;
+    default: break;
   }
 }
-foreach ($categories as $category) : ?>
-<section class="<?php pageClasses('category', $category->slug); ?>" id="<?php echo $category->slug ?>">
-  <?php echo getPage($category) ?>
+foreach ($pages as $page) : ?>
+<section class="<?php pageClasses($page); ?>" id="<?php echo $page->slug ? $page->slug : $page->post_name; ?>">
+  <?php echo getPage($page) ?>
 </section>
 <?php endforeach; ?>
 
-<section class="<?php pageClasses('page', 'about') ?>" id="about">
-  <?php echo getPage(get_page_by_title("About")); ?>
-</section>
-
-<?php if(isset($_GET['post']) && strpos($_GET['post'], 'category/') != 0) : ?>
+<?php if(isset($_GET['post'])) : ?>
 <section class="post select" id="<?php echo $_GET['post']; ?>">
   <?php echo getPage(get_posts(array( 'name' => $_GET['post']))[0]); ?>
 </section>
