@@ -1,4 +1,4 @@
-var body, footer, pages, selected, mask, wrapper, zoomed, ver, History;
+var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, zoomed, ver, History, jQuery, template_dir;
 
 var LOADER = '<h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div>';
 
@@ -42,7 +42,7 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	window.toSelect = jQuery('.select');
+	toSelect = jQuery('.select');
 	if(toSelect.length != 0) {
 		selected = toSelect;
 		selected.removeClass('select');
@@ -66,7 +66,7 @@ jQuery(window).load(function() {
 });
 
 jQuery(window).on('statechange', function() {
-	stateData = History.getState().data;
+	var stateData = History.getState().data;
 	if (!jQuery.isEmptyObject(stateData)) {
 		switchToItem(stateData.post);
 	} else {
@@ -127,21 +127,17 @@ function getItem(name) {
 	var item = jQuery('#' + name);
 	item.html(LOADER);
 
-	var ajax = getRequest();
-	ajax.onreadystatechange = function(){
-		if(ajax.readyState == 4){
-			item.removeClass('loading');
-			if(ajax.status == 200) {
-				item.html(ajax.responseText);
-				socialLinks();
-			} else {
-				item.html("error " + ajax.status + "\n" + ajax.responseText);
-			}
-			resizeMask();
+	var url = template_dir + '/load-post.php?post=' + name;
+	jQuery.ajax({
+		url: url,
+		success: function(data) {
+			item.html(data);
+			socialLinks();
+		},
+		error: function(data, status) {
+			item.html("error " + status + "\n" + data);
 		}
-	};
-	ajax.open("GET", template_dir + "/load-post.php?post=" + name, true);
-	ajax.send(null);
+	});
 }
 
 function socialLinks() {
@@ -153,25 +149,3 @@ function socialLinks() {
 		if (window.focus) {popup.focus();}
 	});
 }
-
-function getRequest() {
-	var req = false;
-	try{
-		// most browsers
-		req = new XMLHttpRequest();
-	} catch (e){
-		// IE
-		try{
-			req = new ActiveXObject("Msxml2.XMLHTTP");
-		} catch (e) {
-			// try an older version
-			try{
-				req = new ActiveXObject("Microsoft.XMLHTTP");
-			} catch (e){
-				return false;
-			}
-		}
-	}
-	return req;
-}
-

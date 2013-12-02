@@ -12,7 +12,8 @@ function pageClasses($obj) {
   }
 }
 
-$ver = isset($_GET['ver']) ? "\"{$_GET['ver']}\"" : 'false';
+global $ver;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@ $ver = isset($_GET['ver']) ? "\"{$_GET['ver']}\"" : 'false';
 		<title><?php wp_title(); ?> <?php bloginfo('name'); ?></title>
 		<script>
 		var template_dir = '<?php bloginfo("template_url"); ?>';
-		var ver = <?php echo $ver; ?>;
+		var ver = '<?php echo $ver->slug; ?>';
 		</script>
 		<script>
 		<?php vticker_js(); ?>
@@ -33,7 +34,7 @@ $ver = isset($_GET['ver']) ? "\"{$_GET['ver']}\"" : 'false';
 		<header>
 			<div class="container_16">
 				<div id="logo">
-					<div class="title"><?php bloginfo('name'); ?></div>
+					<div class="title"><?php bloginfo('name'); ?><small><?php echo $ver->name ?></small></div>
 					<div class="sub"><?php bloginfo('description'); ?></div>
 				</div>
 				<nav class="navBar">

@@ -16,6 +16,7 @@
       <?php if (is_user_logged_in()) : ?>
       <a href="wp-admin">Dashboard</a> -
       <a href="wp-admin/post-new.php">Write</a>
+			<a href="<?php echo wp_logout_url(); ?>">Logout</a>
       <?php else : ?>
       <a href="wp-login.php">Login</a>
       <?php endif; ?>

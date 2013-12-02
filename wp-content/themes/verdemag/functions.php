@@ -87,9 +87,10 @@ function get_cover_post($location) {
 			(meta_key = 'cover-pos' AND meta_value = '%s')
 		GROUP BY post_id;
 	";
-	$postid = $wpdb->get_var($wpdb->prepare($querystr, $location));
-  $post = new stdClass();
-  $post->slug = get_post($postid)->post_name;
+	$postid = $wpdb->get_var($wpdb->prepare($querystr, $location), 0, 0);
+  $postobj = get_post($postid)->post_name;
+  $post->slug = $postobj->post_name;
+  $post->title = $postobj->post_title;
   $post->img = wp_get_attachment_url( get_post_meta($postid, 'cover-image', true) );
   if( !$post->img ) {
     if (in_array($location, ['ul', 'lr'])) {

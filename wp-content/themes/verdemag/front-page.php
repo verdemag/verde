@@ -5,6 +5,11 @@
 		<h1>Site under construction!</h1>
 		<p>Hello, this site is currently under construction! If you want to view the site, please <a href="http://verdemagazine.com/wp-login.php?redirect_to=http%3A%2F%2Fverdemagazine.com%2F&reauth=1">login</a>.</p>
 	</section>
+	<script>
+	 jQuery(document).ready(function() {
+		 window.setTimeout(function() {jQuery('.navLink').click(null);}, 200)
+	 });
+	</script>
 	<?php get_footer(); ?>
 
 	<?php die(); ?>
@@ -23,6 +28,7 @@
            data-target="<?php echo $cover['ul']->slug; ?>">
            <img src="<?php echo $cover['ul']->img; ?>">
         </a>
+				<h2><?php echo $cover['ul']->title ?></h2>
       </div>
       <div class="navGridCell double">
         <a class="navLink"

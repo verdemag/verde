@@ -89,6 +89,12 @@ footer a {
   overflow: hidden;
 }
 
+#logo .title small {
+	letter-spacing: 0;
+	color: black;
+	font-size: 24px;
+}
+
 #logo .sub {
   font-variant: small-caps;
   font-style: normal;
@@ -403,7 +409,7 @@ input.wepay-widget-input {
 
 .navGridCell img {
 	width: 100%;
-  opacity: 0.5;
+  opacity: 1;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
@@ -414,7 +420,7 @@ input.wepay-widget-input {
 }
 
 .navGridCell img:hover {
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
