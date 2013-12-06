@@ -81,14 +81,20 @@ function getPage($obj) {
 
 function get_cover_post($location) {
   global $wpdb;
-	$querystr = "SELECT post_id, count(post_id)
+	$querystr = "SELECT post_id
 		FROM $wpdb->postmeta
 		WHERE
 			(meta_key = 'cover-pos' AND meta_value = '%s')
 		GROUP BY post_id;
 	";
-	$postid = $wpdb->get_var($wpdb->prepare($querystr, $location), 0, 0);
-  $postobj = get_post($postid)->post_name;
+	$postids = $wpdb->get_col($wpdb->prepare($querystr, $location));
+	$postobj = false;
+	foreach ($postids as $postid) {
+		if (in_array($ver, get_the_category($postid))) {
+			$postobj = get_post($postid)->post_name;
+			break;
+		}
+	}
   $post->slug = $postobj->post_name;
   $post->title = $postobj->post_title;
   $post->img = wp_get_attachment_url( get_post_meta($postid, 'cover-image', true) );

@@ -2,35 +2,35 @@ var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, zoomed,
 
 var LOADER = '<h1>Loading</h1><div id="squaresWaveG"><div id="squaresWaveG_1" class="squaresWaveG"></div><div id="squaresWaveG_2" class="squaresWaveG"></div><div id="squaresWaveG_3" class="squaresWaveG"></div><div id="squaresWaveG_4" class="squaresWaveG"></div><div id="squaresWaveG_5" class="squaresWaveG"></div><div id="squaresWaveG_6" class="squaresWaveG"></div><div id="squaresWaveG_7" class="squaresWaveG"></div><div id="squaresWaveG_8" class="squaresWaveG"></div></div>';
 
-jQuery(document).ready(function() {
-	body = jQuery('body');
-	pages = jQuery('.page');
+var $ = jQuery;
+
+$(document).ready(function() {
+	body = $('body');
+	pages = $('.page');
 	selected = pages.first();
-	mask = jQuery('#mask');
-	nav = jQuery('nav');
+	mask = $('#mask');
+	nav = $('nav');
 	navTop = nav.offset().top;
-	wrapper = jQuery('main');
+	wrapper = $('main');
 	zoomed = true;
 
-	jQuery('#logo').click(function(event) {
+	$('#logo').click(function(event) {
 		var state = { post: 'home' };
 		var url = '/';
 		History.pushState(state, 'Verde', url);
-
-		switchToItem('home');
 	});
 
-	jQuery('.navLink').click(navLinkClick);
+	$('.navLink').click(navLinkClick);
 
-	jQuery(window).scroll(function(event) {
-		if(jQuery(window).scrollTop() - body.offset().top >= navTop - 5) {
-			jQuery(".navBar").addClass("fixed");
+	$(window).scroll(function(event) {
+		if($(window).scrollTop() - body.offset().top >= navTop - 5) {
+			$(".navBar").addClass("fixed");
 		} else {
-			jQuery(".navBar").removeClass("fixed");
+			$(".navBar").removeClass("fixed");
 		}
 	});
 
-	jQuery('#zoombutton').click(function(event) {
+	$('#zoombutton').click(function(event) {
 		if(zoomed) {
 			wrapper.stop().animate({zoom:1/6}, 500);
 			mask.stop().animate({height:wrapper.height()}, 500);
@@ -42,32 +42,32 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	toSelect = jQuery('.select');
+	toSelect = $('.select');
 	if(toSelect.length != 0) {
 		selected = toSelect;
 		selected.removeClass('select');
 	} else {
-		selected = jQuery('#home');
+		selected = $('#home');
 	}
 
-	mask.css('min-height', jQuery(window).height() - mask.offset().top);
+	mask.css('min-height', $(window).height() - mask.offset().top);
 });
 
-jQuery(window).load(function() {
-	var navLink = jQuery('nav .navLink[data-target="'+selected.attr('id')+'"]');
+$(window).load(function() {
+	var navLink = $('nav .navLink[data-target="'+selected.attr('id')+'"]');
 	if(navLink.length > 0)
 		highlightItem(navLink);
-	wrapper.css({top:-selected.position().top, left:-selected.position().left});
+	selected.show();
 	resizeMask();
 
 	socialLinks();
 
-	jQuery('#loader').hide();
+	$('#loader').hide();
 });
 
-jQuery(window).on('statechange', function() {
+$(window).on('statechange', function() {
 	var stateData = History.getState().data;
-	if (!jQuery.isEmptyObject(stateData)) {
+	if (!$.isEmptyObject(stateData)) {
 		switchToItem(stateData.post);
 	} else {
 		switchToItem('home');
@@ -76,32 +76,30 @@ jQuery(window).on('statechange', function() {
 
 function navLinkClick(event) {
 	event.preventDefault();
-	var element = jQuery(event.currentTarget);
+	var element = $(event.currentTarget);
 	var targetID = element.data('target');
 	var url;
 
 	if(!element.hasClass('disabled')) {
-		jQuery('.navLink.disabled').removeClass('disabled');
-		jQuery('.navLink[data-target="' + targetID + '"]').addClass('disabled');
+		$('.navLink.disabled').removeClass('disabled');
+		$('.navLink[data-target="' + targetID + '"]').addClass('disabled');
 		var state = { post: targetID };
 		url = ver ? '/?ver='+ver+'&' : '?';
 		if(targetID == 'home')
 			url = ver ? '/?ver='+ver : '/';
 		else if(targetID == 'about')
 			url += 'page=about';
-		else if(jQuery('#'+targetID).hasClass('category'))
+		else if($('#'+targetID).hasClass('category'))
 			url += 'page=' + targetID;
 		else
 			url += 'post=' + targetID;
 
 		History.pushState(state, 'Verde', url);
-
-		switchToItem(targetID);
 	}
 }
 
 function highlightItem(item) {
-	jQuery('.navLink.selected').removeClass('selected');
+	$('.navLink.selected').removeClass('selected');
 	item.addClass('selected');
 }
 
@@ -110,25 +108,37 @@ function resizeMask() {
 }
 
 function switchToItem(name) {
-	highlightItem(jQuery('nav .navLink[data-target="'+name+'"]'));
+	highlightItem($('nav .navLink[data-target="'+name+'"]'));
 
-	if(jQuery('#' + name).length == 0) {
+	var old = $(selected);
+
+	if($('#' + name).length == 0) {
 		getItem(name);
 	}
-	selected = jQuery('#' + name);
+	selected = $('#' + name);
+	if(selected.length == 0) {
+		selected = old;
+		return;
+	}
+	selected.show();
+	wrapper.css('left', -old.position().left);
 
-	wrapper.stop().animate({top:-selected.position().top, left:-selected.position().left}, 500);
-	resizeMask();
+	wrapper.stop().animate({top:-selected.position().top, left:-selected.position().left},
+	                       500, 'swing', function() {
+		                       resizeMask();
+		                       old.hide();
+		                       wrapper.css('left', -selected.position().left);
+	                       });
 }
 
 function getItem(name) {
 	wrapper.width(wrapper.width() + 960);
 	wrapper.append('<section class="post loading" id="'+name+'"></section>');
-	var item = jQuery('#' + name);
+	var item = $('#' + name);
 	item.html(LOADER);
 
 	var url = template_dir + '/load-post.php?post=' + name;
-	jQuery.ajax({
+	$.ajax({
 		url: url,
 		success: function(data) {
 			item.html(data);
@@ -141,7 +151,7 @@ function getItem(name) {
 }
 
 function socialLinks() {
-	jQuery('.fblink').click(function(evt) {
+	$('.fblink').click(function(evt) {
 		evt.preventDefault();
 		var popup = open(evt.target.href,
 		                    'Share Verde',

@@ -20,7 +20,7 @@
 </div>
 
 <?php $cover = get_cover_posts(); ?>
-<section class="page" id="home">
+<section class="page" id="home" style="display:none;">
   <div class="navGrid">
     <div class="navGridCol left">
       <div class="navGridCell double">
@@ -96,13 +96,13 @@ foreach ($navitems as $navitem) {
   }
 }
 foreach ($pages as $page) : ?>
-<section class="<?php pageClasses($page); ?>" id="<?php echo $page->slug ? $page->slug : $page->post_name; ?>">
+<section class="<?php pageClasses($page); ?>" id="<?php echo $page->slug ? $page->slug : $page->post_name; ?>" style="display:none;">
   <?php echo getPage($page) ?>
 </section>
 <?php endforeach; ?>
 
 <?php if(isset($_GET['post'])) : ?>
-<section class="post select" id="<?php echo $_GET['post']; ?>">
+<section class="post select" id="<?php echo $_GET['post']; ?>" style="display:none;">
   <?php echo getPage(get_posts(array( 'name' => $_GET['post']))[0]); ?>
 </section>
 <?php endif; ?>

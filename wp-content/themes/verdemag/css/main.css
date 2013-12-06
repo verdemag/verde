@@ -368,34 +368,12 @@ input.wepay-widget-input {
   margin-left:auto;
   margin-right:auto;
   overflow: hidden;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
 }
 
 .navGridCol {
   float: left;
   width: 300px;
   height: 100%;
-}
-
-.navGridCol.left > .navGridCell:first-child {
-  border-top-left-radius: 15px;
-  -moz-border-top-left-radius: 15px;
-}
-
-.navGridCol.left .navGridCell:last-child {
-  border-bottom-left-radius: 15px;
-  -moz-border-bottom-left-radius: 15px;
-}
-
-.navGridCol.right .navGridCell:first-child {
-  border-top-right-radius: 15px;
-  -moz-border-top-right-radius: 15px;
-}
-
-.navGridCol.right .navGridCell:last-child {
-  border-bottom-right-radius: 15px;
-  -moz-border-top-right-radiur: 15px;
 }
 
 .navGridCell {
@@ -420,7 +398,7 @@ input.wepay-widget-input {
 }
 
 .navGridCell img:hover {
-  opacity: 0;
+  opacity: 0.2;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
