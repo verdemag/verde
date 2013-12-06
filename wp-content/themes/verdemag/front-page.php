@@ -35,6 +35,7 @@
            data-target="<?php echo $cover['ll']->slug; ?>">
            <img src="<?php echo $cover['ll']->img; ?>">
         </a>
+				<h2><?php echo $cover['ll']->title ?></h2>
       </div>
     </div>
     <div class="navGridCol">
@@ -43,18 +44,21 @@
            data-target="<?php echo $cover['um']->slug; ?>">
            <img src="<?php echo $cover['um']->img; ?>">
         </a>
+				<h2><?php echo $cover['um']->title ?></h2>
       </div>
       <div class="navGridCell">
         <a class="navLink"
            data-target="<?php echo $cover['mm']->slug; ?>">
            <img src="<?php echo $cover['mm']->img; ?>">
         </a>
+				<h2><?php echo $cover['mm']->title ?></h2>
       </div>
       <div class="navGridCell">
         <a class="navLink"
            data-target="<?php echo $cover['lm']->slug; ?>">
            <img src="<?php echo $cover['lm']->img; ?>">
         </a>
+				<h2><?php echo $cover['lm']->title ?></h2>
       </div>
     </div>
     <div class="navGridCol right">
@@ -63,12 +67,14 @@
            data-target="<?php echo $cover['ur']->slug; ?>">
            <img src="<?php echo $cover['ur']->img; ?>">
         </a>
+				<h2><?php echo $cover['ur']->title ?></h2>
       </div>
       <div class="navGridCell double">
         <a class="navLink"
            data-target="<?php echo $cover['lr']->slug; ?>">
            <img src="<?php echo $cover['lr']->img; ?>">
         </a>
+				<h2><?php echo $cover['lr']->title ?></h2>
       </div>
     </div>
   </div>
