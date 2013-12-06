@@ -377,6 +377,7 @@ input.wepay-widget-input {
 }
 
 .navGridCell {
+	position: relative;
 	height: 160px;
   overflow: hidden;
   box-sizing: border-box;
@@ -393,12 +394,31 @@ input.wepay-widget-input {
   -webkit-transition: opacity 0.5s;
 }
 
+.navGridCell h2 {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	color: black;
+	width: 100%;
+	text-align: center;
+  transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+}
+
 .navGridCell.double {
   height: 320px;
 }
 
-.navGridCell img:hover {
+.navGridCell:hover img {
   opacity: 0.2;
+  transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+}
+
+.navGridCell:hover h2 {
+	opacity: 1;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;

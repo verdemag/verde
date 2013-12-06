@@ -80,7 +80,7 @@ function getPage($obj) {
 }
 
 function get_cover_post($location) {
-  global $wpdb;
+  global $wpdb, $ver;
 	$querystr = "SELECT post_id
 		FROM $wpdb->postmeta
 		WHERE
@@ -88,17 +88,24 @@ function get_cover_post($location) {
 		GROUP BY post_id;
 	";
 	$postids = $wpdb->get_col($wpdb->prepare($querystr, $location));
-	$postobj = false;
+	$postobj = (object) ["post_name" => "undefined", "post_title" => "Undefined"];
+	$theid = -1;
+
 	foreach ($postids as $postid) {
-		if (in_array($ver, get_the_category($postid))) {
-			$postobj = get_post($postid)->post_name;
+		if (in_category($ver->cat_ID, $postid)) {
+			$theid = $postid;
+			$postobj = get_post($postid);
 			break;
 		}
 	}
+	$post = (object)[];
   $post->slug = $postobj->post_name;
   $post->title = $postobj->post_title;
-  $post->img = wp_get_attachment_url( get_post_meta($postid, 'cover-image', true) );
-  if( !$post->img ) {
+	if($theid != -1) {
+		$post->img = wp_get_attachment_url( get_post_meta($postid, 'cover-image', true) );
+	}
+
+  if( $theid == -1 || !$post->img ) {
     if (in_array($location, ['ul', 'lr'])) {
       $post->img = 'http://placehold.it/300x320';
     } else {
@@ -111,7 +118,7 @@ function get_cover_post($location) {
 
 function get_cover_posts() {
   $locs = ['ul', 'll', 'um', 'mm', 'lm', 'ur', 'lr'];
-  $ret = Array();
+  $ret = [];
   foreach ($locs as $loc) {
     $ret[$loc] = get_cover_post($loc);
   }
