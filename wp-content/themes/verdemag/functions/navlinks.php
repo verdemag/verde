@@ -21,23 +21,27 @@ class verde_walker_nav_menu extends Walker_Nav_Menu {
 			} else if($cat->parent == $archive_ID) {
 				$item_output = "<a href=\"?ver=$slug\">";
 			} else {
-				$link = $ver ? "?ver=$ver&page=$slug" : "?page=$slug";
-				$item_output = "<a class=\"navLink\" href=\"$link\" data-target=\"$slug\">";
+				$link = $ver ? "?ver=$ver&cat=$slug" : "?cat=$slug";
+				$item_output = "<a class=\"navLink\" href=\"$link\" data-target=\"cat:$slug\""
+										 . "id=\"{$slug}link\">";
 			}
 			break;
 			case "page":
 			$slug = get_post($item->object_id)->post_name;
 			$link = $ver ? "?ver=$ver&page=$slug" : "?page=$slug";
-			$item_output = "<a class=\"navLink\" href=\"$link\" data-target=\"$slug\">";
+			$item_output = "<a class=\"navLink\" href=\"$link\" data-target=\"page:$slug\""
+										 . "id=\"{$slug}link\">";
 			break;
 			case "post":
 			$slug = get_post($item->object_id)->post_name;
 			$link = $ver ? "?ver=$ver&post=$slug" : "?post=$slug";
-			$item_output = "<a class=\"navLink\" href=\"$link\" data-target=\"$slug\">";
+			$item_output = "<a class=\"navLink\" href=\"$link\" data-target=\"$slug\""
+									 . "id=\"{$slug}link\">";
 			break;
 			case "custom":
 			if($item->url == site_url()) {
-				$item_output = '<a class="navLink" href="/" data-target="home">';
+				$item_output = '<a class="navLink" href="/" data-target="home"'
+										 . "id=\"homelink\">";
 				break;
 			}
 			default:

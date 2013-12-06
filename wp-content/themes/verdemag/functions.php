@@ -6,10 +6,10 @@ register_nav_menu( 'primary', 'Primary Menu' );
 
 define('__ROOT__', dirname(__FILE__));
 
-require('functions/ads.php');
-require('functions/navlinks.php');
-require('functions/post-meta.php');
-require('functions/ticker.php');
+require_once('functions/ads.php');
+require_once('functions/navlinks.php');
+require_once('functions/post-meta.php');
+require_once('functions/ticker.php');
 
 function enqueueScripts() {
   wp_enqueue_script('jquery');
@@ -32,7 +32,8 @@ $ver = isset($_GET['ver']) ? (
                        'number' => 1))[0]);
 
 function getPage($obj) {
-  if(isset($obj->post_type)) {
+	error_log("Object: " + print_r($obj, true));
+	if(isset($obj->post_type)) {
     if($obj->post_type == 'post') {
       $class = 'post';
       $c = array('content' => wpautop($obj->post_content),
@@ -77,53 +78,6 @@ function getPage($obj) {
   $loader = new $class($c);
 
   return $loader->getPageContents();
-}
-
-function get_cover_post($location) {
-  global $wpdb, $ver;
-	$querystr = "SELECT post_id
-		FROM $wpdb->postmeta
-		WHERE
-			(meta_key = 'cover-pos' AND meta_value = '%s')
-		GROUP BY post_id;
-	";
-	$postids = $wpdb->get_col($wpdb->prepare($querystr, $location));
-	$postobj = (object) ["post_name" => "undefined", "post_title" => "Undefined"];
-	$theid = -1;
-
-	foreach ($postids as $postid) {
-		if (in_category($ver->cat_ID, $postid)) {
-			$theid = $postid;
-			$postobj = get_post($postid);
-			break;
-		}
-	}
-	$post = (object)[];
-  $post->slug = $postobj->post_name;
-  $post->title = $postobj->post_title;
-	if($theid != -1) {
-		$post->img = wp_get_attachment_url( get_post_meta($postid, 'cover-image', true) );
-	}
-
-  if( $theid == -1 || !$post->img ) {
-    if (in_array($location, ['ul', 'lr'])) {
-      $post->img = 'http://placehold.it/300x320';
-    } else {
-      $post->img = 'http://placehold.it/300x160';
-    }
-  }
-
-  return $post;
-}
-
-function get_cover_posts() {
-  $locs = ['ul', 'll', 'um', 'mm', 'lm', 'ur', 'lr'];
-  $ret = [];
-  foreach ($locs as $loc) {
-    $ret[$loc] = get_cover_post($loc);
-  }
-
-  return $ret;
 }
 
 ?>
