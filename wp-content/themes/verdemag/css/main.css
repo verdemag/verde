@@ -165,6 +165,10 @@ a {
 	text-decoration: none;
 }
 
+.navLink {
+	cursor: pointer;
+}
+
 header nav {
 	display: block;
 	position: relative;
@@ -384,7 +388,6 @@ input.wepay-widget-input {
   background-color: white;
   color: white;
   font-size: 20px;
-	cursor: pointer;
 }
 
 .navGridCell img {

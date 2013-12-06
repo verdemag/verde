@@ -23,57 +23,43 @@
 <section class="page" id="home" style="display:none;">
   <div class="navGrid">
     <div class="navGridCol left">
-      <div class="navGridCell double">
-        <a class="navLink"
+      <div class="navGridCell double navLink"
            data-target="<?php echo $cover['ul']->slug; ?>">
-           <img src="<?php echo $cover['ul']->img; ?>">
-        </a>
+        <img src="<?php echo $cover['ul']->img; ?>">
 				<h2><?php echo $cover['ul']->title ?></h2>
       </div>
-      <div class="navGridCell double">
-        <a class="navLink"
+      <div class="navGridCell double navLink"
            data-target="<?php echo $cover['ll']->slug; ?>">
-           <img src="<?php echo $cover['ll']->img; ?>">
-        </a>
+        <img src="<?php echo $cover['ll']->img; ?>">
 				<h2><?php echo $cover['ll']->title ?></h2>
       </div>
     </div>
     <div class="navGridCol">
-      <div class="navGridCell">
-        <a class="navLink"
+      <div class="navGridCell navLink"
            data-target="<?php echo $cover['um']->slug; ?>">
            <img src="<?php echo $cover['um']->img; ?>">
-        </a>
 				<h2><?php echo $cover['um']->title ?></h2>
       </div>
-      <div class="navGridCell">
-        <a class="navLink"
+      <div class="navGridCell navLink"
            data-target="<?php echo $cover['mm']->slug; ?>">
            <img src="<?php echo $cover['mm']->img; ?>">
-        </a>
 				<h2><?php echo $cover['mm']->title ?></h2>
       </div>
-      <div class="navGridCell">
-        <a class="navLink"
+      <div class="navGridCell navLink"
            data-target="<?php echo $cover['lm']->slug; ?>">
            <img src="<?php echo $cover['lm']->img; ?>">
-        </a>
 				<h2><?php echo $cover['lm']->title ?></h2>
       </div>
     </div>
     <div class="navGridCol right">
-      <div class="navGridCell">
-        <a class="navLink"
+      <div class="navGridCell navLink"
            data-target="<?php echo $cover['ur']->slug; ?>">
-           <img src="<?php echo $cover['ur']->img; ?>">
-        </a>
+        <img src="<?php echo $cover['ur']->img; ?>">
 				<h2><?php echo $cover['ur']->title ?></h2>
       </div>
-      <div class="navGridCell double">
-        <a class="navLink"
+      <div class="navGridCell double navLink">
            data-target="<?php echo $cover['lr']->slug; ?>">
-           <img src="<?php echo $cover['lr']->img; ?>">
-        </a>
+        <img src="<?php echo $cover['lr']->img; ?>">
 				<h2><?php echo $cover['lr']->title ?></h2>
       </div>
     </div>
