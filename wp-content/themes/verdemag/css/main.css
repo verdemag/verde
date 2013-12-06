@@ -384,6 +384,7 @@ input.wepay-widget-input {
   background-color: white;
   color: white;
   font-size: 20px;
+	cursor: pointer;
 }
 
 .navGridCell img {
