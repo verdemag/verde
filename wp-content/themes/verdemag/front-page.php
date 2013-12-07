@@ -3,7 +3,7 @@
 <?php if (!is_user_logged_in()) : ?>
 	<section class="page">
 		<h1>Site under construction!</h1>
-		<p>Hello, this site is currently under construction! If you want to view the site, please <a href="<?php wp_login_url( home_url() ) ?>">login</a>.</p>
+		<p>Hello, this site is currently under construction! If you want to view the site, please <a href="<?php echo wp_login_url( home_url() ); ?>">login</a>.</p>
 	</section>
 	<script>
 	 jQuery(document).ready(function() {
