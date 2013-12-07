@@ -181,17 +181,10 @@ function getItem(name, type) {
 	var item = $('#' + name);
 	item.html('<div class="loader"></div>');
 
-	$.ajax({
-		url: url,
-		success: function(data) {
-			item.html(data);
+	item.load(url, function() {
 			$('.navLink').click(navLinkClick);
 			resizeMask();
 			socialLinks();
-		},
-		error: function(data, status) {
-			item.html("Error " + status + ":\n" + data);
-		}
 	});
 }
 

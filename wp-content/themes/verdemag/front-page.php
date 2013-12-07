@@ -3,11 +3,11 @@
 <?php if (!is_user_logged_in()) : ?>
 	<section class="page">
 		<h1>Site under construction!</h1>
-		<p>Hello, this site is currently under construction! If you want to view the site, please <a href="http://verdemagazine.com/wp-login.php?redirect_to=http%3A%2F%2Fverdemagazine.com%2F&reauth=1">login</a>.</p>
+		<p>Hello, this site is currently under construction! If you want to view the site, please <a href="<?php wp_login_url( home_url() ) ?>">login</a>.</p>
 	</section>
 	<script>
 	 jQuery(document).ready(function() {
-		 window.setTimeout(function() {jQuery('.navLink').click(null);}, 200)
+		 jQuery('.navLink').off('click');
 	 });
 	</script>
 	<?php get_footer(); ?>
