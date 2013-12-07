@@ -182,9 +182,9 @@ function getItem(name, type) {
 	item.html('<div class="loader"></div>');
 
 	item.load(url, function() {
-			$('.navLink').click(navLinkClick);
-			resizeMask();
-			socialLinks();
+		$('.navLink').click(navLinkClick);
+		socialLinks();
+		item.children('img, script, frame, iframe').onload(resizeMask());
 	});
 }
 
