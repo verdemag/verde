@@ -38,8 +38,9 @@ $(document).ready(function() {
 		} else {
 			$('main > section').hide();
 			selected.show();
-			wrapper.stop().animate({zoom:1}, 500);
-			resizeMask();
+			wrapper.stop().animate({zoom:1}, 500, function() {
+				resizeMask();
+			});
 			zoomed = false;
 		}
 	});
@@ -147,8 +148,8 @@ function switchToItem(name, type) {
 
 function getItem(name, type) {
 	wrapper.width(wrapper.width() + 960);
-	var url;
 
+	var url;
 	switch(type) {
 	case 'home':
 		wrapper.append('<section class="page" id="home"></section>');
@@ -176,7 +177,7 @@ function getItem(name, type) {
 		success: function(data) {
 			item.html(data);
 			$('.navLink').click(navLinkClick);
-
+			resizeMask();
 			socialLinks();
 		},
 		error: function(data, status) {
