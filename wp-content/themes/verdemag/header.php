@@ -33,6 +33,7 @@ global $ver;
 	</head>
 
 	<body>
+		<div class="loader"></div>
 		<header>
 			<div class="container_16">
 				<div id="logo">

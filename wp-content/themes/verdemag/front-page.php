@@ -15,8 +15,6 @@
 	<?php die(); ?>
 <?php endif; ?>
 
-<div id="loader"></div>
-
 <?php if(isset($_GET['post'])): ?>
 	<section class="post" id="<?php echo $_GET['post']; ?>">
 		<?php echo getPage(get_posts(array('name' => $_GET['post']))[0]); ?>

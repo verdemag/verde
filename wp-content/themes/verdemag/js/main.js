@@ -54,7 +54,7 @@ $(window).load(function() {
 
 	socialLinks();
 
-	$('#loader').hide();
+	$('body > .loader').remove();
 });
 
 $(window).on('statechange', function(evt) {
@@ -151,30 +151,29 @@ function getItem(name, type) {
 
 	switch(type) {
 	case 'home':
-		wrapper.append('<section class="page loading" id="home"></section>');
+		wrapper.append('<section class="page" id="home"></section>');
 		url = template_dir + '/home.php';
 		break;
 	case 'page':
-		wrapper.append('<section class="page loading" id="'+name+'"></section>');
+		wrapper.append('<section class="page" id="'+name+'"></section>');
 		url = template_dir + '/load-post.php?page=' + name;
 		break;
 	case 'cat':
-		wrapper.append('<section class="category loading" id="'+name+'"></section>');
+		wrapper.append('<section class="category" id="'+name+'"></section>');
 		url = template_dir + '/load-post.php?cat=' + name;
 		break;
 	case 'post':
 	default:
-		wrapper.append('<section class="post loading" id="'+name+'"></section>');
+		wrapper.append('<section class="post" id="'+name+'"></section>');
 		url = template_dir + '/load-post.php?post=' + name;
 		break;
 	}
-
 	var item = $('#' + name);
+	item.html('<div class="loader"></div>');
 
 	$.ajax({
 		url: url,
 		success: function(data) {
-			item.removeClass('loading');
 			item.html(data);
 			$('.navLink').click(navLinkClick);
 

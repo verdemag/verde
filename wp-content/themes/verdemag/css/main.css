@@ -103,20 +103,19 @@ footer a {
   bottom: 3px;
 }
 
-#loader,
-.loading {
+.loader {
 	opacity: 1;
 	background: white url('ajax-loader.gif') no-repeat center center;
+	width: 100%;
 	height: 300px;
 }
 
-#loader {
+body > .loader {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
 	z-index: 200;
+	height: 100%;
 }
 
 #mask {
