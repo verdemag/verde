@@ -38,8 +38,17 @@ $(document).ready(function() {
 		} else {
 			$('main > section').hide();
 			selected.show();
-			wrapper.stop().animate({zoom:1}, 500, function() {
+			wrapper.stop().animate({left: -selected.position().left}, {
+				duration: 500,
+				queue: false
+			});
+			wrapper.animate({zoom:1}, {
+				duration: 500,
+				complete: function() {
+				wrapper.css('left', -selected.position().left);
 				resizeMask();
+				},
+				queue: false
 			});
 			zoomed = false;
 		}
