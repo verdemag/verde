@@ -184,7 +184,7 @@ function getItem(name, type) {
 	item.load(url, function() {
 		$('.navLink').click(navLinkClick);
 		socialLinks();
-		item.children('img, script, frame, iframe').onload(resizeMask());
+		item.children('img, script, frame, iframe').load(resizeMask);
 	});
 }
 
