@@ -342,12 +342,13 @@ article header {
 }
 
 article header h1 {
+	font-size: 3em;
 	color: black;
 	margin-bottom: -4px;
 }
 
 article header h2 {
-	font-size: 17px;
+	font-size: 1.5em;
 	font-family: Droid Sans, sans-serif;
 	font-weight: normal;
 	margin-bottom: 5px;
