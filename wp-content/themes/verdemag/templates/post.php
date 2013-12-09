@@ -31,6 +31,10 @@ class post {
 					."class=\"social icon-twitter\"></a>|";
     $ret .= "<a href=\"#\" onclick=\"open('{$this->gplus}','Share on GPlus','width=500,height=375')\""
 					."class=\"social icon-gplus\"></a>";
+    $ret .= ('</article>'
+            . '<sidebar>'
+            . file_get_contents(get_template_directory_uri() . '/sidebar.php')
+            . '</sidebar>');
 
     return $ret;
   }

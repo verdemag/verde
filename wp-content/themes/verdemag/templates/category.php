@@ -16,17 +16,17 @@ class category {
       $author_string = $author ? 'By: '.$author : '';
       $subtitle = get_post_meta($post->ID, 'subtitle', true);
       $href = post_permalink($post->ID);
-      $thumb = get_the_post_thumbnail($post->ID);
-      $ret .= ('<article>'
-              . $thumb
-              . '<header>'
-              . "<a href=\"$href\" data-target=\"$name\" class=\"navLink\"><h1>$post->post_title</h1></a>"
-              . "<h2>$subtitle</h2>"
-              . "<span class=\"author\">$author_string</span>"
-              . '</header>'
-              . get_the_excerpt()
-              . "<a href=\"$href\" data-target=\"$name\" class=\"navLink\">Read more</a>"
-              . '</article>');
+      $thumb = get_the_post_thumbnail($post->ID, array(300, 255));
+      $ret .= '<article>';
+			if($thumb) $ret .= "<div class=\"featured-img\">$thumb</div>";
+			$ret .= '<header>'
+            . "<a href=\"$href\" data-target=\"$name\" class=\"navLink\"><h1>$post->post_title</h1></a>"
+            . "<h2>$subtitle</h2>"
+            . "<span class=\"author\">$author_string</span>"
+            . '</header>'
+            . get_the_excerpt()
+						. "<a href=\"$href\" data-target=\"$name\" class=\"navLink\">Read more</a>"
+						. '</article>';
     }
     $ret .= ('</section>'
             . '<sidebar>'

@@ -1,6 +1,6 @@
 <?php
 include_once("../../../wp-blog-header.php");
-$locs = ['ul', 'll', 'um', 'mm', 'lm', 'ur', 'lr'];
+$locs = ['ul', 'ur', 'mr', 'lr', 'll', 'lm', 'lr'];
 
 function get_cover_post($location) {
   global $wpdb;
@@ -37,8 +37,8 @@ function get_cover_post($location) {
 	}
 
   if( $theid == -1 || !$post->img ) {
-    if (in_array($location, ['ul', 'lr'])) {
-      $post->img = 'http://placehold.it/300x320';
+    if ($location == 'ul') {
+      $post->img = 'http://placehold.it/600x320';
     } else {
       $post->img = 'http://placehold.it/300x160';
     }
@@ -53,45 +53,36 @@ foreach ($locs as $loc) {
 }
 ?>
 <div class="navGrid">
-  <div class="navGridCol left">
-    <div class="navGridCell double navLink"
-         data-target="<?php echo $cover['ul']->slug; ?>">
-      <img src="<?php echo $cover['ul']->img; ?>">
-			<h2><?php echo $cover['ul']->title ?></h2>
-    </div>
-    <div class="navGridCell double navLink"
-         data-target="<?php echo $cover['ll']->slug; ?>">
-      <img src="<?php echo $cover['ll']->img; ?>">
-			<h2><?php echo $cover['ll']->title ?></h2>
-    </div>
+  <div class="navGridCell featured navLink"
+       data-target="<?php echo $cover['ul']->slug; ?>">
+    <img src="<?php echo $cover['ul']->img; ?>">
+		<h2><?php echo $cover['ul']->title ?></h2>
   </div>
-  <div class="navGridCol">
-    <div class="navGridCell navLink"
-         data-target="<?php echo $cover['um']->slug; ?>">
-      <img src="<?php echo $cover['um']->img; ?>">
-			<h2><?php echo $cover['um']->title ?></h2>
-    </div>
-    <div class="navGridCell navLink"
-         data-target="<?php echo $cover['mm']->slug; ?>">
-      <img src="<?php echo $cover['mm']->img; ?>">
-			<h2><?php echo $cover['mm']->title ?></h2>
-    </div>
-    <div class="navGridCell navLink"
-         data-target="<?php echo $cover['lm']->slug; ?>">
-      <img src="<?php echo $cover['lm']->img; ?>">
-			<h2><?php echo $cover['lm']->title ?></h2>
-    </div>
-  </div>
-  <div class="navGridCol right">
-    <div class="navGridCell navLink"
-         data-target="<?php echo $cover['ur']->slug; ?>">
-      <img src="<?php echo $cover['ur']->img; ?>">
+	<div class="navGridCol">
+		<div class="navGridCell navLink"
+				 data-target="<?php echo $cover['ur']->slug; ?>">
+			<img src="<?php echo $cover['ur']->img; ?>">
 			<h2><?php echo $cover['ur']->title ?></h2>
-    </div>
-    <div class="navGridCell double navLink">
-      data-target="<?php echo $cover['lr']->slug; ?>">
-      <img src="<?php echo $cover['lr']->img; ?>">
-			<h2><?php echo $cover['lr']->title ?></h2>
-    </div>
+		</div>
+		<div class="navGridCell navLink"
+				 data-target="<?php echo $cover['mr']->slug; ?>">
+			<img src="<?php echo $cover['mr']->img; ?>">
+			<h2><?php echo $cover['mr']->title ?></h2>
+		</div>
+	</div>
+  <div class="navGridCell navLink"
+       data-target="<?php echo $cover['ll']->slug; ?>">
+    <img src="<?php echo $cover['ll']->img; ?>">
+		<h2><?php echo $cover['ll']->title ?></h2>
+  </div>
+  <div class="navGridCell navLink"
+       data-target="<?php echo $cover['lm']->slug; ?>">
+    <img src="<?php echo $cover['lm']->img; ?>">
+		<h2><?php echo $cover['lm']->title ?></h2>
+  </div>
+  <div class="navGridCell double navLink">
+    data-target="<?php echo $cover['lr']->slug; ?>">
+    <img src="<?php echo $cover['lr']->img; ?>">
+		<h2><?php echo $cover['lr']->title ?></h2>
   </div>
 </div>

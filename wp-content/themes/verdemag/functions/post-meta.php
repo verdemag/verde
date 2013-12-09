@@ -16,12 +16,11 @@ function cover_meta_box() {
         'type' => 'select',
         'options' => array(
           'n' => 'None',
-          'ul' => 'Upper left',
-          'll' => 'Lower left',
-          'um' => 'Upper middle',
-          'mm' => 'Center',
-          'lm' => 'Lower middle',
+          'ul' => 'Upper left (featured)',
           'ur' => 'Upper right',
+          'mr' => 'Middle right',
+          'll' => 'Lower left',
+          'lm' => 'Lower middle',
           'lr' => 'Lower right'
         ),
         'std' => 'n'

@@ -7,7 +7,12 @@ class page {
   }
 
   public function getPageContents() {
-    $ret = $this->content;
+		$ret = '<article>';
+    $ret .= $this->content;
+		$ret .= ('</article>'
+            . '<sidebar>'
+            . file_get_contents(get_template_directory_uri() . '/sidebar.php')
+						. '</sidebar>');
 
     return $ret;
   }
