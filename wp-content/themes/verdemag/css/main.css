@@ -291,7 +291,7 @@ nav span {
 
 .category .articles {
 	width: 700px;
-	margin-left: 0 20px 0 10px;
+	margin: 0 20px 0 10px;
 	float: left;
 	-moz-column-count: 2;
 	-moz-column-gap: 20px;
