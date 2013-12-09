@@ -11,13 +11,13 @@ $ad = get_posts(array('numberposts' => 1,
 $imgs = get_post_meta($ad->ID, 'img');
 $img = $imgs[array_rand($imgs)];
 ?>
-<h6>AD<h6>
+<h3>AD</h3>
 <a href="<?php echo get_post_meta($ad->ID, 'url', true); ?>">
  <img src="<?php echo wp_get_attachment_url($img); ?>">
 </a>
 </section>
 <section>
-  <h6>Verde on Social Media</h6>
+  <h3>Verde on Social Media</h3>
   <iframe allowtransparency="true" frameborder="0" scrolling="no"
           src="//www.facebook.com/plugins/like.php?href=https://facebook.com/verdemagazine&layout=button_count"
           style="width:50px; height:20px;"></iframe>
