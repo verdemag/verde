@@ -304,14 +304,19 @@ nav span {
 	column-rule: none;
 }
 
-.category .articles .featured-img {
+.category .articles img {
 	width: 340px;
+	height: auto;
+}
+
+.category .articles .featured-img {
+	border: 1px solid black;
+	width: 338px;
 	height: 255px;
 	overflow: hidden;
 }
 
-.category .articles img {
-	border: 1px solid black;
+.featured-img img {
 	width: 338px;
 	height: auto;
 }
