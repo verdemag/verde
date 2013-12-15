@@ -9,6 +9,7 @@ query_posts(array(
 	'category__and' => array($cat->cat_ID, $ver->cat_ID),
 	'posts_per_page' => -1
 ));
+$i = 0;
 ?>
 <section class="articles">
 	<?php while(have_posts()) : the_post(); ?>
@@ -17,6 +18,7 @@ query_posts(array(
 		$thumb = get_the_post_thumbnail(get_the_ID(), array(300, 255));
 		$link = site_url("/?ver={$ver->slug}&post=$slug");
 		?>
+		<?php if($i % 2 == 0) : ?><div class="row"><?php endif; ?>
 		<article>
 			<?php if($thumb) : ?><div class="featured-img"><?php echo $thumb; ?></div><?php endif; ?>
 			<header>
@@ -29,6 +31,8 @@ query_posts(array(
 			<?php the_excerpt(); ?>
 			<a href="<?php echo $link; ?>" data-target="<?php echo $slug; ?>" class="navLink">Read more</a>
 		</article>
+		<?php if($i % 2 == 1) : ?></div><?php endif; ?>
+		<?php $i++; ?>
 	<?php endwhile; ?>
 </section>
 <sidebar>

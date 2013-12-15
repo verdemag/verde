@@ -1,8 +1,7 @@
 html {
-  text-align: center;
   overflow-y: scroll;
 	word-wrap: break-word;
-} /* Mainly to make text-align: center an inherited trait for other stuff. */
+}
 
 body {
   width: 100%;
@@ -18,8 +17,9 @@ body {
 
 sidebar {
 	display: inline;
-	float: left;
+	float: right;
 	width: 220px;
+	margin-right: 10px;
 }
 
 sidebar section {
@@ -289,7 +289,6 @@ nav span {
   background-color: lightgrey;
   color: grey;
   font-size: 15px;
-  text-align: left;
   padding: 5px;
 }
 
@@ -303,18 +302,23 @@ nav span {
 }
 
 .category .articles {
-	width: 700px;
-	margin: 0 20px 0 10px;
+	width: 720px;
+	margin: 0;
 	float: left;
-	-moz-column-count: 2;
-	-moz-column-gap: 20px;
-	-moz-column-rule: none;
-	-webkit-column-count: 2;
-	-webkit-column-gap: 20px;
-	-webkit-column-rule: none;
-	column-count: 2;
-	column-gap: 20px;
-	column-rule: none;
+}
+
+.category .row:before,
+.category .row:after {
+	content: " ";
+	display: table;
+}
+
+.category .row:after {
+	clear: both;
+}
+
+.category .row {
+	*zoom: 1;
 }
 
 .category .articles img {
@@ -335,14 +339,12 @@ nav span {
 }
 
 .category article {
-	display: inline-block;
-	float: none;
 	width: 340px;
-	margin: 0;
+	margin: 0 10px;
 	margin-bottom: 50px;
 }
 
-.category article * {
+.category article > * {
 	width: 340px;
 	height: auto;
 }
@@ -359,13 +361,6 @@ article {
 	float: left;
 	width: 700px;
 	margin: 0 20px 0 10px;
-  text-align: left;
-  transition: color 0.5s;
-  -moz-transition: color 0.5s;
-  -webkit-transition: color 0.5s;
-  text-decoration: none;
-	opacity: 1;
-  color: black;
 }
 
 article header {
