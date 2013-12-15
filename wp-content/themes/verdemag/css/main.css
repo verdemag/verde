@@ -153,7 +153,7 @@ main {
 }
 
 main > section {
-	display: inline-block;
+	float: left;
 	width: 960px;
   white-space: normal;
   vertical-align: top;
@@ -387,8 +387,8 @@ input.wepay-widget-input {
 }
 
 .navGrid {
-  height: 480px;
-  width: 900px;
+  height: 520px;
+  width: 940px;
 	text-align: left;
 	font-size: 0;
   margin-left:auto;
@@ -397,19 +397,32 @@ input.wepay-widget-input {
 }
 
 .navGridCol {
-	display: inline-block;
+	float: left;
 	width: 300px;
+	border-left: 20px solid white;
 }
 
 .navGridCell {
+	float: left;
 	position: relative;
-	display: inline-block;
 	height: 160px;
 	width: 300px;
   overflow: hidden;
   background-color: white;
   color: white;
   font-size: 20px;
+}
+
+.navGridCol .navGridCell {
+	border-bottom: 20px solid white;
+}
+
+.navGridRow .navGridCell {
+	border-right: 20px solid white;
+}
+
+.navGridRow .navGridCell:last-child {
+	border-right: none;
 }
 
 .navGridCell img {
@@ -436,8 +449,9 @@ input.wepay-widget-input {
 }
 
 .navGridCell.featured {
-	width: 600px;
-  height: 320px;
+	width: 620px;
+  height: 340px;
+	border-bottom: 20px solid white;
 }
 
 .navGridCell:hover img {

@@ -38,7 +38,7 @@ function get_cover_post($location) {
 
   if( $theid == -1 || !$post->img ) {
     if ($location == 'ul') {
-      $post->img = 'http://placehold.it/600x320';
+      $post->img = 'http://placehold.it/620x340';
     } else {
       $post->img = 'http://placehold.it/300x160';
     }
@@ -70,19 +70,21 @@ foreach ($locs as $loc) {
 			<h2><?php echo $cover['mr']->title ?></h2>
 		</div>
 	</div>
-  <div class="navGridCell navLink"
-       data-target="<?php echo $cover['ll']->slug; ?>">
-    <img src="<?php echo $cover['ll']->img; ?>">
-		<h2><?php echo $cover['ll']->title ?></h2>
-  </div>
-  <div class="navGridCell navLink"
-       data-target="<?php echo $cover['lm']->slug; ?>">
-    <img src="<?php echo $cover['lm']->img; ?>">
-		<h2><?php echo $cover['lm']->title ?></h2>
-  </div>
-  <div class="navGridCell double navLink">
-    data-target="<?php echo $cover['lr']->slug; ?>">
-    <img src="<?php echo $cover['lr']->img; ?>">
-		<h2><?php echo $cover['lr']->title ?></h2>
-  </div>
+	<div class="navGridRow">
+		<div class="navGridCell navLink"
+				 data-target="<?php echo $cover['ll']->slug; ?>">
+			<img src="<?php echo $cover['ll']->img; ?>">
+			<h2><?php echo $cover['ll']->title ?></h2>
+		</div>
+		<div class="navGridCell navLink"
+				 data-target="<?php echo $cover['lm']->slug; ?>">
+			<img src="<?php echo $cover['lm']->img; ?>">
+			<h2><?php echo $cover['lm']->title ?></h2>
+		</div>
+		<div class="navGridCell navLink">
+			data-target="<?php echo $cover['lr']->slug; ?>">
+			<img src="<?php echo $cover['lr']->img; ?>">
+			<h2><?php echo $cover['lr']->title ?></h2>
+		</div>
+	</div>
 </div>

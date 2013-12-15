@@ -13,7 +13,7 @@ $(document).ready(function() {
 	zoomed = false;
 
 	$('#logo').click(function(event) {
-		var state = { post: 'home' };
+		var state = { post: 'home', type: 'home' };
 		var url = '/';
 		History.pushState(state, 'Verde', url);
 	});
@@ -162,20 +162,20 @@ function getItem(name, type) {
 	switch(type) {
 	case 'home':
 		wrapper.append('<section class="page" id="home"></section>');
-		url = template_dir + '/home.php';
+		url = template_dir + '/home.php?ver=' + ver;
 		break;
 	case 'page':
 		wrapper.append('<section class="page" id="'+name+'"></section>');
-		url = template_dir + '/load-post.php?page=' + name;
+		url = template_dir + '/load-post.php?ver=' + ver + '&page=' + name;
 		break;
 	case 'cat':
 		wrapper.append('<section class="category" id="'+name+'"></section>');
-		url = template_dir + '/load-post.php?cat=' + name;
+		url = template_dir + '/load-post.php?ver=' + ver + '&cat=' + name;
 		break;
 	case 'post':
 	default:
 		wrapper.append('<section class="post" id="'+name+'"></section>');
-		url = template_dir + '/load-post.php?post=' + name;
+		url = template_dir + '/load-post.php?ver=' + ver + '&post=' + name;
 		break;
 	}
 	var item = $('#' + name);
