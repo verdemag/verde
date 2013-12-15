@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<div class="container_12 page" id="error">
-  You're not supposed to be here.
+<div class="page" id="error">
+  You're not supposed to be here. Sorry.
 </div>
 
 <?php get_footer(); ?>

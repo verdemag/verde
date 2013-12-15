@@ -1,5 +1,5 @@
 /*global ver, History, jQuery, template_dir */
-var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, zoomed, navnames, navitems, pageWrap;
+var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, zoomed, navnames, navitems, pageWrap, ticker;
 
 var $ = jQuery;
 
@@ -24,9 +24,11 @@ $(document).ready(function() {
 
 	$(window).scroll(function(event) {
 		if($(window).scrollTop() - body.offset().top >= navTop - 5) {
-			$(".navBar, .ticker").addClass("fixed");
+			$("#nav-placeholder").show();
+			$("nav").addClass("fixed");
 		} else {
-			$(".navBar, .ticker").removeClass("fixed");
+			$("#nav-placeholder").hide();
+			$("nav").removeClass("fixed");
 		}
 	});
 
@@ -71,8 +73,6 @@ $(window).load(function() {
 	});
 
 	highlightItem($('#'+selected.attr('id')+'link'));
-
-	resizeMask();
 
 	socialLinks();
 
@@ -138,11 +138,15 @@ function highlightItem(item) {
 
 function resizeMask() {
 	mask.height(selected.height());
-	pageWrap.height(mask.height() + 327);
+	pageWrap.height(mask.height() + 227);
 	pageWrap.css('min-height', '100%');
 }
 
 function switchToItem(name, type) {
+	mask.height(wrapper.height());
+	pageWrap.height(mask.height() + 227);
+	pageWrap.css('min-height', '100%');
+
 	var linkSel = '#'+name+'link';
 	highlightItem($(linkSel));
 
@@ -160,13 +164,13 @@ function switchToItem(name, type) {
 
 	$('html, body').stop().animate({scrollTop:0},{duration:500, queue:false});
 	wrapper.stop().animate({left:-selected.position().left},
-	                {duration:500, queue:false,
-	                 complete: function() {
-		                 resizeMask();
-		                 if(!zoomed) old.hide();
-		                 wrapper.css('left', -selected.position().left);
-	                 }
-	                });
+	                       {duration:500, queue:false,
+	                        complete: function() {
+		                        resizeMask();
+		                        if(!zoomed) old.hide();
+		                        wrapper.css('left', -selected.position().left);
+	                        }
+	                       });
 }
 
 function getItem(name, type) {
@@ -222,16 +226,8 @@ function getItem(name, type) {
 }
 
 function socialLinks() {
-	$('.social.icon-fb').click(function(evt) {
+	$('.social').click(function(evt) {
 		evt.preventDefault();
-		window.open(evt.target.href, 'Share on FB', 'width=618,height=325');
-	});
-	$('.social.icon-twitter').click(function(evt) {
-		evt.preventDefault();
-		window.open(evt.target.href, 'Share on Twitter', 'width=465,height=275');
-	});
-	$('.social.icon-gplus').click(function(evt) {
-		evt.preventDefault();
-		window.open(evt.target.href, 'Share on GPlus', 'width=500,height=375');
+		window.open(evt.target.href, 'Share on FB', 'width=700,height=325');
 	});
 }

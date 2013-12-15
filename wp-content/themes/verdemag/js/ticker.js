@@ -1,12 +1,8 @@
 /*global ticker, tickerText, navLinkClick, jQuery, setInterval */
 
 jQuery(document).ready(function() {
-	ticker = jQuery('.ticker');
+	ticker = jQuery('#ticker');
 	ticker.count = 0;
-
-	var tickerTop = ticker.offset().top;
-	ticker.css('top', tickerTop);
-	ticker.css('position', 'absolute');
 
 	tickticker();
 	setInterval(tickticker, 5000);

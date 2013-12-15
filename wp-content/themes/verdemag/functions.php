@@ -31,4 +31,19 @@ $ver = isset($_GET['ver']) ? (
 	                     'order' => 'desc',
 	                     'number' => 1))[0]);
 
+function the_postlink($slug) {
+	global $ver;
+	echo site_url("/?ver={$ver->slug}&post=$slug");
+}
+
+function the_pagelink($slug) {
+	global $ver;
+	echo site_url("/?ver={$ver->slug}&post=$slug");
+}
+
+function the_catlink($slug) {
+	global $ver;
+	echo site_url("/?ver={$ver->slug}&cat=$slug");
+}
+
 ?>

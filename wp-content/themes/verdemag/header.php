@@ -28,27 +28,28 @@ global $ver;
 	</head>
 
 	<body>
-		<div class="loader"></div>
-		<div id="wrapper">
-			<header>
-				<div class="container_16">
-					<div id="logo">
-						<div class="title"><?php bloginfo('name'); ?><small><?php echo $ver->name ?></small></div>
-						<div class="sub"><?php bloginfo('description'); ?></div>
-					</div>
-					<nav class="navBar">
-						<?php
-						wp_nav_menu(array('theme-location' => 'primary',
-															'container' => false,
-															'depth' => 2,
-															'walker' => new verde_walker_nav_menu
-															));
-						?>
-						<span></span>
-					</nav>
-					<div class="ticker"><span></span></div>
+		<script>
+		 document.write('<div class="loader"></div>');
+		</script>
+		<div id="wrapper" class="cf">
+			<header class="cf">
+				<div id="logo">
+					<div class="title"><?php bloginfo('name'); ?><small><?php echo $ver->name ?></small></div>
+					<div class="sub"><?php bloginfo('description'); ?></div>
 				</div>
+				<div id="nav-placeholder"></div>
+				<nav>
+					<?php
+					wp_nav_menu(array('theme-location' => 'primary',
+														'container' => false,
+														'depth' => 2,
+														'walker' => new verde_walker_nav_menu
+														));
+					?>
+					<span></span>
+				</nav>
+				<div id="ticker"><span></span></div>
 			</header>
 
-			<div id="mask">
-				<main>
+			<div id="mask" class="cf">
+				<main class="cf">
