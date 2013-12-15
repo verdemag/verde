@@ -1,4 +1,4 @@
-var ticker, tickerText, navLinkClick;
+/*global ticker, tickerText, navLinkClick, jQuery, setInterval */
 
 jQuery(document).ready(function() {
 	ticker = jQuery('.ticker');

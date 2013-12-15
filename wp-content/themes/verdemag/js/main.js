@@ -1,4 +1,5 @@
-var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, zoomed, ver, History, jQuery, template_dir;
+/*global ver, History, jQuery, template_dir */
+var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, zoomed, navnames, navitems, pageWrap;
 
 var $ = jQuery;
 
@@ -10,6 +11,7 @@ $(document).ready(function() {
 	nav = $('nav');
 	navTop = nav.offset().top;
 	wrapper = $('main');
+	pageWrap = $('#wrapper');
 	zoomed = false;
 
 	$('#logo').click(function(event) {
@@ -22,9 +24,9 @@ $(document).ready(function() {
 
 	$(window).scroll(function(event) {
 		if($(window).scrollTop() - body.offset().top >= navTop - 5) {
-			$(".navBar").addClass("fixed");
+			$(".navBar, .ticker").addClass("fixed");
 		} else {
-			$(".navBar").removeClass("fixed");
+			$(".navBar, .ticker").removeClass("fixed");
 		}
 	});
 
@@ -55,11 +57,21 @@ $(document).ready(function() {
 	});
 
 	selected = $('main > section');
-	mask.css('min-height', $(window).height() - mask.offset().top);
 });
 
 $(window).load(function() {
+	navnames = [];
+	navitems = {};
+	$('nav >>> .navLink').each(function() {
+		var itemname = this.id.slice(0, -4);
+		var i = navnames.push(itemname) - 1;
+		if(selected.attr('id') == itemname) {
+			navitems[i] = selected;
+		}
+	});
+
 	highlightItem($('#'+selected.attr('id')+'link'));
+
 	resizeMask();
 
 	socialLinks();
@@ -125,7 +137,9 @@ function highlightItem(item) {
 }
 
 function resizeMask() {
-	mask.animate({ height:selected.height() + 100 }, 50);
+	mask.height(selected.height());
+	pageWrap.height(mask.height() + 327);
+	pageWrap.css('min-height', '100%');
 }
 
 function switchToItem(name, type) {
@@ -158,28 +172,47 @@ function switchToItem(name, type) {
 function getItem(name, type) {
 	wrapper.width(wrapper.width() + 960);
 
-	var url;
+	var url = template_dir + '/templates';
+	var item;
 	switch(type) {
 	case 'home':
-		wrapper.append('<section class="page" id="home"></section>');
-		url = template_dir + '/home.php?ver=' + ver;
+		item = $('<section class="page" id="home"></section>');
+		url += '/home.php?ver=' + ver;
 		break;
 	case 'page':
-		wrapper.append('<section class="page" id="'+name+'"></section>');
-		url = template_dir + '/load-post.php?ver=' + ver + '&page=' + name;
+		item = $('<section class="page" id="'+name+'"></section>');
+		url += '/page.php?ver=' + ver + '&page=' + name;
 		break;
 	case 'cat':
-		wrapper.append('<section class="category" id="'+name+'"></section>');
-		url = template_dir + '/load-post.php?ver=' + ver + '&cat=' + name;
+		item = $('<section class="category" id="'+name+'"></section>');
+		url += '/category.php?ver=' + ver + '&cat=' + name;
 		break;
 	case 'post':
 	default:
-		wrapper.append('<section class="post" id="'+name+'"></section>');
-		url = template_dir + '/load-post.php?ver=' + ver + '&post=' + name;
+		item = $('<section class="post" id="'+name+'"></section>');
+		url += '/post.php?ver=' + ver + '&post=' + name;
 		break;
 	}
-	var item = $('#' + name);
 	item.html('<div class="loader"></div>');
+	var loc = navnames.indexOf(name);
+	console.log(loc);
+	if(loc != -1) {
+		var beforeItem;
+		for(var i = loc; i >= 0; i--) {
+			if(navitems[i]) {
+				beforeItem = navitems[i];
+				break;
+			}
+		}
+		if(beforeItem) {
+			beforeItem.after(item);
+		} else {
+			wrapper.prepend(item);
+		}
+		navitems[loc] = item;
+	} else {
+		wrapper.append(item);
+	}
 
 	item.load(url, function() {
 		$('.navLink').click(navLinkClick);
@@ -189,11 +222,16 @@ function getItem(name, type) {
 }
 
 function socialLinks() {
-	$('.fblink').click(function(evt) {
+	$('.social.icon-fb').click(function(evt) {
 		evt.preventDefault();
-		var popup = window.open(evt.target.href,
-		                        'Share Verde',
-		                        'location=0,toolbar=0,status=0,resizable=1,width=626,height=436');
-		if (window.focus) {popup.focus();}
+		window.open(evt.target.href, 'Share on FB', 'width=618,height=325');
+	});
+	$('.social.icon-twitter').click(function(evt) {
+		evt.preventDefault();
+		window.open(evt.target.href, 'Share on Twitter', 'width=465,height=275');
+	});
+	$('.social.icon-gplus').click(function(evt) {
+		evt.preventDefault();
+		window.open(evt.target.href, 'Share on GPlus', 'width=500,height=375');
 	});
 }

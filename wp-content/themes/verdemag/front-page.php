@@ -17,19 +17,19 @@
 
 <?php if(isset($_GET['post'])): ?>
 	<section class="post" id="<?php echo $_GET['post']; ?>">
-		<?php echo getPage(get_posts(array('name' => $_GET['post']))[0]); ?>
+		<?php include "templates/post.php"; ?>
 	</section>
 <?php elseif(isset($_GET['page'])): ?>
 	<section class="page" id="<?php echo $_GET['page']; ?>">
-		<?php echo getPage(get_posts(array('name' => $_GET['page']))[0]); ?>
+		<?php include "templates/page.php"; ?>
 	</section>
 <?php elseif(isset($_GET['cat'])): ?>
 	<section class="category" id="<?php echo $_GET['cat']; ?>">
-		<?php echo getPage(get_category_by_slug($_GET['cat'])); ?>
+		<?php include "templates/category.php"; ?>
 	</section>
 <?php else: ?>
 	<section class="page" id="home">
-		<?php include 'home.php'; ?>
+		<?php include "templates/home.php"; ?>
 	</section>
 <?php endif; ?>
 

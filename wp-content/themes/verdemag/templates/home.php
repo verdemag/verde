@@ -1,5 +1,5 @@
 <?php
-include_once("../../../wp-blog-header.php");
+require_once(dirname(dirname(dirname(dirname(dirname(__FILE__))))).'/wp-blog-header.php');
 $locs = ['ul', 'ur', 'mr', 'lr', 'll', 'lm', 'lr'];
 
 function get_cover_post($location) {

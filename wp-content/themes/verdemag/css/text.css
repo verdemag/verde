@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif|Droid+Sans+Mono|Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif|Droid+Sans+Mono|Droid+Sans);
 @font-face {
 	font-family: 'icomoon';
 	src:url('../fonts/icomoon.eot');
@@ -21,7 +21,7 @@
 ----------------------------------------------------------------------------------------------------*/
 
 body {
-  font: 13px/1.5 "Open Sans", sans-serif;
+  font: 1em/1.5 "Droid Sans", sans-serif;
 }
 
 pre,
@@ -56,7 +56,7 @@ hr {
 	content: "f";
 }
 .icon-twitter:before {
-	content: "t";
+p	content: "t";
 }
 .icon-gplus:before {
 	content: "g";

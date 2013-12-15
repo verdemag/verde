@@ -1,9 +1,5 @@
-<?php
-/**
- * The footer!
- */
-?>
 </main>
+</div>
 <footer>
 	<div>
 		<div class="row">&#169; Verde Magazine</div>
@@ -28,15 +24,7 @@
 		Palo Alto, California 94301
 	</address>
 </footer>
-</div><!-- Close mask div -->
-<?php
-if (current_user_can('administrator')){
-    global $wpdb;
-    echo "<pre>";
-    print_r($wpdb->queries);
-    echo "</pre>";
-}
-?>
+</div>
 <?php wp_footer(); ?>
 </body>
 </html>

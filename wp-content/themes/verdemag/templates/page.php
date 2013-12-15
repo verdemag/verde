@@ -1,20 +1,15 @@
 <?php
-class page {
-  private $content;
-
-  function __construct($c) {
-    $this->content = $c;
-  }
-
-  public function getPageContents() {
-		$ret = '<article>';
-    $ret .= $this->content;
-		$ret .= ('</article>'
-            . '<sidebar>'
-            . file_get_contents(get_template_directory_uri() . '/sidebar.php')
-						. '</sidebar>');
-
-    return $ret;
-  }
-}
+require_once(dirname(dirname(dirname(dirname(dirname(__FILE__))))).'/wp-blog-header.php');
+query_posts(array(
+	'name' => $_GET['page'],
+	'post_type' => 'page',
+	'posts_per_page' => 1
+));
+the_post();
 ?>
+<article>
+	<?php the_content(); ?>
+</article>
+<sidebar>
+	<?php include(get_template_directory()."/sidebar.php"); ?>
+</sidebar>

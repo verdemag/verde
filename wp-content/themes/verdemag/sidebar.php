@@ -3,7 +3,6 @@
 </section>
 <section>
 <?php
-require_once("../../../wp-blog-header.php");
 $ad = get_posts(array('numberposts' => 1,
                       'orderby' => 'rand',
                       'post_type' => 'ad'))[0];
