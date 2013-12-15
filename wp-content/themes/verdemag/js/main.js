@@ -20,7 +20,7 @@ $(document).ready(function() {
 		History.pushState(state, 'Verde', url);
 	});
 
-	$('.navLink').click(navLinkClick);
+	$('.navlink').click(navlinkClick);
 
 	$(window).scroll(function(event) {
 		if($(window).scrollTop() - body.offset().top >= navTop - 5) {
@@ -64,7 +64,7 @@ $(document).ready(function() {
 $(window).load(function() {
 	navnames = [];
 	navitems = {};
-	$('nav >>> .navLink').each(function() {
+	$('nav >>> .navlink').each(function() {
 		var itemname = this.id.slice(0, -4);
 		var i = navnames.push(itemname) - 1;
 		if(selected.attr('id') == itemname) {
@@ -89,15 +89,15 @@ $(window).on('statechange', function(evt) {
 	}
 });
 
-function navLinkClick(event) {
+function navlinkClick(event) {
 	event.preventDefault();
 	var element = $(event.currentTarget);
 	var targetID = element.data('target');
 	var url;
 
 	if(!element.hasClass('disabled')) {
-		$('.navLink.disabled').removeClass('disabled');
-		$('.navLink[data-target="' + targetID + '"]').addClass('disabled');
+		$('.navlink.disabled').removeClass('disabled');
+		$('.navlink[data-target="' + targetID + '"]').addClass('disabled');
 
 		var name = targetID.split(':');
 		var type = 'post';
@@ -132,19 +132,19 @@ function navLinkClick(event) {
 }
 
 function highlightItem(item) {
-	$('.navLink.selected').removeClass('selected');
+	$('.navlink.selected').removeClass('selected');
 	item.addClass('selected');
 }
 
 function resizeMask() {
 	mask.height(selected.height());
-	pageWrap.height(mask.height() + 227);
+	pageWrap.height(mask.height() + 327);
 	pageWrap.css('min-height', '100%');
 }
 
 function switchToItem(name, type) {
 	mask.height(wrapper.height());
-	pageWrap.height(mask.height() + 227);
+	pageWrap.height(mask.height() + 327);
 	pageWrap.css('min-height', '100%');
 
 	var linkSel = '#'+name+'link';
@@ -219,7 +219,7 @@ function getItem(name, type) {
 	}
 
 	item.load(url, function() {
-		$('.navLink').click(navLinkClick);
+		$('.navlink').click(navlinkClick);
 		socialLinks();
 		item.children('img, script, frame, iframe').load(resizeMask);
 	});

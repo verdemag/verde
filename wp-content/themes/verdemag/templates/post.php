@@ -14,7 +14,7 @@ if(!have_posts()) die("<section class=\"error\"><h1>Post '{$_GET['post']}' Not F
 Whoops! it looks like the post you were looking for wasn't found. Maybe it was moved or deleted, or you mistyped the URL.</section>");
 
 the_post();
-$slug = get_post(get_the_ID())->name;
+$slug = get_post(get_the_ID())->post_name;
 $share = urlencode(site_url("/?ver={$ver->slug}&post=$slug"));
 ?>
 <article>

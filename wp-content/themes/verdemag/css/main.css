@@ -1,5 +1,6 @@
-html {
-  overflow-y: scroll;
+* {box-sizing: border-box;}
+
+html, body {
 	word-wrap: break-word;
 }
 
@@ -46,18 +47,19 @@ body {
 	font-family: "Droid Serif", serif;
 }
 
-#logo .title {
+#logo .title h1 {
 	letter-spacing:-.06em;
   height: 110px;
-  margin-top: -20px;
   padding-top: 10px;
   color: green;
   font-size: 120px;
+	font-weight: normal;
   line-height: 120px;
-  overflow: hidden;
 }
 
 #logo .title small {
+	display: block;
+	float: right;
 	letter-spacing: 0;
 	color: black;
 	font-size: 24px;
@@ -72,17 +74,16 @@ body {
 }
 
 #nav-placeholder {
-	height: 41px;
+	height: 35px;
 	display: none;
 }
 
 header nav {
 	display: block;
 	position: relative;
-	float: left;
 	padding: 3px 35px;
 	margin: 0;
-	width: 890px;
+	width: 960px;
 	opacity: 0.9;
   background-color: grey;
 	text-align: justify;
@@ -172,17 +173,27 @@ nav span {
 }
 
 footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	position: relative;
 	margin: 0 auto;
+	margin-top: -100px;
+	height: 100px;
 	width: 960px;
   padding: 2px 0px;
 	background-color: #FFF;
   text-align: center;
   color: grey;
-  z-index: 100;
+}
+
+footer > div {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+footer > address {
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
 
 sidebar {
@@ -302,7 +313,7 @@ a {
 	text-decoration: none;
 }
 
-.navLink {
+.navlink {
 	cursor: pointer;
 }
 
@@ -310,8 +321,8 @@ a {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-	width: 950px;
-	height: 22px;
+	width: 960px;
+	height: 32px;
 	float: left;
   background-color: lightgrey;
   color: grey;
@@ -377,7 +388,6 @@ article header {
 
 article header h1 {
 	color: black;
-	margin-bottom: -4px;
 }
 
 article header h2 {
@@ -391,7 +401,7 @@ input.wepay-widget-input {
   margin: 0;
 }
 
-.navGrid {
+.navgrid {
   height: 520px;
   width: 940px;
 	text-align: left;
@@ -401,13 +411,17 @@ input.wepay-widget-input {
   overflow: hidden;
 }
 
-.navGridCol {
+.navgrid * {
+	box-sizing: content-box;
+}
+
+.navgrid .col {
 	float: left;
 	width: 300px;
 	border-left: 20px solid white;
 }
 
-.navGridCell {
+.navgrid .cell {
 	float: left;
 	display: block;
 	position: relative;
@@ -419,19 +433,19 @@ input.wepay-widget-input {
   font-size: 20px;
 }
 
-.navGridCol .navGridCell {
+.navgrid .col .cell {
 	border-bottom: 20px solid white;
 }
 
-.navGridRow .navGridCell {
+.navgrid .row .cell {
 	border-right: 20px solid white;
 }
 
-.navGridRow .navGridCell:last-child {
+.row .cell:last-child {
 	border-right: none;
 }
 
-.navGridCell img {
+.cell img {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -442,7 +456,7 @@ input.wepay-widget-input {
   -webkit-transition: opacity 0.5s;
 }
 
-.navGridCell h2 {
+.cell h2 {
 	position: absolute;
 	top: 0;
 	opacity: 0;
@@ -454,20 +468,20 @@ input.wepay-widget-input {
   -webkit-transition: opacity 0.5s;
 }
 
-.navGridCell.featured {
+.cell.featured {
 	width: 620px;
   height: 340px;
 	border-bottom: 20px solid white;
 }
 
-.navGridCell:hover img {
+.cell:hover img {
   opacity: 0.2;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
 }
 
-.navGridCell:hover h2 {
+.cell:hover h2 {
 	opacity: 1;
   transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;

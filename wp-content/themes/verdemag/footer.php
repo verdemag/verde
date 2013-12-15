@@ -1,10 +1,11 @@
 </main>
 </div>
+</div>
 <footer>
 	<div>
 		<div class="row">&#169; Verde Magazine</div>
     <div class="row">
-		  <a class="navLink" id="aboutlink">About</a> -
+		  <a class="navlink" id="aboutlink">About</a> -
 		  <a href="">Contact</a> -
       <a id="zoombutton">Zoom</a>
     </div>
@@ -24,7 +25,6 @@
 		Palo Alto, California 94301
 	</address>
 </footer>
-</div>
 <?php wp_footer(); ?>
 </body>
 </html>

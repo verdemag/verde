@@ -23,14 +23,14 @@ $i = 0;
 		<article>
 			<?php if($thumb) : ?><div class="featured-img"><?php echo $thumb; ?></div><?php endif; ?>
 			<header>
-				<a href="<?php the_postlink($slug); ?>" data-target="<?php echo $slug; ?>" class="navLink">
+				<a href="<?php the_postlink($slug); ?>" data-target="<?php echo $slug; ?>" class="navlink">
 					<h1><?php the_title(); ?></h1>
 				</a>
 				<h2><?php echo get_post_meta(get_the_ID(), 'subtitle', true); ?></h2>
 				<span class="author">By: <?php echo get_post_meta(get_the_ID(), 'verde_author', true); ?></span>
 			</header>
 			<?php the_excerpt(); ?>
-			<a href="<?php the_postlink($slug); ?>" data-target="<?php echo $slug; ?>" class="navLink">Read more</a>
+			<a href="<?php the_postlink($slug); ?>" data-target="<?php echo $slug; ?>" class="navlink">Read more</a>
 		</article>
 		<?php if($i % 2 == 1) : ?></div><?php endif; ?>
 		<?php $i++; ?>

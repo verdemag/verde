@@ -23,7 +23,7 @@ function vticker_js() {
     if($link == '#') {
       $text = stripslashes($datum->vticker_text);
     } else if (preg_match('/^[a-z0-9-]+$/i', $link)) {
-      $text = '<a class="navLink" href="/?post='.$link.'" data-target="'.$link.'">';
+      $text = '<a class="navlink" href="/?post='.$link.'" data-target="'.$link.'">';
       $text.= stripslashes($datum->vticker_text);
       $text.= '</a>';
     } else {

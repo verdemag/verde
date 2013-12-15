@@ -1,4 +1,4 @@
-/*global ticker, tickerText, navLinkClick, jQuery, setInterval */
+/*global ticker, tickerText, navlinkClick, jQuery, setInterval */
 
 jQuery(document).ready(function() {
 	ticker = jQuery('#ticker');
@@ -14,7 +14,7 @@ function tickticker() {
 	ticker.animate({ color: 'lightgrey' });
 	ticker.children().fadeTo(duration / 2, 0, function() {
 		ticker.children().html(tickerText[ticker.count]);
-		ticker.find('.navLink').click(navLinkClick);
+		ticker.find('.navlink').click(navlinkClick);
 		ticker.children().fadeTo(duration / 2, 1);
 	});
 

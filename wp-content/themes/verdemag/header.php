@@ -34,7 +34,9 @@ global $ver;
 		<div id="wrapper" class="cf">
 			<header class="cf">
 				<div id="logo">
-					<div class="title"><?php bloginfo('name'); ?><small><?php echo $ver->name ?></small></div>
+					<div class="title">
+						<h1><?php bloginfo('name'); ?><small><?php echo $ver->name ?></small></h1>
+					</div>
 					<div class="sub"><?php bloginfo('description'); ?></div>
 				</div>
 				<div id="nav-placeholder"></div>

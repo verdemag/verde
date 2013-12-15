@@ -7,7 +7,7 @@
 	</section>
 	<script>
 	 jQuery(document).ready(function() {
-		 jQuery('.navLink').off('click');
+		 jQuery('.navlink').off('click');
 	 });
 	</script>
 	<?php get_footer(); ?>
