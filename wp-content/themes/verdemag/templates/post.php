@@ -25,7 +25,6 @@ $share = urlencode(site_url("/?ver={$ver->slug}&post=$slug"));
 	</header>
 	</header>
 	<?php the_content(); ?>
-	<a href="<?php the_postlink($slug); ?>">Permalink</a><br><br>
 	<a href="<?php echo FB_URL.$share; ?>" onclick="" class="social icon-fb"></a>|
   <a href="<?php echo TWITTER_URL.$share; ?>" class="social icon-twitter"></a>|
 	<a href="<?php echo GPLUS_URL.$share; ?>" class="social icon-gplus"></a>
