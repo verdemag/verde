@@ -3,11 +3,10 @@
 </div>
 <footer>
 	<div>
-		<div class="row">&#169; Verde Magazine</div>
+		<div class="row">&#169; Verde Magazine 2014</div>
     <div class="row">
-		  <a class="navlink" id="aboutlink">About</a> -
-		  <a href="">Contact</a> -
-      <a id="zoombutton">Zoom</a>
+		  <a href="/?page=about" class="navlink" data-target="about">About</a> -
+		  <a href="/?page=contact" class="navlink" data-target="contact">Contact</a>
     </div>
     <div class="row">
       <?php if (is_user_logged_in()) : ?>
