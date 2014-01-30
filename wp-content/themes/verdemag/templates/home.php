@@ -53,38 +53,50 @@ foreach ($locs as $loc) {
 }
 ?>
 <div class="navgrid">
-  <a href="<?php the_postlink($cover['ul']->slug); ?>"
-		 class="cell featured navlink" data-target="<?php echo $cover['ul']->slug; ?>">
-		<img src="<?php echo $cover['ul']->img; ?>">
-		<h2><?php echo $cover['ul']->title ?></h2>
-	</a>
-	<div class="col cf">
-		<a href="<?php the_postlink($cover['ur']->slug); ?>"
-			 class="cell navlink" data-target="<?php echo $cover['ur']->slug; ?>">
-			<img src="<?php echo $cover['ur']->img; ?>">
-			<h2><?php echo $cover['ur']->title ?></h2>
-		</a>
-		<a href="<?php the_postlink($cover['mr']->slug); ?>"
-			 class="cell navlink" data-target="<?php echo $cover['mr']->slug; ?>">
-			<img src="<?php echo $cover['mr']->img; ?>">
-			<h2><?php echo $cover['mr']->title ?></h2>
+	<div class="cell featured">
+		<a href="<?php the_postlink($cover['ul']->slug); ?>"
+			 class="navlink" data-target="<?php echo $cover['ul']->slug; ?>">
+			<img src="<?php echo $cover['ul']->img; ?>">
+			<h2><?php echo $cover['ul']->title ?></h2>
 		</a>
 	</div>
+	<div class="col cf">
+		<div class="cell">
+			<a href="<?php the_postlink($cover['ur']->slug); ?>"
+				 class="navlink" data-target="<?php echo $cover['ur']->slug; ?>">
+				<img src="<?php echo $cover['ur']->img; ?>">
+				<h2><?php echo $cover['ur']->title ?></h2>
+			</a>
+		</div>
+		<div class="cell">
+			<a href="<?php the_postlink($cover['mr']->slug); ?>"
+				 class="navlink" data-target="<?php echo $cover['mr']->slug; ?>">
+				<img src="<?php echo $cover['mr']->img; ?>">
+				<h2><?php echo $cover['mr']->title ?></h2>
+			</a>
+		</div>
+	</div>
 	<div class="row cf">
-		<a href="<?php the_postlink($cover['ll']->slug); ?>"
-			 class="cell navlink" data-target="<?php echo $cover['ll']->slug; ?>">
-			<img src="<?php echo $cover['ll']->img; ?>">
-			<h2><?php echo $cover['ll']->title ?></h2>
-		</a>
-		<a href="<?php the_postlink($cover['lm']->slug); ?>"
-			 class="cell navlink" data-target="<?php echo $cover['lm']->slug; ?>">
-			<img src="<?php echo $cover['lm']->img; ?>">
-			<h2><?php echo $cover['lm']->title ?></h2>
-		</a>
-		<a href="<?php the_postlink($cover['lr']->slug); ?>"
-			 class="cell navlink" data-target="<?php echo $cover['lr']->slug; ?>">
-			<img src="<?php echo $cover['lr']->img; ?>">
-			<h2><?php echo $cover['lr']->title ?></h2>
-		</a>
+		<div class="cell">
+			<a href="<?php the_postlink($cover['ll']->slug); ?>"
+				 class="navlink" data-target="<?php echo $cover['ll']->slug; ?>">
+				<img src="<?php echo $cover['ll']->img; ?>">
+				<h2><?php echo $cover['ll']->title ?></h2>
+			</a>
+		</div>
+		<div class="cell">
+			<a href="<?php the_postlink($cover['lm']->slug); ?>"
+				 class="navlink" data-target="<?php echo $cover['lm']->slug; ?>">
+				<img src="<?php echo $cover['lm']->img; ?>">
+				<h2><?php echo $cover['lm']->title ?></h2>
+			</a>
+		</div>
+		<div class="cell">
+			<a href="<?php the_postlink($cover['lr']->slug); ?>"
+				 class="navlink" data-target="<?php echo $cover['lr']->slug; ?>">
+				<img src="<?php echo $cover['lr']->img; ?>">
+				<h2><?php echo $cover['lr']->title ?></h2>
+			</a>
+		</div>
 	</div>
 </div>
