@@ -1,5 +1,5 @@
 /*global ver, History, jQuery, template_dir */
-var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, zoomed, navnames, navitems, pageWrap, ticker;
+var body, nav, navTop, footer, pages, selected, toSelect, mask, wrapper, navnames, navitems, pageWrap, ticker;
 
 var $ = jQuery;
 
@@ -12,7 +12,6 @@ $(document).ready(function() {
 	navTop = nav.offset().top;
 	wrapper = $('main');
 	pageWrap = $('#wrapper');
-	zoomed = false;
 
 	$('#logo').click(function(event) {
 		var state = { post: 'home', type: 'home' };
@@ -29,32 +28,6 @@ $(document).ready(function() {
 		} else {
 			$("#nav-placeholder").hide();
 			$("nav").removeClass("fixed");
-		}
-	});
-
-	$('#zoombutton').click(function(event) {
-		console.log('zoomed called....');
-		if(!zoomed) {
-			$('main > section').show();
-			wrapper.stop().animate({zoom:1/6}, 500);
-			mask.stop().animate({height:wrapper.height()}, 500);
-			zoomed = true;
-		} else {
-			$('main > section').hide();
-			selected.show();
-			wrapper.stop().animate({left: -selected.position().left}, {
-				duration: 500,
-				queue: false
-			});
-			wrapper.animate({zoom:1}, {
-				duration: 500,
-				complete: function() {
-				wrapper.css('left', -selected.position().left);
-				resizeMask();
-				},
-				queue: false
-			});
-			zoomed = false;
 		}
 	});
 
@@ -167,7 +140,6 @@ function switchToItem(name, type) {
 	                       {duration:500, queue:false,
 	                        complete: function() {
 		                        resizeMask();
-		                        if(!zoomed) old.hide();
 		                        wrapper.css('left', -selected.position().left);
 	                        }
 	                       });
@@ -199,7 +171,6 @@ function getItem(name, type) {
 	}
 	item.html('<div class="loader"></div>');
 	var loc = navnames.indexOf(name);
-	console.log(loc);
 	if(loc != -1) {
 		var beforeItem;
 		for(var i = loc; i >= 0; i--) {
@@ -221,7 +192,7 @@ function getItem(name, type) {
 	item.load(url, function() {
 		$('.navlink').click(navlinkClick);
 		socialLinks();
-		item.children('img, script, frame, iframe').load(resizeMask);
+		item.children('img').load(resizeMask);
 	});
 }
 
