@@ -1,4 +1,0 @@
-verde
-=====
-
-The Verde website
