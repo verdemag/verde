@@ -14,8 +14,8 @@ $(document).ready(function() {
 	pageWrap = $('#wrapper');
 
 	$('#logo').click(function(event) {
-		var state = { post: 'home', type: 'home' };
 		var url = '/';
+		var state = { url: url, post: 'home', type: 'home' };
 		History.pushState(state, 'Verde', url);
 	});
 
@@ -56,9 +56,9 @@ $(window).on('statechange', function(evt) {
 	evt.preventDefault();
 	var stateData = History.getState().data;
 	if (!$.isEmptyObject(stateData)) {
-		switchToItem(stateData.post, stateData.type);
+		switchToItem(stateData.url, stateData.post, stateData.type);
 	} else {
-		switchToItem('home', 'home');
+		switchToItem('/', 'home', 'home');
 	}
 });
 
@@ -66,7 +66,7 @@ function navlinkClick(event) {
 	event.preventDefault();
 	var element = $(event.currentTarget);
 	var targetID = element.data('target');
-	var url;
+	var url = element.attr('href');
 
 	if(!element.hasClass('disabled')) {
 		$('.navlink.disabled').removeClass('disabled');
@@ -82,23 +82,7 @@ function navlinkClick(event) {
 			name = name[0];
 		}
 
-		var state = { post: name, type: type };
-		url = ver ? '/?ver='+ver+'&' : '/?';
-		switch(type) {
-		case 'home':
-			url = ver ? '/?ver='+ver : '/';
-			break;
-		case 'page':
-			url += 'page='+name;
-			break;
-		case 'cat':
-			url += 'cat=' + name;
-			break;
-		case 'post':
-		default:
-			url += 'post=' + targetID;
-			break;
-		}
+		var state = { url: url, post: name, type: type };
 
 		History.pushState(state, 'Verde', url);
 	}
@@ -115,17 +99,16 @@ function resizeMask() {
 	pageWrap.css('min-height', '100%');
 }
 
-function switchToItem(name, type) {
+function switchToItem(url, name, type) {
 	mask.height(wrapper.height());
 	pageWrap.height(mask.height() + 327);
 	pageWrap.css('min-height', '100%');
 
-	var linkSel = '#'+name+'link';
-	highlightItem($(linkSel));
+	highlightItem($('#'+name+'link'));
 
 	var old = $(selected);
 
-	if($('#' + name).length == 0) getItem(name, type);
+	if($('#' + name).length == 0) getItem(url, name, type);
 
 	selected = $('#' + name);
 	if(selected.length == 0) {
@@ -145,28 +128,23 @@ function switchToItem(name, type) {
 	                       });
 }
 
-function getItem(name, type) {
+function getItem(url, name, type) {
 	wrapper.width(wrapper.width() + 960);
 
-	var url = template_dir + '/templates';
 	var item;
 	switch(type) {
 	case 'home':
 		item = $('<section class="page" id="home"></section>');
-		url += '/home.php?ver=' + ver;
 		break;
 	case 'page':
 		item = $('<section class="page" id="'+name+'"></section>');
-		url += '/page.php?ver=' + ver + '&page=' + name;
 		break;
 	case 'cat':
 		item = $('<section class="category" id="'+name+'"></section>');
-		url += '/category.php?ver=' + ver + '&cat=' + name;
 		break;
 	case 'post':
 	default:
 		item = $('<section class="post" id="'+name+'"></section>');
-		url += '/post.php?ver=' + ver + '&post=' + name;
 		break;
 	}
 	item.html('<div class="loader"></div>');
@@ -189,7 +167,7 @@ function getItem(name, type) {
 		wrapper.append(item);
 	}
 
-	item.load(url, function() {
+	item.load(url, {ver: ver}, function() {
 		$('.navlink').click(navlinkClick);
 		socialLinks();
 		item.children('img').load(resizeMask);

@@ -23,6 +23,7 @@ Author URI: http://jake.dev.brightswipe.com
 
 body {
 	word-wrap: break-word;
+	overflow-y: scroll
 }
 
 .cf:before,
@@ -81,15 +82,14 @@ body > .loader {
 
 #wrapper {
 	position: relative;
-	width: 100%;
+	margin: 0 auto;
+	width: 960px;
 	min-height: 100%;
 	padding-bottom: 100px;
 
 	#mask {
-		margin: 0 auto;
 		left: 0;
 		right: 0;
-		width: 960px;
 		overflow: hidden;
 
 		main {
@@ -107,7 +107,7 @@ body > .loader {
 
 				.loader {
 					opacity: 1;
-					background: white url('../imgs/ajax-loader.gif') no-repeat center center;
+					background: white url('imgs/ajax-loader.gif') no-repeat center center;
 					width: 100%;
 					height: 300px;
 				}

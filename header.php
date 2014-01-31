@@ -13,7 +13,7 @@ global $ver;
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php wp_title(); ?> <?php bloginfo('name'); ?></title>
+		<title><?php bloginfo('name'); ?></title>
 		<script>
 		 var template_dir = '<?php bloginfo("template_url"); ?>';
 		 var ver = '<?php echo $ver->slug; ?>';
@@ -55,3 +55,18 @@ global $ver;
 
 			<div id="mask" class="cf">
 				<main class="cf">
+
+					<?php if (!is_user_logged_in()) : ?>
+						<section class="page">
+							<h1>Site under construction!</h1>
+							<p>Hello, this site is currently under construction! If you want to view the site, please <a href="<?php echo wp_login_url( home_url() ); ?>">login</a>.</p>
+						</section>
+						<script>
+						 jQuery(document).ready(function() {
+							 jQuery('.navlink').off('click');
+						 });
+						</script>
+						<?php get_footer(); ?>
+
+						<?php die(); ?>
+					<?php endif; ?>

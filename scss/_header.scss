@@ -136,4 +136,21 @@ header {
 		height: 35px;
 		display: none;
 	}
+
+	#ticker {
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 960px;
+		height: 32px;
+		float: left;
+		background-color: lightgrey;
+		color: grey;
+		font-size: 15px;
+		padding: 5px;
+	}
+
+	#ticker a {
+		color: grey;
+	}
 }

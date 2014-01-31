@@ -11,6 +11,11 @@ require_once('functions/navlinks.php');
 require_once('functions/post-meta.php');
 require_once('functions/ticker.php');
 
+define('SHARE_MSG', 'Check out this article!');
+define('FB_URL', 'https://www.facebook.com/share.php?u=');
+define('TWITTER_URL', 'https://www.twitter.com/share?via=verdemagazine&url=');
+define('GPLUS_URL', 'https://plus.google.com/share?url=');
+
 function enqueueScripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('history.js', get_template_directory_uri() . '/js/jquery.history.js', array('jquery'));
@@ -27,23 +32,20 @@ $archive_ID = get_category_by_slug('archive')->cat_ID;
 $ver = isset($_GET['ver']) ? (
 	get_category_by_slug($_GET['ver'])
 ):(
+	isset($_POST['ver']) ? (
+		get_category_by_slug($_POST['ver'])
+	):(
 	get_categories(array('parent' => $archive_ID,
 	                     'order' => 'desc',
-	                     'number' => 1))[0]);
+	                     'number' => 1))[0]));
 
-function the_postlink($slug) {
+function version_filter( $query ) {
 	global $ver;
-	echo site_url("/?ver={$ver->slug}&post=$slug");
+	if($query->is_category() && $query->is_main_query()) {
+		$query->set('category__and', array($ver->cat_ID));
+	}
 }
 
-function the_pagelink($slug) {
-	global $ver;
-	echo site_url("/?ver={$ver->slug}&post=$slug");
-}
-
-function the_catlink($slug) {
-	global $ver;
-	echo site_url("/?ver={$ver->slug}&cat=$slug");
-}
+add_action( 'pre_get_posts', 'version_filter' );
 
 ?>
