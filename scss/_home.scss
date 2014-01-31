@@ -1,0 +1,86 @@
+.navgrid {
+  height: 520px;
+  width: 940px;
+	text-align: left;
+	font-size: 0;
+  margin-left:auto;
+  margin-right:auto;
+  overflow: hidden;
+
+	*, *:before, *:after {
+		-moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box;
+	}
+
+	.cell {
+		float: left;
+		display: block;
+		position: relative;
+		height: 160px;
+		width: 300px;
+		overflow: hidden;
+		background-color: white;
+		color: white;
+		font-size: 14px;
+
+		a {
+			display: table;
+			position: static;
+			height: 100%;
+			color: black;
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				opacity: 1;
+				transition: opacity 0.5s;
+				-moz-transition: opacity 0.5s;
+				-webkit-transition: opacity 0.5s;
+			}
+
+			h2 {
+				display: table-cell;
+				position: static;
+				vertical-align: middle;
+				opacity: 0;
+				width: 100%;
+				text-align: center;
+				transition: opacity 0.5s;
+				-moz-transition: opacity 0.5s;
+				-webkit-transition: opacity 0.5s;
+			}
+		}
+	}
+
+	.cell:hover {
+		img { opacity: 0.2; }
+		h2 { opacity: 1; }
+	}
+
+	.cell.featured {
+		width: 620px;
+		height: 340px;
+		border-bottom: 20px solid transparent;
+		font-size: 20px;
+	}
+
+	.col {
+		float: left;
+		width: 300px;
+		border-left: 20px solid transparent;
+		.cell {
+			border-bottom: 20px solid transparent;
+		}
+	}
+
+	.row {
+		.cell {
+			border-right: 20px solid transparent;
+		}
+
+		.cell:last-child {
+			border-right: none;
+		}
+	}
+}

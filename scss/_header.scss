@@ -1,0 +1,139 @@
+header {
+	margin: 0 auto;
+	margin-bottom: 20px;
+	width: 960px;
+	#logo {
+		margin: 10px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		cursor: pointer;
+		text-align: left;
+		font-family: "Droid Serif", serif;
+
+		.title h1 {
+			letter-spacing:-.06em;
+			height: 110px;
+			padding-top: 10px;
+			color: green;
+			font-size: 120px;
+			font-weight: normal;
+			line-height: 120px;
+		}
+
+		.title small {
+			display: block;
+			float: right;
+			letter-spacing: 0;
+			color: black;
+			font-size: 24px;
+		}
+
+		.sub {
+			font-variant: small-caps;
+			font-style: normal;
+			color: black;
+			font-size: 24px;
+			line-height: 24px;
+		}
+	}
+
+	nav {
+		display: block;
+		position: relative;
+		padding: 3px 35px;
+		margin: 0;
+		width: 960px;
+		opacity: 0.9;
+		background-color: grey;
+		text-align: justify;
+		font-size: 20px;
+		height: 35px;
+		z-index: 100;
+
+		a {
+			display: inline-block;
+			color: white;
+			cursor: pointer;
+			z-index: 1;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			transition: color 0.5s;
+			-moz-transition: color 0.5s;
+			-webkit-transition: color 0.5s;
+		}
+
+		a:hover {
+			color: lightgreen;
+		}
+
+		a.selected {
+			cursor: default;
+			color: lime;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			transition: color 0.5s;
+			-moz-transition: color 0.5s;
+			-webkit-transition: color 0.5s;
+		}
+
+		> ul {
+			display: inline;
+			margin: 0;
+			padding: 0;
+			line-height: 30px;
+			white-space: nowrap;
+		}
+
+		li {
+			list-style-type: none;
+			display: inline;
+			position: relative;
+			z-index: 1;
+
+			ul {
+				display: none;
+				padding: 0 15px;
+				padding-bottom: 5px;
+				position: absolute;
+				top: 0;
+				left: -15px;
+				border-top: 37px solid transparent;
+				background-color: grey;
+				z-index: -1;
+				clear: both;
+
+				li {
+					display: block;
+				}
+			}
+		}
+
+		li:hover ul,
+		li ul:hover {
+			display: block;
+		}
+	}
+
+	span {
+		display: inline-block;
+		position: relative;
+		width: 100%;
+		height: 0;
+	}
+
+	nav.fixed {
+		position: fixed;
+		top: 5px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	#nav-placeholder {
+		height: 35px;
+		display: none;
+	}
+}

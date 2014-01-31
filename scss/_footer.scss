@@ -1,0 +1,46 @@
+footer {
+	position: relative;
+	margin: 0 auto;
+	margin-top: -100px;
+	height: 100px;
+	width: 960px;
+  padding: 2px 0px;
+	background-color: #FFF;
+  text-align: center;
+  color: grey;
+
+	> * {
+		width: 470px;
+		float: left;
+		margin-bottom: 0;
+	}
+
+	> *:first-child {
+		text-align: right;
+		margin-right: 10px;
+	}
+
+	> *:last-child {
+		text-align: left;
+		margin-left: 10px;
+	}
+
+	> div {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+
+	> address {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+
+	a {
+		color: inherit;
+		height: auto;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
