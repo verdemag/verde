@@ -3,30 +3,37 @@ header {
 	margin-bottom: 20px;
 	width: 960px;
 	#logo {
+		position: relative;
 		margin: 10px;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
-		cursor: pointer;
 		text-align: left;
 		font-family: "Droid Serif", serif;
 
-		.title h1 {
-			letter-spacing:-.06em;
-			height: 110px;
-			padding-top: 10px;
-			color: green;
-			font-size: 120px;
-			font-weight: normal;
-			line-height: 120px;
+		form {
+			position: absolute;
+			top: 0;
+			right: 0;
+			input[type="submit"] {
+				font-family: icomoon;
+				background: none;
+				border: none;
+				cursor: pointer;
+			}
 		}
 
-		.title small {
-			display: block;
-			float: right;
-			letter-spacing: 0;
-			color: black;
-			font-size: 24px;
+		.title {
+			h1 {
+				display: inline;
+				letter-spacing:-.06em;
+				height: 110px;
+				padding-top: 10px;
+				color: green;
+				font-size: 120px;
+				font-weight: normal;
+				line-height: 120px;
+			}
 		}
 
 		.sub {
@@ -35,6 +42,14 @@ header {
 			color: black;
 			font-size: 24px;
 			line-height: 24px;
+
+			small {
+				text-align: right;
+				display: block;
+				float: right;
+				letter-spacing: 0;
+				color: black;
+			}
 		}
 	}
 

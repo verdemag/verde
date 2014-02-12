@@ -34,10 +34,20 @@ global $ver;
 		<div id="wrapper" class="cf">
 			<header class="cf">
 				<div id="logo">
+					<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/">
+						<div>
+							<input type="text" size="18" value="<?php echo wp_specialchars($s, 1); ?>"
+								     name="s" id="s">
+							<input type="submit" id="searchsubmit" value="s" class="btn">
+						</div>
+					</form>
 					<div class="title">
-						<h1><?php bloginfo('name'); ?><small><?php echo $ver->name ?></small></h1>
+						<h1><?php bloginfo('name'); ?></h1>
 					</div>
-					<div class="sub"><?php bloginfo('description'); ?></div>
+					<div class="sub">
+						<?php bloginfo('description'); ?>
+						<small><?php echo $ver->name ?></small>
+					</div>
 				</div>
 				<div id="nav-placeholder"></div>
 				<nav>

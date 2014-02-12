@@ -13,7 +13,7 @@ $(document).ready(function() {
 	wrapper = $('main');
 	pageWrap = $('#wrapper');
 
-	$('#logo').click(function(event) {
+	$('#logo > h1').click(function(event) {
 		var url = '/';
 		var state = { url: url, post: 'home', type: 'home' };
 		History.pushState(state, 'Verde', url);
