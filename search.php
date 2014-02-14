@@ -15,9 +15,11 @@
 			?>
 			<?php if($i % 2 == 0) : ?><div class="cf"><?php endif; ?>
 				<article>
-					<?php if($thumb) : ?><div class="featured-img"><?php echo $thumb; ?></div><?php endif; ?>
 					<header>
 						<a href="<?php the_permalink(); ?>" data-target="<?php echo $slug; ?>" class="navlink">
+							<?php if($thumb) : ?>
+								<div class="featured-img"><?php echo $thumb; ?></div>
+							<?php endif; ?>
 							<h1><?php the_title(); ?></h1>
 						</a>
 						<h2><?php echo get_post_meta(get_the_ID(), 'subtitle', true); ?></h2>

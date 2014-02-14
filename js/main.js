@@ -13,12 +13,6 @@ $(document).ready(function() {
 	wrapper = $('main');
 	pageWrap = $('#wrapper');
 
-	$('#logo > h1').click(function(event) {
-		var url = '/';
-		var state = { url: url, post: 'home', type: 'home' };
-		History.pushState(state, 'Verde', url);
-	});
-
 	$('.navlink').click(navlinkClick);
 
 	$(window).scroll(function(event) {
@@ -72,14 +66,13 @@ function navlinkClick(event) {
 		$('.navlink.disabled').removeClass('disabled');
 		$('.navlink[data-target="' + targetID + '"]').addClass('disabled');
 
-		var name = targetID.split(':');
+		var name = targetID;
 		var type = 'post';
-		if(name.length > 1) {
+		if(name == 'home') type = 'home';
+		else {
+			name = name.split(':');
 			type = name[0];
 			name = name[1];
-		} else {
-			if(name == 'home') type = 'home';
-			name = name[0];
 		}
 
 		var state = { url: url, post: name, type: type };

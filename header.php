@@ -42,7 +42,7 @@ global $ver;
 						</div>
 					</form>
 					<div class="title">
-						<h1><?php bloginfo('name'); ?></h1>
+						<a class="navlink" href="/" data-target="home"><h1><?php bloginfo('name'); ?></h1></a>
 					</div>
 					<div class="sub">
 						<?php bloginfo('description'); ?>
@@ -65,18 +65,3 @@ global $ver;
 
 			<div id="mask" class="cf">
 				<main class="cf">
-
-					<?php if (!is_user_logged_in()) : ?>
-						<section class="page">
-							<h1>Site under construction!</h1>
-							<p>Hello, this site is currently under construction! If you want to view the site, please <a href="<?php echo wp_login_url( home_url() ); ?>">login</a>.</p>
-						</section>
-						<script>
-						 jQuery(document).ready(function() {
-							 jQuery('.navlink').off('click');
-						 });
-						</script>
-						<?php get_footer(); ?>
-
-						<?php die(); ?>
-					<?php endif; ?>
