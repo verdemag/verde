@@ -60,7 +60,7 @@ function navlinkClick(event) {
 	event.preventDefault();
 	var element = $(event.currentTarget);
 	var targetID = element.data('target');
-	var url = element.attr('href');
+	var url = element.attr('href') ? element.attr('href') : '404.php';
 
 	if(!element.hasClass('disabled')) {
 		$('.navlink.disabled').removeClass('disabled');
@@ -68,11 +68,14 @@ function navlinkClick(event) {
 
 		var name = targetID;
 		var type = 'post';
-		if(name == 'home') type = 'home';
-		else {
-			name = name.split(':');
-			type = name[0];
-			name = name[1];
+		if(name == 'home') {
+			type = 'home';
+		} else {
+			var sname = name.split(':');
+			if(sname.length == 2) {
+				type = sname[0];
+				name = sname[1];
+			}
 		}
 
 		var state = { url: url, post: name, type: type };
@@ -160,10 +163,15 @@ function getItem(url, name, type) {
 		wrapper.append(item);
 	}
 
-	item.load(url, {ver: ver}, function() {
-		$('.navlink').click(navlinkClick);
-		socialLinks();
-		item.children('img').load(resizeMask);
+	item.load(url, {ver: ver}, function(r, s, req) {
+		console.log(s);
+		if(s == "success" || s == "notmodified") {
+			$('.navlink').click(navlinkClick);
+			socialLinks();
+			item.children('img').load(resizeMask);
+		} else {
+			item.html("<h1>Page Not Found.</h1><p>Whoops! it looks like the page you were looking for wasn't found. Maybe it was moved or deleted, or you mistyped the URL.</p>");
+		}
 	});
 }
 

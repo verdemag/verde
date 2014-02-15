@@ -29,6 +29,7 @@ function get_cover_post($location) {
 		}
 	}
 	$post = (object)[];
+	$post->id = $theid;
   $post->slug = $postobj->post_name;
   $post->title = $postobj->post_title;
 	if($theid != -1) {
@@ -59,7 +60,7 @@ foreach ($locs as $loc) {
 
 <div class="navgrid">
 	<div class="cell featured">
-		<a href="<?php echo get_permalink($cover['ul']); ?>"
+		<a href="<?php echo get_permalink($cover['ul']->id); ?>"
 			 class="navlink" data-target="<?php echo $cover['ul']->slug; ?>">
 			<img src="<?php echo $cover['ul']->img; ?>">
 			<h2><?php echo $cover['ul']->title ?></h2>
@@ -67,14 +68,14 @@ foreach ($locs as $loc) {
 	</div>
 	<div class="col cf">
 		<div class="cell">
-			<a href="<?php echo get_permalink($cover['ur']); ?>"
+			<a href="<?php echo get_permalink($cover['ur']->id); ?>"
 				 class="navlink" data-target="<?php echo $cover['ur']->slug; ?>">
 				<img src="<?php echo $cover['ur']->img; ?>">
 				<h2><?php echo $cover['ur']->title ?></h2>
 			</a>
 		</div>
 		<div class="cell">
-			<a href="<?php echo get_permalink($cover['mr']); ?>"
+			<a href="<?php echo get_permalink($cover['mr']->id); ?>"
 				 class="navlink" data-target="<?php echo $cover['mr']->slug; ?>">
 				<img src="<?php echo $cover['mr']->img; ?>">
 				<h2><?php echo $cover['mr']->title ?></h2>
@@ -83,21 +84,21 @@ foreach ($locs as $loc) {
 	</div>
 	<div class="row cf">
 		<div class="cell">
-			<a href="<?php echo get_permalink($cover['ll']); ?>"
+			<a href="<?php echo get_permalink($cover['ll']->id); ?>"
 				 class="navlink" data-target="<?php echo $cover['ll']->slug; ?>">
 				<img src="<?php echo $cover['ll']->img; ?>">
 				<h2><?php echo $cover['ll']->title ?></h2>
 			</a>
 		</div>
 		<div class="cell">
-			<a href="<?php echo get_permalink($cover['lm']); ?>"
+			<a href="<?php echo get_permalink($cover['lm']->id); ?>"
 				 class="navlink" data-target="<?php echo $cover['lm']->slug; ?>">
 				<img src="<?php echo $cover['lm']->img; ?>">
 				<h2><?php echo $cover['lm']->title ?></h2>
 			</a>
 		</div>
 		<div class="cell">
-			<a href="<?php echo get_permalink($cover['lr']); ?>"
+			<a href="<?php echo get_permalink($cover['lr']->id); ?>"
 				 class="navlink" data-target="<?php echo $cover['lr']->slug; ?>">
 				<img src="<?php echo $cover['lr']->img; ?>">
 				<h2><?php echo $cover['lr']->title ?></h2>
